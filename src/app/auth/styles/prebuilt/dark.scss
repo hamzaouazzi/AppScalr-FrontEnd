@@ -1,7 +1,0 @@
-@import '../all';
-
-$nb-enabled-themes: (dark);
-
-@include nb-install() {
-  @include nb-theme-global();
-};

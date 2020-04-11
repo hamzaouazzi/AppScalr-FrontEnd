@@ -9,7 +9,8 @@ import { NgModule } from '@angular/core';
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from './pages/auth/components'; */
-import {NbAuthComponent} from './auth/components/auth.component';
+
+/* import {NbAuthComponent} from './auth/components/auth.component';
 import {NbLoginComponent} from './auth/components/login/login.component';
 import {NbLogoutComponent} from './auth/components/logout/logout.component';
 import {NbRegisterComponent} from './auth/components/register/register.component';
@@ -21,10 +22,10 @@ import { NotFoundComponent } from './pages/miscellaneous/not-found/not-found.com
 import {WelcomeComponent} from './welcome/welcome.component';
 import { AuthGuard } from './auth-guard.service';
 import { OAuth2CallbackComponent } from './oauth2/oauth2-callback.component';
-import { OAuth2LoginComponent } from './oauth2/oauth2-login.component';
+import { OAuth2LoginComponent } from './oauth2/oauth2-login.component'; */
 
 const routes: Routes = [
-  {
+ /*  {
     path: 'pages',
     canActivate: [AuthGuard], // here we tell Angular to check the access with our AuthGuard
     loadChildren: () => import('../app/pages/pages.module')
@@ -72,7 +73,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' }, */
   // { path: '**', redirectTo: 'pages' },
 ];
 

@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { AnalyticsService } from './core/utils/analytics.service';
+/* import { AnalyticsService } from './core/utils/analytics.service';
 import { SeoService } from './core/utils/seo.service';
-
+ */
 @Component({
   selector: 'nb-app',
   template: '<router-outlet> </router-outlet>',
   styleUrls: ['./app.component.scss'],
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
+  constructor() { }
+}
+/* export class AppComponent implements OnInit {
 
   constructor(private analytics: AnalyticsService, private seoService: SeoService) {
   }
@@ -18,3 +21,4 @@ export class AppComponent implements OnInit {
     this.seoService.trackCanonicalChanges();
   }
 }
+ */
