@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { NbThemeModule, NbButtonModule, NbCardModule, NbLayoutModule } from '@nebular/theme';
-/* import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbAuthBlockComponent } from './auth/components/auth-block/auth-block.component';
 import { NbLoginComponent } from './auth/components/login/login.component';
 import { NbLogoutComponent } from './auth/components/logout/logout.component';
@@ -65,11 +65,11 @@ const socialLinks = [
 
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
-]; */
+];
 @NgModule({
   declarations: [
     AppComponent,
-    // WelcomeComponent,
+    WelcomeComponent,
   ],
   imports: [
     CommonModule,
@@ -77,7 +77,7 @@ const DATA_SERVICES = [
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    /* NbLayoutModule,
+    NbLayoutModule,
     NbAlertModule,
     HttpClientModule,
     NbCardModule,
@@ -154,7 +154,7 @@ const DATA_SERVICES = [
     NbMenuModule,
     NbSidebarModule,
     NbToastrModule,
-    NbWindowModule, */
+    NbWindowModule,
     // AuthGuard,
   ],
   bootstrap: [AppComponent],
