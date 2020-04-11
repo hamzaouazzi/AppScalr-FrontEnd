@@ -1,0 +1,19 @@
+/**
+ * @license
+ * Copyright Akveo. All Rights Reserved.
+ * Licensed under the MIT License. See License.txt in the project root for license information.
+ */
+
+@import 'normalize';
+@import 'components/tree.theme';
+@import 'maps/leaflet.theme';
+@import 'tables/smart-table.theme';
+
+@import 'typography/typography';
+
+@mixin nb-theme-overrides() {
+  @include nb-typography();
+  @include nb-components-tree-theme();
+  @include nb-maps-leaflet-theme();
+  @include nb-tables-smart-table-theme();
+}
