@@ -1,0 +1,483 @@
+@import '../theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+@import '~@angular/material/theming';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+
+
+
+$nb-enable-css-custom-properties: true; // <-- enable css custom properties
+
+@include nb-install-component() {
+
+  .accordion-container:first-child {
+    margin-bottom: nb-theme(card-margin-bottom);
+  }
+
+
+
+  //display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
+  }
+
+  nb-action {
+    height: auto;
+    display: flex;
+    align-content: center;
+  }
+
+  nb-user {
+    cursor: pointer;
+  }
+
+  ::ng-deep nb-search button {
+    padding: 0!important;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    width: auto;
+
+    .sidebar-toggle {
+      @include nb-ltr(padding-right, 1.25rem);
+      @include nb-rtl(padding-left, 1.25rem);
+      text-decoration: none;
+      color: nb-theme(text-hint-color);
+      nb-icon {
+        font-size: 1.75rem;
+      }
+    }
+
+    .logo {
+      padding: 0 1.25rem;
+      font-size: 1.75rem;
+      @include nb-ltr(border-left, 1px solid nb-theme(divider-color));
+      @include nb-rtl(border-right, 1px solid nb-theme(divider-color));
+      white-space: nowrap;
+      text-decoration: none;
+
+      img{
+        width: 70px;
+        height:70px;
+
+      }
+    }
+  }
+  .header-container2{
+    //margin: 0 auto;
+    margin-left: auto;
+    display: flex;
+    float: right;
+    align-items: center;
+    width: auto;
+
+  }
+
+  @include media-breakpoint-down(sm) {
+    .control-item {
+      display: none;
+    }
+    .user-action {
+      border: none;
+      padding: 0;
+    }
+  }
+  @include media-breakpoint-down(is) {
+    nb-select {
+      display: none;
+    }
+  }
+
+}
+
+
+.column-basic{
+  //position: fixed;
+  margin-top: -36px;
+  margin-left: 0;
+}
+
+.titrecomp{
+  margin-top: 1.5rem;
+
+  h6{
+    color: #004fac;
+
+  }
+}
+.searchfield{
+
+}
+
+.dropdownIcons{
+  justify-content: space-between;
+  display: flex;
+  margin:auto;
+
+  nb-action{
+
+    &:hover{
+      --text-hint-color	:#004fac;
+      //box-shadow: inset 0 -10px 0 0 cyan;
+    }
+  }
+}
+
+
+.column-center{
+  //background-image: url('../../assets/images/1586351.jpg') ;
+  position: relative;
+  //height: auto;
+  overflow: auto;
+}
+.CompContainer{
+  margin-top: 20px;
+  margin-bottom: 17px;
+}
+
+#Divphone{
+  // background-image: url('../../assets/images/iPhone-XR-Orange200x200.png');
+  position: absolute;
+  width:100%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;
+  //display: table-cell;
+  //vertical-align: middle;
+  /* background-repeat: no-repeat;
+  background-position: center;
+  background-size: 42rem 34rem;
+  background-image: url('../../assets/images/iPhone-XR-White.png') ; */
+  margin: auto;
+
+
+
+  .cardPhone{
+    position: absolute;
+    //top: 50%;
+    margin: 0 auto;
+    width: 17rem;
+    height: 30.66rem;
+    border-radius: 39px;
+    background-repeat: no-repeat;
+    background-position: 47.5% 44.2%;
+    background-size: 35.3rem 32rem;
+    vertical-align: middle;
+  background-image: url('../../assets/images/phoneContainer.png') ;
+
+  }
+}
+
+
+.acc1 {
+  position: absolute;
+  //top:26%;
+  left:0;
+}
+.acc2{
+  position: absolute;
+
+}
+
+.cc{
+  width: 45px;
+  margin-top:-15px;
+  margin-left: 0;
+  justify-content:space-around;
+
+  .roww{
+
+  margin-left: -28px;
+
+  }
+
+  nb-icon{
+    font-size: 2rem;
+    color: rgb(12, 11, 11);
+    &:hover {
+      color: #2e0169;
+    }
+  }
+
+}
+
+.actions{
+  float: right;
+  nb-action{
+
+  }
+}
+
+.subhead{
+   position: relative;
+   margin: auto auto;
+
+ //background-color: rgb(0, 0, 255);
+  align-items: center;
+ //justify-content:space-around;
+
+ button{
+   float: right;
+ }
+
+
+}
+
+
+.sidebarrr{
+
+    //height: 100%; /* Full-height: remove this if you want "auto" height */
+   // width: 160px; /* Set the width of the sidebar */
+   // position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  //  z-index: 1; /* Stay on top */
+   // top: 0; /* Stay at the top */
+   // left: 0;
+   // overflow-x: hidden; /* Disable horizontal scroll */
+  //  padding-top: 20px;
+
+}
+
+/* .component-icon {
+  font-size: 3rem;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 8px;
+ // transition: rgba(236,240,246,.4) .4s;
+  border:2px solid transparent;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(236,240,246,.4);
+  -webkit-transition: rgba(236,240,246,.4) .4s;
+  &:hover {
+    @include mat-elevation(5);
+  }
+
+  transition: height 0.3s, box-shadow 0.2s;
+  ::ng-deep svg {
+    vertical-align: top;
+  }
+} */
+.component-icon {
+
+  cursor:pointer;
+  transition: transform .2s; /* Animation */
+
+  margin: 0 auto;
+}
+
+.component-icon:hover , .component-icon:active {
+  -webkit-transform: scale(1.3);
+	-moz-transform: scale(1.3);
+	-ms-transform: scale(1.3);
+	-o-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+.ionics{
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 8px;
+ // transition: rgba(236,240,246,.4) .4s;
+  border:2px solid transparent;
+  box-sizing: border-box;
+  &:hover {
+    @include mat-elevation(10);
+  }
+
+  transition: height 0.3s, box-shadow 0.2s;
+  ::ng-deep svg {
+    vertical-align: top;
+  }
+
+}
+
+/* .component-content{
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+
+        span + span{
+          display: block;
+          position: absolute;
+          bottom: -17px;
+          left: 0;
+          width: 100%;
+          text-align: center;
+          line-height: 17px;
+        }
+
+} */
+/* .imdDRP{
+    //width: 90px;
+    //height: 50px;
+    display: block;
+    margin: 22px auto 0;
+    position: relative;
+} */
+
+.app-components ul {
+  padding-left: 0px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-direction: row;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-bottom: 20px; }
+  .app-components ul li {
+    //max-width: 122px;
+    width: 80px;
+    height: 100px;
+    margin-right: 22px;
+    list-style: none;
+    list-style-type: none;
+    line-height: 96px;
+    margin-left: 0;
+    position: relative; }
+
+
+
+    .app-components ul li a {
+      color: #616774;
+      font-size: 12px;
+      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 400; }
+
+      .app-components ul li a:hover {
+        color: #2E3136; }
+
+        .app-components ul li a:hover .component-icon:before,
+        .app-components ul li a:hover .component-icon:after {
+          transform: scale3d(1.15, 1.15, 1);
+          opacity: 1;
+        }
+
+      .app-components ul li a:active .component-icon:before,
+      .app-components ul li a:active .component-icon:after {
+        transform: scale3d(1.1, 1.1, 1); }
+
+      .app-components ul li a .component-icon {
+        width: 45px;
+        height: 45px;
+        display: block;
+        margin: 22px auto 0;
+        position: relative; }
+
+        .app-components ul li a .component-icon:before, .app-components ul li a .component-icon:after {
+          //background: no-repeat transparent center top url("/img/components-sprite.png");
+          background-size: 90px;
+          //width: 90px;
+          //height: 50px;
+          left: 0;
+          content: '';
+          position: absolute;
+          transition-property: opacity, transform;
+          transform: scale3d(1, 1, 1);
+          transition-duration: .25s;
+          transition-timing-function: linear, cubic-bezier(0.33, 2, 0.66, 1); }
+
+        .app-components ul li a .component-icon:after {
+          opacity: 0; }
+
+      .app-components ul li a span + span {
+        display: block;
+        position: absolute;
+        bottom: -17px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        line-height: 17px; }
+    .app-components ul li .component-content {
+      text-align: center;
+      vertical-align: middle;
+      position: relative; }
+    .app-components ul li.selected a {
+      color: black; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .imdDRP{
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 8px;
+  border:2px solid transparent;
+  box-sizing: border-box;
+  &:hover {
+    @include mat-elevation(10);
+  }
+
+  transition: height 0.3s, box-shadow 0.2s;
+  ::ng-deep svg {
+    vertical-align: top;
+  }
+
+} */
+
+.sidebar-section .scroll-inner {
+  width: 100%;
+  padding-right: 10px; }
+
+.table-ftw {
+  display: table;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  table-layout: fixed; }
+
+  .table-ftw .tr-ftw {
+    display: table-row; }
+
+    .table-ftw .tr-ftw .td-ftw {
+      display: table-cell;
+      position: relative;
+      vertical-align: top;
+      height: 100%; }
+
+      .table-ftw .tr-ftw .td-ftw .scroll-outer {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        overflow-y: auto;
+        overflow-x: hidden; }
+
+        .table-ftw .tr-ftw .td-ftw .scroll-outer .scroll-inner {
+          height: 100%;
+          position: absolute; }
+
+

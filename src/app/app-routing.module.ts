@@ -22,17 +22,22 @@ import {WelcomeComponent} from './welcome/welcome.component';
 import { AuthGuard } from './auth-guard.service';
 import { OAuth2CallbackComponent } from './oauth2/oauth2-callback.component';
 import { OAuth2LoginComponent } from './oauth2/oauth2-login.component';
+import { DesignerComponent } from './designer/designer.component';
 
 const routes: Routes = [
   {
     path: 'pages',
-    canActivate: [AuthGuard], // here we tell Angular to check the access with our AuthGuard
+    // canActivate: [AuthGuard], // here we tell Angular to check the access with our AuthGuard
     loadChildren: () => import('../app/pages/pages.module')
       .then(m => m.PagesModule),
   },
   {
     path: 'welcome',
     component: WelcomeComponent,
+  },
+  {
+    path: 'designer',
+    component: DesignerComponent,
   },
   {
     path: 'oauth2/',

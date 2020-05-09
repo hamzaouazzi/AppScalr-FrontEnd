@@ -30,6 +30,7 @@ import {
   NbWindowModule,
   NbDatepickerModule,
   NbChatModule,
+  NbActionsModule,
 } from '@nebular/theme';
 import { NbAuthModule } from './auth/auth.module';
 import {NbPasswordAuthStrategy} from './auth/strategies/password/password-strategy';
@@ -44,7 +45,15 @@ import {AuthGuard} from './auth-guard.service';
 import {NbAuthService} from './auth/services/auth.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { OAuth2Module } from './oauth2/oauth2.module';
-
+import { DesignerComponent } from './designer/designer.component';
+import { DesignerModule } from './designer/designer.module';
+import {
+  CapitalizePipe,
+  PluralPipe,
+  RoundPipe,
+  TimingPipe,
+  NumberWithCommasPipe,
+} from './theme/pipes';
 const socialLinks = [
   {
     url: 'https://github.com/akveo/nebular',
@@ -66,6 +75,14 @@ const socialLinks = [
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
 ];
+const PIPES = [
+  CapitalizePipe,
+  PluralPipe,
+  RoundPipe,
+  TimingPipe,
+  NumberWithCommasPipe,
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +103,7 @@ const DATA_SERVICES = [
     FormsModule,
     NbCheckboxModule,
     NbIconModule,
+    NbActionsModule,
     NbDialogModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
@@ -98,6 +116,7 @@ const DATA_SERVICES = [
     }),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
+    DesignerModule,
     // PagesModule.forRoot(),
     OAuth2Module,
     NbAuthModule.forRoot({
@@ -129,6 +148,7 @@ const DATA_SERVICES = [
           requestPass: {
             endpoint: '/auth/request-pass',
             method: 'post',
+
           },
           resetPass: {
             endpoint: '/auth/reset-pass',
