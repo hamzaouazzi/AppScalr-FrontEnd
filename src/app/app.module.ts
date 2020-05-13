@@ -6,7 +6,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { NbThemeModule, NbButtonModule, NbCardModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbAuthBlockComponent } from './auth/components/auth-block/auth-block.component';
 import { NbLoginComponent } from './auth/components/login/login.component';
@@ -35,7 +34,6 @@ import {
 import { NbAuthModule } from './auth/auth.module';
 import {NbPasswordAuthStrategy} from './auth/strategies/password/password-strategy';
 import { NbAuthJWTToken, NbAuthSimpleToken } from './auth/services/token/token';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CoreModule } from './core/core.module';
 import { ThemeModule } from './theme/theme.module';
 import {PagesModule} from './pages/pages.module';
@@ -45,8 +43,8 @@ import {AuthGuard} from './auth-guard.service';
 import {NbAuthService} from './auth/services/auth.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { OAuth2Module } from './oauth2/oauth2.module';
-import { DesignerComponent } from './designer/designer.component';
-import { DesignerModule } from './designer/designer.module';
+import { StudioComponent } from './studio/studio.component';
+import { StudioModule } from './studio/studio.module';
 import {
   CapitalizePipe,
   PluralPipe,
@@ -56,12 +54,12 @@ import {
 } from './theme/pipes';
 const socialLinks = [
   {
-    url: 'https://github.com/akveo/nebular',
+    url: 'https://github.com/',
     target: '_blank',
     icon: 'github',
   },
   {
-    url: 'https://www.facebook.com/akveo/',
+    url: 'https://www.facebook.com/',
     target: '_blank',
     icon: 'facebook',
   },
@@ -116,7 +114,7 @@ const PIPES = [
     }),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
-    DesignerModule,
+    StudioModule,
     // PagesModule.forRoot(),
     OAuth2Module,
     NbAuthModule.forRoot({

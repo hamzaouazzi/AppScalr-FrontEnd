@@ -23,13 +23,11 @@ import { StatusCardComponent } from './status-card/status-card.component';
 import { FormsModule } from '@angular/forms';
 import { ProjectsComponent } from './projects/projects.component';
 import { ShowcaseDialogComponent } from './projects/showcase-dialog/showcase-dialog.component';
-import { DialogNamePromptComponent } from './projects/dialog-name-prompt/dialog-name-prompt.component';
 
 
 
 const ENTRY_COMPONENTS = [
   ShowcaseDialogComponent,
-  DialogNamePromptComponent,
 ];
 
 @NgModule({
@@ -58,7 +56,6 @@ const ENTRY_COMPONENTS = [
     StatusCardComponent,
     ProjectsComponent,
     ShowcaseDialogComponent,
-    DialogNamePromptComponent,
 
   ],
   entryComponents: [

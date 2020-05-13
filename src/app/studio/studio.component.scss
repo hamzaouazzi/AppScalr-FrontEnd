@@ -6,9 +6,6 @@
 @import '~@nebular/theme/styles/themes/default';
 
 
-
-$nb-enable-css-custom-properties: true; // <-- enable css custom properties
-
 @include nb-install-component() {
 
   .accordion-container:first-child {
@@ -72,7 +69,6 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
     }
   }
   .header-container2{
-    //margin: 0 auto;
     margin-left: auto;
     display: flex;
     float: right;
@@ -113,9 +109,7 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
 
   }
 }
-.searchfield{
 
-}
 
 .dropdownIcons{
   justify-content: space-between;
@@ -126,7 +120,7 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
 
     &:hover{
       --text-hint-color	:#004fac;
-      //box-shadow: inset 0 -10px 0 0 cyan;
+      //box-shadow: inset 0 -10px 0 0 #004fac;
     }
   }
 }
@@ -135,7 +129,6 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
 .column-center{
   //background-image: url('../../assets/images/1586351.jpg') ;
   position: relative;
-  //height: auto;
   overflow: auto;
 }
 .CompContainer{
@@ -144,26 +137,20 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
 }
 
 #Divphone{
-  // background-image: url('../../assets/images/iPhone-XR-Orange200x200.png');
+
   position: absolute;
   width:100%;
   height: 100%;
   display: flex;
   justify-content: center; /* horizontal center */
   align-items: center;
-  //display: table-cell;
-  //vertical-align: middle;
-  /* background-repeat: no-repeat;
-  background-position: center;
-  background-size: 42rem 34rem;
-  background-image: url('../../assets/images/iPhone-XR-White.png') ; */
+
   margin: auto;
 
 
 
   .cardPhone{
     position: absolute;
-    //top: 50%;
     margin: 0 auto;
     width: 17rem;
     height: 30.66rem;
@@ -180,7 +167,6 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
 
 .acc1 {
   position: absolute;
-  //top:26%;
   left:0;
 }
 .acc2{
@@ -212,18 +198,13 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
 
 .actions{
   float: right;
-  nb-action{
 
-  }
 }
 
 .subhead{
    position: relative;
    margin: auto auto;
-
- //background-color: rgb(0, 0, 255);
   align-items: center;
- //justify-content:space-around;
 
  button{
    float: right;
@@ -233,38 +214,9 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
 }
 
 
-.sidebarrr{
 
-    //height: 100%; /* Full-height: remove this if you want "auto" height */
-   // width: 160px; /* Set the width of the sidebar */
-   // position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  //  z-index: 1; /* Stay on top */
-   // top: 0; /* Stay at the top */
-   // left: 0;
-   // overflow-x: hidden; /* Disable horizontal scroll */
-  //  padding-top: 20px;
 
-}
 
-/* .component-icon {
-  font-size: 3rem;
-  cursor: pointer;
-  margin: 10px;
-  border-radius: 8px;
- // transition: rgba(236,240,246,.4) .4s;
-  border:2px solid transparent;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: rgba(236,240,246,.4);
-  -webkit-transition: rgba(236,240,246,.4) .4s;
-  &:hover {
-    @include mat-elevation(5);
-  }
-
-  transition: height 0.3s, box-shadow 0.2s;
-  ::ng-deep svg {
-    vertical-align: top;
-  }
-} */
 .component-icon {
 
   cursor:pointer;
@@ -299,35 +251,11 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
 
 }
 
-/* .component-content{
-        text-align: center;
-        vertical-align: middle;
-        position: relative;
-
-        span + span{
-          display: block;
-          position: absolute;
-          bottom: -17px;
-          left: 0;
-          width: 100%;
-          text-align: center;
-          line-height: 17px;
-        }
-
-} */
-/* .imdDRP{
-    //width: 90px;
-    //height: 50px;
-    display: block;
-    margin: 22px auto 0;
-    position: relative;
-} */
 
 .app-components ul {
   padding-left: 0px;
   display: -webkit-box;
   display: -moz-box;
-  display: box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
@@ -387,7 +315,6 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
         position: relative; }
 
         .app-components ul li a .component-icon:before, .app-components ul li a .component-icon:after {
-          //background: no-repeat transparent center top url("/img/components-sprite.png");
           background-size: 90px;
           //width: 90px;
           //height: 50px;
@@ -419,35 +346,6 @@ $nb-enable-css-custom-properties: true; // <-- enable css custom properties
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .imdDRP{
-  cursor: pointer;
-  margin: 10px;
-  border-radius: 8px;
-  border:2px solid transparent;
-  box-sizing: border-box;
-  &:hover {
-    @include mat-elevation(10);
-  }
-
-  transition: height 0.3s, box-shadow 0.2s;
-  ::ng-deep svg {
-    vertical-align: top;
-  }
-
-} */
 
 .sidebar-section .scroll-inner {
   width: 100%;

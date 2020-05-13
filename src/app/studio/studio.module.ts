@@ -80,4 +80,4 @@ const ENTRY_COMPONENTS = [
     ...ENTRY_COMPONENTS,
   ],
 })
-export class DesignerModule { }
+export class StudioModule { }
