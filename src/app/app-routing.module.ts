@@ -1,28 +1,17 @@
 import { AppComponent } from './app.component';
 import { ExtraOptions, RouterModule, Routes} from '@angular/router';
 import { NgModule } from '@angular/core';
-/* import {
-  NbAuthComponent,
-  NbLoginComponent,
-  NbLogoutComponent,
-  NbRegisterComponent,
-  NbRequestPasswordComponent,
-  NbResetPasswordComponent,
-} from './pages/auth/components'; */
 import {NbAuthComponent} from './auth/components/auth.component';
 import {NbLoginComponent} from './auth/components/login/login.component';
 import {NbLogoutComponent} from './auth/components/logout/logout.component';
 import {NbRegisterComponent} from './auth/components/register/register.component';
 import {NbRequestPasswordComponent} from './auth/components/request-password/request-password.component';
 import {NbResetPasswordComponent} from './auth/components/reset-password/reset-password.component';
-import { PagesComponent } from './pages/pages.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { NotFoundComponent } from './pages/miscellaneous/not-found/not-found.component';
 import {WelcomeComponent} from './welcome/welcome.component';
 import { AuthGuard } from './auth-guard.service';
 import { OAuth2CallbackComponent } from './oauth2/oauth2-callback.component';
 import { OAuth2LoginComponent } from './oauth2/oauth2-login.component';
-import { DesignerComponent } from './designer/designer.component';
+import { StudioComponent } from './studio/studio.component';
 
 const routes: Routes = [
   {
@@ -36,8 +25,8 @@ const routes: Routes = [
     component: WelcomeComponent,
   },
   {
-    path: 'designer',
-    component: DesignerComponent,
+    path: 'studio',
+    component: StudioComponent,
   },
   {
     path: 'oauth2/',
@@ -78,7 +67,7 @@ const routes: Routes = [
     ],
   },
   { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
-  // { path: '**', redirectTo: 'pages' },
+  { path: '**', redirectTo: 'pages' },
 ];
 
 const config: ExtraOptions = {
