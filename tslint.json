@@ -31,13 +31,13 @@
     "label-position": true,
     "max-line-length": [
       true,
-      120
+      500
     ],
     "member-access": false,
     "no-arg": true,
     "no-console": [
       false
-       
+
     ],
     "no-construct": true,
     "no-debugger": true,
@@ -65,8 +65,8 @@
     ],
     "prefer-const": true,
     "quotemark": [
-      true,
-      "single"
+      false
+
     ],
     "radix": true,
     "semicolon": [

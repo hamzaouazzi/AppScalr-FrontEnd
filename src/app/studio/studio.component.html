@@ -76,161 +76,163 @@
           <nb-accordion-item-body class="app-components">
 
             <div class="content scroll-outer" style="height:calc(100% + 10px);"
-                cdkDropList
-                #todoList="cdkDropList"
-                [cdkDropListData]="todos"
-                [cdkDropListConnectedTo]="[doneList]"
-                (cdkDropListDropped)="onDrop($event)">
+                >
 
                 <ul>
-                <!-- ngRepeat: component in components -->
-                <li ng-repeat="component in components" data-component-type="heading" draggable="true" class="">
-                  <a >
+
+                <li>
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/tree-grid.svg" alt="Layout"/></span>
                       <span>Heading</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="markdown" draggable="true" class="">
-                  <a >
+                <li>
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/accordion.svg" alt="Layout"/></span>
                       <span>Paragraph</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="button-bar" draggable="true" class="">
-                  <a >
+               <li>
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon button-bar" src="../../assets/images/components/reveal.svg" alt="Layout"/></span>
-                      <span>Reveal Card<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Reveal Card</span>
                     </div>
-                  </a>
+
                 </li>
 
-                <li ng-repeat="component in components" data-component-type="card2" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon card2" src="../../assets/images/components/card.svg" alt="Card"/></span>
-                      <span>Card<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Card</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="container" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/layout.svg" alt="Container"/></span>
-                      <span>Container<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Container</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="html" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/html.svg" alt="Container"/></span>
-                      <span>Html<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Html</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="image" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/image.svg" alt="Container"/></span>
-                      <span>Image<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Image</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="map" draggable="false" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/tooltip.svg" alt="Container"/></span>
-                      <span>Tooltip<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Tooltip</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="slider" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/flip.svg" alt="Container"/></span>
-                      <span>Slider<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Slider</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="spacer" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/web-design.png" alt="Spacer"/></span>
-                      <span>Spacer<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Spacer</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="video" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li>
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/play-button.png" alt="Spacer"/></span>
-                      <span>Video<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Video</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="checkbox" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/infinite-scroll.svg" alt="checkbox"/></span>
-                      <span>Infinite List<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Infinite List</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="range" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/progress-bar.svg" alt="range"/></span>
-                      <span>Range<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Range</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="list-item-divider" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/list.svg" alt="list"/></span>
-                      <span>List <!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>List </span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="list-item-container" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/dialog.svg" alt="radio"/></span>
-                      <span>Container List <!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Container List </span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="list-item-thumbnail2" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/thumbnailList .svg" alt="radio"/></span>
-                      <span>Thumbnail List<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Thumbnail List</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="list-item-icon" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/context-menu.svg" alt="menu"/></span>
-                      <span>Context Menu<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Context Menu</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="chips" draggable="true" class="">
-                  <a>
+                <li >
+
                     <div class="component-content">
 
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/chips.svg" alt="chips"/></span>
                       <span>Chips</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="action" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/actions.svg" alt="action"/></span>
                       <span>Action</span>
                     </div>
-                  </a>
+
                 </li>
               </ul>
 
@@ -240,6 +242,8 @@
           </nb-accordion-item-body>
         </nb-accordion-item>
 
+
+
         <nb-accordion-item>
           <nb-accordion-item-header>
             Forms
@@ -248,97 +252,100 @@
 
 
             <div class="content scroll-outer" style="height:calc(100% + 10px);"
-                cdkDropList
-                #todoList="cdkDropList"
-                [cdkDropListData]="todos"
-                [cdkDropListConnectedTo]="[doneList]"
-                (cdkDropListDropped)="onDrop($event)">
 
-                <ul>
-                <!-- ngRepeat: component in components -->
+               >
 
-                <li ng-repeat="component in components" data-component-type="button" draggable="true" class="">
-                  <a >
-                    <div class="component-content">
+                <ul >
+
+
+                <li >
+
+                    <div class="component-content" >
                       <span class ="icon" ><img class="component-icon button" src="../../assets/images/components/button.svg" alt="Button"/></span>
-                      <span>Button<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Button</span>
                     </div>
-                  </a>
+
                 </li>
 
-                <li ng-repeat="component in components" data-component-type="html" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/html.svg" alt="Container"/></span>
-                      <span>Html<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Html</span>
                     </div>
-                  </a>
+
                 </li>
-               <li ng-repeat="component in components" data-component-type="spacer" draggable="true" class="">
-                  <a >
+               <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/web-design.png" alt="Spacer"/></span>
-                      <span>Spacer<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Spacer</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="checkbox" draggable="true" class="">
-                  <a >
+                <li>
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/checkbox.svg" alt="checkbox"/></span>
-                      <span>Checkbox<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Checkbox</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="form" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/computer.svg" alt="form"/></span>
-                      <span>Form<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Form</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="input" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/input.svg" alt="input"/></span>
-                      <span>Input<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Input</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="radio" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/radio.svg" alt="radio"/></span>
-                      <span>Radio<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Radio</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="search" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/search.svg" alt="search"/></span>
-                      <span>Search<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Search</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="select" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/select.svg" alt="select"/></span>
-                      <span>Select<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Select</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="textarea" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/autocomplete.svg" alt="textarea"/></span>
-                      <span>Textarea<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Textarea</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="toggle" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/toggle.svg" alt="toggle"/></span>
-                      <span>Toggle<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Toggle</span>
                     </div>
-                  </a>
+
                 </li>
               </ul>
 
@@ -356,45 +363,43 @@
 
 
             <div class="content scroll-outer" style="height:calc(100% + 10px);"
-                cdkDropList
-                #todoList="cdkDropList"
-                [cdkDropListData]="todos"
-                [cdkDropListConnectedTo]="[doneList]"
-                (cdkDropListDropped)="onDrop($event)">
+                >
 
                 <ul>
-                <!-- ngRepeat: component in components -->
-                <li ng-repeat="component in components" data-component-type="map" draggable="false" class="">
-                  <a >
+
+                <li>
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/sidebar.svg" alt="Container"/></span>
-                      <span>Sidebar<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Sidebar</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="slider" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/menu.svg" alt="Container"/></span>
-                      <span>Menu<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Menu</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="icon" draggable="true" class="">
-                  <a >
+
+                </li>
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/tab.svg" alt="date"/></span>
-                      <span>Tabs<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Tabs</span>
                     </div>
-                  </a>
+
                 </li>
 
 
-                <li ng-repeat="component in components" data-component-type="action" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/actions.svg" alt="action"/></span>
                       <span>Action</span>
                     </div>
-                  </a>
+
                 </li>
               </ul>
 
@@ -414,49 +419,43 @@
           <nb-accordion-item-body class="app-components">
 
 
-            <div class="content scroll-outer" style="height:calc(100% + 10px);"
-                cdkDropList
-                #todoList="cdkDropList"
-                [cdkDropListData]="todos"
-                [cdkDropListConnectedTo]="[doneList]"
-                (cdkDropListDropped)="onDrop($event)">
+            <div  class="content scroll-outer" style="height:calc(100% + 10px);" >
 
-                <ul>
-                <!-- ngRepeat: component in components -->
-                <li ng-repeat="component in components" data-component-type="map" draggable="false" class="">
-                  <a >
+                <ul >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/tooltip.svg" alt="Container"/></span>
-                      <span>Tooltip<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Tooltip</span>
                     </div>
-                  </a>
-                </li><li ng-repeat="component in components" data-component-type="icon" draggable="true" class="">
-                  <a >
+
+                </li><li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/datepicker.svg" alt="date"/></span>
-                      <span>Date Picker<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Date Picker</span>
                     </div>
-                  </a>
+
                 </li>
 
-                <li ng-repeat="component in components" data-component-type="list-item-icon" draggable="true" class="">
-                  <a >
+                <li >
+
                     <div class="component-content">
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/context-menu.svg" alt="menu"/></span>
-                      <span>Context Menu<!-- ngIf: $parent.proRequired[component.type] --></span>
+                      <span>Context Menu</span>
                     </div>
-                  </a>
+
                 </li>
-                <li ng-repeat="component in components" data-component-type="chips" draggable="true" class="">
-                  <a>
+                <li >
+
                     <div class="component-content">
 
                       <span class ="icon" ><img class="component-icon" src="../../assets/images/components/chips.svg" alt="chips"/></span>
                       <span>Chips</span>
                     </div>
-                  </a>
+
                 </li>
-                
+
               </ul>
 
             </div>
@@ -464,10 +463,56 @@
 
           </nb-accordion-item-body>
         </nb-accordion-item>
+        <nb-accordion-item>
+
+          <nb-accordion-item-header>Drag&Drop</nb-accordion-item-header>
+          <nb-accordion-item-body class="app-components">
+
+
+            <div  class="content scroll-outer" style="height:calc(100% + 10px);" cdkDropList
+                  id="defaultAnswersList"
+                  [cdkDropListData]="defaultAnswers"
+                  [cdkDropListConnectedTo]="['answersList']">
+
+                <ul *ngFor="let answer of defaultAnswers">
+
+                  <li>
+                    <div class="component-content" *ngIf="answer.isInput" cdkDrag>
+                      <span class ="icon" ><img class="component-icon" src="../../assets/images/components/input.svg" /></span>
+                      <span>Input</span>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="component-content" *ngIf="answer.isTextarea" cdkDrag>
+                      <span class ="icon" ><img class="component-icon" src="../../assets/images/components/accordion.svg" /></span>
+                      <span>Textarea</span>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="component-content" *ngIf="answer.isButton" cdkDrag>
+                      <span class ="icon" ><img class="component-icon" src="../../assets/images/components/button.svg" /></span>
+                      <span>Button</span>
+                    </div>
+                  </li>
+
+                </ul>
+
+
+            </div>
+
+
+          </nb-accordion-item-body>
+
+        </nb-accordion-item>
 
       </nb-accordion>
 
+
     </div>
+
+
 
     </nb-sidebar>
 
@@ -475,67 +520,75 @@
   <nb-layout-column class="column-center">
 
 
-      <!-- <nb-toggle cdkDrag></nb-toggle> -->
 
-
-<!--<div id="Divphone" class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">-->
     <div id="Divphone" >
 
 
-     <nb-card size="medium" class="cardPhone"  >
-
-      <nb-card-body class="CompContainer">
 
 
-          <div class="todo-container column-container">
-
-            <div class="list"
-            cdkDropList
-            #doneList="cdkDropList"
-            [cdkDropListData]="completed"
-            [cdkDropListConnectedTo]="todoList"
-            (cdkDropListDropped)="onDrop($event)">
-
-
-            </div>
-
-          </div>
+            <div class="listDrop" cdkDropList
+                id="answersList"
+                [cdkDropListData]="answers"
+                [cdkDropListConnectedTo]="['defaultAnswersList']"
+                (cdkDropListDropped)="dropIt($event)">
+                  <div class="input-section" cdkDragLockAxis="y" style="cursor: all-scroll" *ngFor="let answer of answers; index as i"
+                      cdkDrag>
 
 
-      </nb-card-body>
+                    <div class="element-side" *ngIf="answer.isInput" >
+                        <input type="text" [(ngModel)]="answer.placeholderText" class="input-element"
+                            placeholder="Placeholder" />
 
-    </nb-card>
+                    </div>
+
+                    <div class="element-side" *ngIf="answer.isTextarea" >
+                        <textarea class="input-element" [(ngModel)]="answer.secondaryPlaceholderText" placeholder="Placeholder"></textarea>
+
+                    </div>
+
+
+
+                      <div class="btn-wrap" *ngIf="answer.isButton">
+                          <input class="yes-btn" [(ngModel)]="answer.displayValue" placeholder="Add Button Text &#9998;">
+                      </div>
+
+
+
+                        <!--  <div class="crudIcons">
+                            <a href="#" >
+                              <nb-icon id="i1" class="icrud"  icon="copy-outline"></nb-icon>
+                            </a>
+                            <a href="#" >
+                              <nb-icon id="i2" class="icrud" icon="edit-outline"></nb-icon>
+                            </a>
+                              <a href="#" >
+                                <nb-icon id="i3" class="icrud" icon="trash-2-outline" ></nb-icon>
+                              </a>
+
+                            </div>
+                           -->
+                  </div>
+
+
+              </div>
+
+
+
 
 
 
      </div>
 
-  <!--   <div class="list-container">
 
-      <div class="todo-container column-container">
-
-        <div class="list"
-             cdkDropList
-             #todoList="cdkDropList"
-             [cdkDropListData]="todos"
-             [cdkDropListConnectedTo]="[doneList]"
-             (cdkDropListDropped)="onDrop($event)">
-          <h2>Tech to learn</h2>
-          <nb-card *ngFor="let todo of todos" cdkDrag>
-            <nb-card-header>
-              <p>{{todo.category}}</p>
-            </nb-card-header>
-          </nb-card>
-        </div>
-
-      </div>
-
-    </div> -->
 
   </nb-layout-column>
 
 
   <nb-sidebar right tag="right">
+
+
+
+
 
 
   </nb-sidebar>

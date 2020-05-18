@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewContainerRef, OnDestroy } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 import { NbAuthService } from './../auth/services/auth.service';
 import {NbAuthJWTToken} from './../auth/services/token/token';
@@ -7,9 +7,14 @@ import { LayoutService } from './../core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { UserService } from './../core/mock/users.service';
-import { NbIconLibraries } from '@nebular/theme';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import { Url } from 'url';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  CdkDrag,
+  CdkDropList,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'ngx-designer',
@@ -34,49 +39,24 @@ export class StudioComponent implements OnInit, OnDestroy {
       value: 'dark',
       name: 'Dark',
     },
-    /* {
-      value: 'cosmic',
-      name: 'Cosmic',
-    },
-    {
-      value: 'corporate',
-      name: 'Corporate',
-    }, */
   ];
 
   currentTheme = 'default';
 
-  icons = {
-
-    ionicons: [
-      /* 'ionic', 'arrow-right-b', 'arrow-down-b', 'arrow-left-b', 'arrow-up-c', 'arrow-right-c',
-      'arrow-down-c', 'arrow-left-c', 'arrow-return-right', 'arrow-return-left', 'arrow-swap',
-      'arrow-shrink', 'arrow-expand', 'arrow-move', 'arrow-resize', 'chevron-up',
-      'chevron-right', 'chevron-down', 'chevron-left', 'navicon-round', 'navicon',
-      'drag', 'log-in', 'log-out', 'checkmark-round', 'checkmark', 'checkmark-circled', */
-      'close-round', 'plus-round', 'minus-round', 'information', 'help',
-      'backspace-outline', 'help-buoy', 'asterisk', 'alert', 'alert-circled',
-      'refresh', 'loop', 'shuffle', 'home', 'search', 'flag', 'star',
-      'heart', 'heart-broken', 'gear-a', 'gear-b', 'toggle-filled', 'toggle',
-      'settings', 'wrench', 'hammer', 'edit', 'trash-a', 'trash-b',
-      'document', 'document-text', 'clipboard', 'scissors', 'funnel',
-      'bookmark', 'email', 'email-unread', 'folder', 'filing', 'archive',
-      'reply', 'reply-all', 'forward',
-    ],
-
-    fontAwesome: [
-      'adjust', 'anchor', 'archive', 'chart-area', 'arrows-alt', 'arrows-alt-h',
-      'arrows-alt-v', 'asterisk', 'at', 'car', 'ban', 'university',
-      'chart-bar', 'barcode', 'bars', 'bed', 'beer',
-      'bell', 'bell-slash', 'bicycle', 'binoculars',
-      'birthday-cake', 'bolt', 'bomb', 'book', 'bookmark',
-      'briefcase', 'bug', 'building', 'bullhorn',
-    ],
-
-    fontAwesomeRegular: [ 'chart-bar', 'bell', 'bell-slash', 'bookmark', 'building' ],
-  };
 
   userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+
+
+defaultAnswersOrigin = [
+  {isInput: true, placeholderText: "Enter Placeholder"},
+  {isTextarea: true, secondaryPlaceholderText: "Enter Text Placeholder"},
+  {isButton: true, placeholderText: "", displayValue: ""},
+
+];
+
+defaultAnswers = [];
+
+answers = [];
 
   constructor(private authService: NbAuthService,
               private sidebarService: NbSidebarService,
@@ -84,8 +64,7 @@ export class StudioComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private userService: UserService,
               private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService,
-              private iconsLibrary: NbIconLibraries) {
+              private breakpointService: NbMediaBreakpointsService) {
 
                 this.authService.onTokenChange()
       .subscribe((token: NbAuthJWTToken) => {
@@ -98,17 +77,11 @@ export class StudioComponent implements OnInit, OnDestroy {
         }
       });
 
-      iconsLibrary.registerFontPack('fa', { packClass: 'fa', iconClassPrefix: 'fa' });
-      iconsLibrary.registerFontPack('far', { packClass: 'far', iconClassPrefix: 'fa' });
-      iconsLibrary.registerFontPack('ion', { iconClassPrefix: 'ion' });
   }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
-
-    /* this.userService.getUsers()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((user: any) => this.user = user); */
+    this.resetList();
 
       this.userService.onUserChange()
       .subscribe((user: any) => {this.user = user;
@@ -152,53 +125,42 @@ export class StudioComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  todos = [
-    {
-      name: 'Angular',
-      category: 'Web Development',
-    },
-    {
-      name: 'Flexbox',
-      category: 'Web Development',
-    },
-    {
-      name: 'iOS',
-      category: 'App Development',
-    },
-    {
-      name: 'Java',
-      category: 'Software development',
-    },
-  ];
-
-  completed = [
-    {
-      name: 'Android',
-      category: 'Mobile Development',
-    },
-    {
-      name: 'MongoDB',
-      category: 'Databases',
-    },
-    {
-      name: 'ARKit',
-      category: 'Augmented Reality',
-    },
-    {
-      name: 'React',
-      category: 'Web Development',
-    },
-  ];
-
-  onDrop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data,
-        event.previousIndex,
-        event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex, event.currentIndex);
-    }
+  createCopy(origin) {
+    return JSON.parse(JSON.stringify(origin));
   }
+
+  dropIt(event: CdkDragDrop<string[]>) {
+    console.log('Hit');
+      if (event.previousContainer !== event.container) {
+           transferArrayItem(event.previousContainer.data,
+                               event.container.data,
+                               event.previousIndex,
+                               event.currentIndex);
+              const answerCopy = this.createCopy(this.answers[event.currentIndex]);
+              this.answers[event.currentIndex] = answerCopy;
+              console.log(answerCopy);
+              this.answers.forEach((answer, i) => {
+                  answer.position = i;
+              });
+          this.resetList();
+      } else if (event.previousIndex !== event.currentIndex) {
+          if (event.previousContainer === event.container) {
+              moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+              // this.resetList();
+          }
+      }
+    }
+
+   resetList() {
+      this.defaultAnswers = [];
+      setTimeout(() => {
+        this.defaultAnswers = this.defaultAnswersOrigin.slice();
+      }, 0);
+    }
+
+ /*  isAllowed = (drag?: CdkDrag, drop?: CdkDropList) => {
+    return false;
+  }
+*/
+
 }
