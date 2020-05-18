@@ -11,7 +11,6 @@ import {
   NbIconModule,
   NbDialogModule,
   NbWindowModule,
-  NbStepComponent,
   NbStepperModule,
   NbInputModule,
   NbAccordionModule,
