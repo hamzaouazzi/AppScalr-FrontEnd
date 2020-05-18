@@ -158,9 +158,5 @@ answers = [];
       }, 0);
     }
 
- /*  isAllowed = (drag?: CdkDrag, drop?: CdkDropList) => {
-    return false;
-  }
-*/
 
 }
