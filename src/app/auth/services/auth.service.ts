@@ -8,12 +8,14 @@ import { NB_AUTH_STRATEGIES } from '../auth.options';
 import { NbAuthResult } from './auth-result';
 import { NbTokenService } from './token/token.service';
 import { NbAuthToken } from './token/token';
+import { environment } from '../../../environments/environment';
+import { CONSTANTES } from '../../core/config/constantes';
 
 /**
  * Common authentication service.
  * Should be used to as an interlayer between UI Components and Auth Strategy.
  */
-const AUTH_API = 'http://localhost:8080/api/auth/';
+const AUTH_API = CONSTANTES.urls.auth_url;
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

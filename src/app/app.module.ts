@@ -52,6 +52,7 @@ import {
   TimingPipe,
   NumberWithCommasPipe,
 } from './theme/pipes';
+import { SidebarLeftComponent } from './sidebar-left/sidebar-left.component';
 const socialLinks = [
   {
     url: 'https://github.com/',
@@ -85,6 +86,7 @@ const PIPES = [
   declarations: [
     AppComponent,
     WelcomeComponent,
+    SidebarLeftComponent,
   ],
   imports: [
     CommonModule,
