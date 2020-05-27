@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { DragulaModule } from 'ng2-dragula';
 import {
   NbActionsModule,
   NbButtonModule,
@@ -31,6 +32,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NbSecurityModule } from '@nebular/security';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { UiElementComponent } from './ui-element/ui-element.component';
+import { SidebarLeftComponent } from './sidebar-left/sidebar-left.component';
 
 
 
@@ -70,9 +73,13 @@ const ENTRY_COMPONENTS = [
     ThemeModule,
     NbFormFieldModule,
     DragDropModule,
+    //dragula
+    DragulaModule.forRoot()
   ],
   declarations: [
     StudioComponent,
+    UiElementComponent,
+    SidebarLeftComponent,
 
   ],
   entryComponents: [

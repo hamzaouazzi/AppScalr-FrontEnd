@@ -1,0 +1,48 @@
+<nb-sidebar>
+  <div class="titrecomp">
+    <h6>Components</h6>
+    <nb-form-field class="searchfield">
+      <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
+      <input type="text" nbInput fullWidth status="info" placeholder="Search a component" />
+    </nb-form-field>
+  </div>
+
+  <div>
+    <nb-accordion class="acc1" multi>
+      <nb-accordion-item *ngFor="let category of categories">
+        <nb-accordion-item-header>
+          {{ category.name }}
+        </nb-accordion-item-header>
+        <nb-accordion-item-body class="app-components">
+          <div class="content scroll-outer" style="height:calc(100% + 10px);">
+            <ul>
+              <li *ngFor="let element of category.elements" (drag)="saveCurrentElement(element)">
+                <div class="component-content">
+                  <span [class]="element.classes.split(' ')"><img class="component-icon" [src]="element.icon"
+                      alt="Layout" /></span>
+                  <span>{{ name }}</span>
+                </div>
+
+               
+              </li>
+            </ul>
+          </div>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+    </nb-accordion>
+  </div>
+</nb-sidebar>
+
+
+
+<p>name</p>
+<input type="text" name="name" [(ngModel)]="element.name">
+
+
+attrs:
+<ul>
+  <li *ngFor="let attr of element.attrs">
+    <p>{{attr.key}}</p>
+    <input type="text" [value]="attr.value">
+  </li>
+</ul>

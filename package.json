@@ -54,6 +54,7 @@
     "nebular-icons": "^1.1.0",
     "ng2-ckeditor": "^1.2.7",
     "ng2-completer": "3.0.3",
+    "ng2-dragula": "^2.1.1",
     "ng2-smart-table": "^1.6.0",
     "ngx-echarts": "^4.2.2",
     "node-sass": "^4.14.1",
