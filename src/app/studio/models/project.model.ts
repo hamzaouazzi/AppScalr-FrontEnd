@@ -11,9 +11,5 @@ export interface Project{
 export interface Screen{
     id: number;
     title: string;
-    components: UiElement[];
-
-
- 
-    
+    components: UiElement[];    
 }
