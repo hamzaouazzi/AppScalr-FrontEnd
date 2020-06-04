@@ -1,0 +1,144 @@
+
+.component-properties{
+
+  height: 100%;
+  width: 100%;
+  //display: flexbox;
+
+  .title{
+    height: 33px;
+    border-bottom: 1px solid #ccc;
+
+    .breadcrumb-left {
+      color: #c0c2c7;
+      text-decoration: none;
+      transition: 0.1s linear;
+      -webkit-transition: 0.1s linear;
+      -moz-transition: 0.1s linear;
+
+      &:hover {
+        cursor: pointer;
+        color: #4084f6;
+        transition: 0.1s linear;
+        -webkit-transition: 0.1s linear;
+        -moz-transition: 0.1s linear; }
+
+      }
+
+  }
+
+  .properties-form1{
+    position: absolute;
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 100px;
+    width: 100%;
+
+   .form-group{
+    width: 90% !important;
+    display: inline-block !important;
+    padding: 0px !important;
+
+    label{
+      text-transform: uppercase;
+      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      //font-weight: 500;
+      color: #494D57;
+      //letter-spacing: 2px;
+      font-size: 10px;
+      margin-bottom: 6px;
+    }
+
+    input{
+      float: right;
+      width: 140px;
+      margin-right: 8px;
+
+    }
+    input::placeholder{
+      font-size: 10px;
+
+    }
+
+
+   }
+
+   .page-custome{
+
+    .form-title{
+
+      margin-top: 12px;
+
+      span{
+        font-size: 0.99rem;
+        font-weight: bold;
+        color: #4084f6;
+
+
+      }
+    }
+
+    .form-group{
+      width: 90% !important;
+      display: inline-block !important;
+      padding: 0px !important;
+      margin-top: 10px;
+
+      label{
+        text-transform: uppercase;
+        font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        //font-weight: 500;
+        color: #494D57;
+        //letter-spacing: 2px;
+        font-size: 10px;
+        margin-bottom: 6px;
+      }
+
+      input{
+        float: right;
+        width: 140px;
+        margin-right: 8px;
+
+      }
+      input::placeholder{
+        font-size: 10px;
+
+      }
+
+      .btn-submit{
+        margin-top: 20px;
+        margin-left: auto;
+        float: right;
+      }
+
+      .image-upload{
+        margin-top: 20px;
+        padding: 10px;
+      }
+      .page-delete{
+
+        margin-top: 20px;
+        padding: 10px;
+
+
+       }
+
+     }
+
+
+     }
+
+
+
+
+
+    }
+
+
+   }
+
+
+
+
+
+

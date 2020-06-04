@@ -1,4 +1,4 @@
-@import '../theme/styles/themes';
+@import '../../theme/styles/themes';
 @import '~bootstrap/scss/mixins/breakpoints';
 @import '~@nebular/theme/styles/global/breakpoints';
 @import '~@angular/material/theming';
@@ -91,7 +91,15 @@
   }
 
 }
+   /* ionic css */
+   :root {
+    --ion-safe-area-top: 20px;
+    --ion-safe-area-bottom: 22px;
+  }
 
+
+
+  /* End here */
 
 
 .column-basic{
@@ -126,40 +134,16 @@
 
 
 .column-center{
-  //background-image: url('../../assets/images/grid-graph-paper-background.jpg') ;
+
   position: relative;
-  overflow-x: auto;
-  overflow-y: auto;
-  background:
-    repeating-linear-gradient(transparent, transparent 5px, #fff 5px, #fff 6px),
-    repeating-linear-gradient(to left, transparent, transparent 200px, #ababab 100px, #ababab 200px);
-
-  &::-webkit-scrollbar-track
-  {
-    //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
-    border-radius: 10px;
-  }
-
-  &::-webkit-scrollbar
-{
-	width: 10px;
-	background-color: #F5F5F5;
-}
-
-&::-webkit-scrollbar-thumb
-{
-  background-color: rgb(221, 220, 220);
-	border-radius: 10px;
-
-}
-
+  overflow: scroll;
 
 }
 .CompContainer{
   margin-top: 20px;
   margin-bottom: 17px;
 }
+
 
 #Divphone{
 
@@ -168,12 +152,193 @@
   height: 100%;
   display: flex;
   justify-content: center; /* horizontal center */
+  //align-items: center;
+  margin-top: 64px;
+  margin-bottom: auto;
+  //margin: 0 auto;
+
+
+  .frame-container{
+    position: relative;
+   margin: 0 auto;
+   // margin-bottom: auto;
+      //margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22rem;
+    height: 46rem;
+    background-repeat: no-repeat;
+    background-position: 50% 41%;
+    background-size: 20rem 35rem;
+    background-image: url('../../../assets/images/android-device-skin.png') ;
+    transform-origin:translate(-50%, -50%);
+
+     .device-header{
+       position: relative;
+      display: flex;
+      margin-bottom: auto;
+      margin-right: auto;
+      margin-left: 50px;
+      margin-top: 81px;
+      justify-content: stretch;
+
+        .device__ios-notch{
+          position: absolute;
+
+        }
+        .device__md-bar{
+          position: absolute;
+          fill: rgba(125, 125, 125, 0.651);
+
+        }
+
+     }
+
+
+        .listDrop{
+          position: absolute;
+          margin: 0 auto;
+          width: 18.6rem;
+          height: 32rem;
+          display: block;
+          border-bottom-left-radius: 27px;
+          border-bottom-right-radius: 27px;
+          background: #fff;
+          //transform-origin:0% 0%;
+          /* border-radius: 39px;
+          background-repeat: no-repeat;
+          background-position: 47.5% 44.2%;
+          background-size: 35.3rem 32rem;
+          background-image: url('../../assets/images/phoneContainer.png') ; */
+          overflow-x: hidden;
+          overflow-y: scroll;
+          &::-webkit-scrollbar { width: 0 !important }
+
+          .crudIcons{
+            position:relative;
+            float: right;
+            margin-top: -59px;
+            margin-right: 7px;
+            align-items: center;
+            justify-content: space-evenly;
+          }
+
+          .icrud{
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            background: rgb(226, 225, 225);
+            font-size: 0.7rem;
+            color: rgb(121, 118, 118);
+
+          }
+          #i1:hover{
+            border: 1px solid green;
+            color: green;}
+          #i2:hover{
+            border: 1px solid goldenrod;
+            color: goldenrod;}
+          #i3:hover{
+            border: 1px solid red;
+            color: red;}
+
+        }
+
+        .listDrop:active{
+          border: 1px solid #8184ff;
+        }
+        .listDrop:focus{
+          border: 1px solid #8184ff;
+        }
+
+        /* .BottomLine{
+          border: 2.8px solid rgb(190, 189, 189);
+          border-radius: 5px;
+          width: 90px;
+          margin-top: 29rem;
+
+        } */
+
+  }
+
+  /* toggle button*/
+
+
+}
+
+
+.switch-field {
+  position: absolute;
+  //margin: 0 auto;
+  margin-bottom: 15px;
+  margin-top: auto;
+  width:100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  padding: 40px;
+  overflow: hidden;
 
-  margin: auto;
+
+  .zoom-container{
+     margin-right: 20px;
+     margin-bottom: 7px;
+  }
+
+}
 
 
+.switch-field input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
 
+
+.switch-field label {
+  display: inline-block;
+  width: 60px;
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  font-weight: bold;
+  font-family: system-ui;
+  text-align: center;
+  text-shadow: none;
+  padding: 6px 6px;
+  //border: 1px solid #001e36;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition:    all 0.3s ease-in-out;
+  -ms-transition:     all 0.3s ease-in-out;
+  -o-transition:      all 0.3s ease-in-out;
+  transition:         all 0.3s ease-in-out;
+
+  .icon {
+    font-size: 20px;
+ }
+}
+
+.switch-field label:hover {
+	cursor: pointer;
+}
+
+.switch-field input:checked + label {
+  background-color: 		#3366ff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.switch-field label:first-of-type {
+  border-radius: 12px 0 0 12px;
+}
+
+.switch-field label:last-of-type {
+  border-radius: 0 12px 12px 0;
 }
 
 
@@ -206,11 +371,14 @@
 }
 
 .subhead{
-  position: relative;
-  //margin: auto auto;
+   position: relative;
+   margin: auto auto;
   align-items: center;
-  //background-color: #ebebe4;
-   border-bottom: 2px solid #0f1216;
+  border: 2px solid #4084f6;
+
+ button{
+   float: right;
+ }
 
 
 }
@@ -314,69 +482,6 @@
       position: relative; }
 
 
-
-      .listDrop:active{
-        border: 1px solid #8184ff;
-      }
-      .listDrop:focus{
-        border: 1px solid #8184ff;
-      }
-
-          .listDrop{
-            position: relative;
-            width: 300px;
-            //max-width: 100%;
-            margin: 0 auto;
-            width: 17rem;
-            height: 30.66rem;
-            display: block;
-            background: white;
-            /* border-radius: 39px;
-            background-repeat: no-repeat;
-            background-position: 47.5% 44.2%;
-            background-size: 35.3rem 32rem;
-            background-image: url('../../assets/images/phoneContainer.png') ; */
-            overflow-x: hidden;
-            overflow-y: scroll;
-            &::-webkit-scrollbar { width: 0 !important }
-
-            .crudIcons{
-              position:relative;
-              float: right;
-              margin-top: -59px;
-              margin-right: 7px;
-              align-items: center;
-              justify-content: space-evenly;
-            }
-
-            .icrud{
-              border: 1px solid #ccc;
-              border-radius: 50%;
-              background: rgb(226, 225, 225);
-              font-size: 0.7rem;
-              color: rgb(121, 118, 118);
-
-            }
-            #i1:hover{
-              border: 1px solid green;
-              color: green;}
-            #i2:hover{
-              border: 1px solid goldenrod;
-              color: goldenrod;}
-            #i3:hover{
-              border: 1px solid red;
-              color: red;}
-
-
-          }
-
-          .BottomLine{
-            border: 2.8px solid rgb(190, 189, 189);
-            border-radius: 5px;
-            width: 90px;
-            margin-top: 29rem;
-
-          }
 
 
 
@@ -1118,3 +1223,5 @@
           }
 
           /* finish here*/
+
+

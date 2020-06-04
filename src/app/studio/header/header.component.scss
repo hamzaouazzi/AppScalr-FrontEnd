@@ -1,4 +1,4 @@
-@import '../theme/styles/themes';
+@import '../../theme/styles/themes';
 @import '~bootstrap/scss/mixins/breakpoints';
 @import '~@nebular/theme/styles/global/breakpoints';
 @import '~@angular/material/theming';
@@ -93,7 +93,6 @@
 }
 
 
-
 .column-basic{
   //position: fixed;
   margin-top: -36px;
@@ -128,32 +127,7 @@
 .column-center{
   //background-image: url('../../assets/images/grid-graph-paper-background.jpg') ;
   position: relative;
-  overflow-x: auto;
-  overflow-y: auto;
-  background:
-    repeating-linear-gradient(transparent, transparent 5px, #fff 5px, #fff 6px),
-    repeating-linear-gradient(to left, transparent, transparent 200px, #ababab 100px, #ababab 200px);
-
-  &::-webkit-scrollbar-track
-  {
-    //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
-    border-radius: 10px;
-  }
-
-  &::-webkit-scrollbar
-{
-	width: 10px;
-	background-color: #F5F5F5;
-}
-
-&::-webkit-scrollbar-thumb
-{
-  background-color: rgb(221, 220, 220);
-	border-radius: 10px;
-
-}
-
+  overflow: scroll;
 
 }
 .CompContainer{
@@ -171,7 +145,6 @@
   align-items: center;
 
   margin: auto;
-
 
 
 }
@@ -206,11 +179,14 @@
 }
 
 .subhead{
-  position: relative;
-  //margin: auto auto;
+   position: relative;
+   margin: auto auto;
   align-items: center;
-  //background-color: #ebebe4;
-   border-bottom: 2px solid #0f1216;
+  border: 2px solid #4084f6;
+
+ button{
+   float: right;
+ }
 
 
 }
@@ -331,11 +307,6 @@
             height: 30.66rem;
             display: block;
             background: white;
-            /* border-radius: 39px;
-            background-repeat: no-repeat;
-            background-position: 47.5% 44.2%;
-            background-size: 35.3rem 32rem;
-            background-image: url('../../assets/images/phoneContainer.png') ; */
             overflow-x: hidden;
             overflow-y: scroll;
             &::-webkit-scrollbar { width: 0 !important }

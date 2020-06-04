@@ -1,0 +1,37 @@
+[
+  {
+    "id":1,
+    "name":"Global",
+    "elements":[
+      {
+        "id":1,
+        "name":"Input",
+        "icon":"../../assets/images/components/input.svg",
+        "type":"input",
+        "classes":["class1", "class2"]
+      },
+      {
+        "id":2,
+        "name":"Button",
+        "icon":"../../assets/images/components/button.svg",
+        "type":"button",
+        "classes":["class1", "class2"]
+      },
+      {
+        "id":3,
+        "name":"Checkbox",
+        "icon":"../../assets/images/components/checkbox.svg",
+        "type":"checkbox",
+        "classes":["class1", "class2"]
+      },
+      {
+        "id":4,
+        "name":"Select",
+        "icon":"../../assets/images/components/select.svg",
+        "type":"select",
+        "classes":["class1", "class2"]
+      }
+    ]
+  }
+
+]

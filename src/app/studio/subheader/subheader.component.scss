@@ -1,0 +1,35 @@
+@import '../../theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+@import '~@angular/material/theming';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+
+
+@include nb-install-component() {
+
+
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+
+  ::ng-deep nb-search button {
+    padding: 0!important;
+  }
+
+  .dropDown-Icons{
+    //display: block;
+    //float: right;
+    //margin-left: auto;
+    margin: auto;
+  }
+
+  
+
+
+
+
+}
+

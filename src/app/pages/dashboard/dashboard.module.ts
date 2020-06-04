@@ -23,6 +23,7 @@ import { StatusCardComponent } from './status-card/status-card.component';
 import { FormsModule } from '@angular/forms';
 import { ProjectsComponent } from './projects/projects.component';
 import { ShowcaseDialogComponent } from './projects/showcase-dialog/showcase-dialog.component';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -50,6 +51,7 @@ const ENTRY_COMPONENTS = [
     NbEvaIconsModule,
     NbButtonModule,
     NgxEchartsModule,
+    IonicModule,
   ],
   declarations: [
     DashboardComponent,

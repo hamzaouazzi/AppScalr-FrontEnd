@@ -1,0 +1,76 @@
+
+<div class="header-list-pages">
+
+  <div class="title" >
+    <span>Pages</span>
+  </div>
+
+  <div class="btn-group">
+    <span id="add-page-dropdown" >
+      <div><nb-icon icon="plus-square-outline"></nb-icon>Add Page</div>
+    </span>
+  </div>
+
+</div>
+
+  <div class="content-list-pages">
+
+
+  </div>
+
+
+
+
+
+
+<div class="list-components">
+  <div class="header-list-components">
+    <span >Components</span>
+    <!-- <nb-form-field class="searchfield">
+      <nb-icon nbPrefix icon="search-outline" pack="eva" ></nb-icon>
+      <input type="text" nbInput fullWidth status="info"  placeholder="Search a component">
+    </nb-form-field> -->
+  </div>
+<nb-accordion  class="acc1" multi >
+
+  <nb-accordion-item  *ngFor="let category of categories">
+
+    <nb-accordion-item-header>
+      {{ category.name }}
+    </nb-accordion-item-header>
+
+    <nb-accordion-item-body class="app-components">
+
+      <div id="uicategoriesList" class="content scroll-outer" style="height:calc(100% + 10px);"
+              cdkDropList
+              [cdkDropListData]="category.elements"
+              [cdkDropListConnectedTo]="['answersList']"
+              (cdkDropListDropped)="drop($event)">
+
+          <ul>
+
+            <li *ngFor="let element of category.elements" [cdkDragData]="element" cdkDrag>
+
+              <div class="component-content">
+                <span [class]="element.classes.toString().split(' ')">
+                  <img class="component-icon" [src]="element.icon" alt="Layout" />
+                </span>
+                <span>{{ element.name }}</span>
+              </div>
+
+            </li>
+          </ul>
+
+      </div>
+
+    </nb-accordion-item-body>
+
+  </nb-accordion-item>
+
+
+</nb-accordion>
+
+
+</div>
+
+

@@ -7,6 +7,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
     NbIconModule,
     NbEvaIconsModule,
     MiscellaneousModule,
+    IonicModule
   ],
   declarations: [
     PagesComponent,

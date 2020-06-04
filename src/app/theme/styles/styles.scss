@@ -34,3 +34,42 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/core/css/core.css";
+
+/*Basic CSS for apps built with Ionic */
+@import "~@ionic/core/css/normalize.css";
+@import "~@ionic/core/css/structure.css";
+@import "~@ionic/core/css/typography.css";
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/core/css/padding.css";
+@import "~@ionic/core/css/float-elements.css";
+@import "~@ionic/core/css/text-alignment.css";
+@import "~@ionic/core/css/text-transformation.css";
+@import "~@ionic/core/css/flex-utils.css";
+@import "~@ionic/core/css/utils.bundle.css";
+@import "~@ionic/core/css/ionic.bundle.css";
+@import "~@ionic/core/css/global.bundle.css";
+
+/* Ionicons */
+
+
+/*
+ * Ionic Colors
+ * ----------------------------------------------------------------------------
+ * Named colors make it easy to reuse colors on various components.
+ * It's highly recommended to change the default colors
+ * to match your app's branding. Ionic provides nine layered colors
+ * that can be changed to theme an app. Additional colors can be
+ * added as well (see below). For more information, please see
+ * https://www.ionicframework.com/docs/theming/colors
+ *
+ * To easily create custom color palettes for your app’s UI,
+ * check out our color generator:
+ * https://www.ionicframework.com/docs/theming/color-generator
+ */
+
+
+

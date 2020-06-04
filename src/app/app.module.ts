@@ -52,6 +52,7 @@ import {
   TimingPipe,
   NumberWithCommasPipe,
 } from './theme/pipes';
+import { IonicModule } from '@ionic/angular';
 const socialLinks = [
   {
     url: 'https://github.com/',
@@ -173,6 +174,7 @@ const PIPES = [
     NbSidebarModule,
     NbToastrModule,
     NbWindowModule,
+    IonicModule.forRoot(),
     // AuthGuard,
   ],
   bootstrap: [AppComponent],
