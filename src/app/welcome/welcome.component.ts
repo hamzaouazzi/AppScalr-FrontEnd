@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+declare var particlesJS: any;
 
 @Component({
   selector: 'ngx-welcome',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() {
+    //particlesJS.load('particles-js', '../assets/particles.json', function() {console.log('particles.json loaded...');});
+   }
+
+
 
 }

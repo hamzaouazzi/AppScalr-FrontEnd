@@ -2,9 +2,10 @@ import { Component, OnDestroy , TemplateRef, ViewChild} from '@angular/core';
 import { NbThemeService, NbDialogService, NbWindowService } from '@nebular/theme';
 import { Router } from '@angular/router';
 import { ShowcaseDialogComponent } from './showcase-dialog/showcase-dialog.component';
+import { EditProjectComponent } from './edit-project/edit-project.component';
 
 @Component({
-  selector: 'ngx-kitten',
+  selector: 'ngx-projects',
   styleUrls: ['./projects.component.scss'],
   templateUrl: './projects.component.html',
 })
@@ -32,6 +33,13 @@ export class ProjectsComponent implements OnDestroy {
         },
       },
     );
+  }
+  openEdit() {
+    this.dialogService.open(EditProjectComponent, {
+      context: {
+        title: 'This is a title passed to the dialog component',
+      },
+    });
   }
   open() {
     this.dialogService.open(ShowcaseDialogComponent, {

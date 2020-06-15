@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
   template: `
     <nb-layout>
       <nb-layout-column>
-      <!--   <nb-card>
+        <nb-card accent="primary">
           <nb-card-header>
             <nav class="navigation">
               <a href="#" (click)="back()" class="link back-link" aria-label="Back">
@@ -24,10 +24,7 @@ import { Subject } from 'rxjs';
               <router-outlet></router-outlet>
             </nb-auth-block>
           </nb-card-body>
-        </nb-card> -->
-           <nb-auth-block>
-              <router-outlet></router-outlet>
-            </nb-auth-block>
+        </nb-card>
       </nb-layout-column>
     </nb-layout>
   `,

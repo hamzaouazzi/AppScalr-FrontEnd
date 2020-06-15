@@ -11,6 +11,7 @@ import { UiCategory } from '../models/UiCategory.model';
 import { StudioService } from '../services/studio.service';
 import UiElementsJson from '../data/UiElements.json';
 import UiCategoriesJson from '../data/UiCategories.json';
+import { NgPopoverPageComponent } from './popover-page/popover-page.component';
 
 @Component({
   selector: 'ng-left-sidebar',
@@ -29,7 +30,8 @@ export class LeftSidebarComponent implements OnInit {
   uiElementsJson:any=UiElementsJson;
   uiCategoriesJson:any=UiCategoriesJson;
   uielements:Array<UiElement>;
- // uicategories:Array<UiCategory>;
+
+   templatePageComponent = NgPopoverPageComponent;
 
   constructor(private studioService: StudioService) { }
 
@@ -56,42 +58,11 @@ export class LeftSidebarComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Element[]>) {
+    console.log('hello world')
     console.log(event.item.data)
     this.studioService.onTalkDrop(event);
 }
 
 
-  /* createCopy(origin) {
-    return JSON.parse(JSON.stringify(origin));
-  }
-
-  dropIt(event: CdkDragDrop<string[]>) {
-    console.log('Hit');
-      if (event.previousContainer !== event.container) {
-           transferArrayItem(event.previousContainer.data,
-                               event.container.data,
-                               event.previousIndex,
-                               event.currentIndex);
-              const answerCopy = this.createCopy(this.answers[event.currentIndex]);
-              this.answers[event.currentIndex] = answerCopy;
-              console.log(answerCopy);
-              this.answers.forEach((answer, i) => {
-                  answer.position = i;
-              });
-          this.resetList();
-      } else if (event.previousIndex !== event.currentIndex) {
-          if (event.previousContainer === event.container) {
-              moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-              // this.resetList();
-          }
-      }
-    }
-
-   resetList() {
-      this.defaultAnswers = [];
-      setTimeout(() => {
-        this.defaultAnswers = this.uicategories.slice();
-      }, 0);
-    } */
 
 }

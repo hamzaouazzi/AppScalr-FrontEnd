@@ -1,0 +1,107 @@
+@import '../../../../theme/styles/themes';
+@import '~@angular/material/theming';
+
+@include nb-install-component() {
+
+
+
+
+  #frm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 650px;
+
+    span{
+     float: left;
+
+    }
+    #desc,#page,#icon{
+
+      margin-top: 1.5rem;
+    }
+
+
+  }
+  #frm-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .form-icon{
+      width: 635px;
+      height: 230px;
+
+    }
+
+    span{
+     float: left;
+
+    }
+
+
+
+  }
+
+  #c-template{
+   border: 1px solid rgb(158, 21, 89);
+   margin-top: 12px;
+   margin-left: 0;
+   margin-right: auto;
+    //width: 635px;
+    height: 140px;
+
+  
+
+    div{
+      //@extend: inline-block;
+      float: left;
+
+      .page1,.page2,.page3{
+        width: 80px;
+        height: 80px;
+
+        padding: 5px;
+        background-repeat: no-repeat;
+        background-size: 100px 100px;
+        align-items: center;
+        cursor: pointer;
+      &:hover {
+        @include mat-elevation(2);
+      }
+      }
+      p{
+          //font-size: 1rem;
+          font-weight: bold;
+          color: #ccc;
+          //top: auto;
+         margin-top: 10px;
+        // margin-left: 25px;
+
+      }
+
+    }
+  }
+}
+
+:host ::ng-deep nb-stepper .step-content {
+  text-align: center;
+
+  button {
+    cursor: pointer;
+    margin: 0.5rem;
+  }
+
+}
+
+nb-card-footer{
+
+  .btnsPr{
+    justify-content: space-around;
+    float: right;
+
+    .b1{
+      margin-right: 0.3rem;
+    }
+  }
+}

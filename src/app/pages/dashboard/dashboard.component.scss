@@ -3,6 +3,23 @@
 @import '~@nebular/theme/styles/global/breakpoints';
 
 @include nb-install-component() {
+  .container-tab{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 50rem;
+    //border: 2px solid #430d53;
+  }
+  nb-tabset {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+:host ::ng-deep ngx-tab1, :host ::ng-deep ngx-tab2 {
+  display: block;
+  padding: 1rem 2rem;
+}
   .solar-card nb-card-header {
     border: none;
     padding-bottom: 0;

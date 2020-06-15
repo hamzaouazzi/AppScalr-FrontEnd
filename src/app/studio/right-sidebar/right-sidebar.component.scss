@@ -1089,3 +1089,179 @@
           }
 
           /* finish here*/
+
+.element-holder{
+  margin-top: .8rem;
+  p {
+    font-size: 1.2rem;;
+  }
+  input{
+    margin: auto;
+    font-size: 1.4rem;
+    width: 90%;
+    box-sizing: border-box;
+    padding: 10p;
+    border: 2px solid bisque;
+  }
+}
+
+/* ----------------------------------*/
+
+.component-properties{
+
+  height: 100%;
+  width: 100%;
+  //display: flexbox;
+
+  .title{
+    border-top: 1px solid #e9e9e6;
+    border-bottom: 1px solid #e9e9e6;
+    background-color: #e1e3e4;
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    padding: 8px;
+
+    .breadcrumb-left {
+      font-size: 12px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #a2aaad;
+      transition: 0.1s linear;
+      -webkit-transition: 0.1s linear;
+      -moz-transition: 0.1s linear;
+
+      &:hover {
+        cursor: pointer;
+        color: #4084f6;
+        transition: 0.1s linear;
+        -webkit-transition: 0.1s linear;
+        -moz-transition: 0.1s linear; }
+
+      }
+
+  }
+
+  .properties-form1{
+    position: absolute;
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 100px;
+    width: 100%;
+
+   .form-group{
+    width: 90% !important;
+    display: inline-block !important;
+    padding: 0px !important;
+
+    label{
+      text-transform: uppercase;
+      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      //font-weight: 500;
+      color: #4084f6;
+      //letter-spacing: 2px;
+      font-size: 10px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    input,.color{
+      float: right;
+      width: 140px;
+      margin-right: 8px;
+
+    }
+    input::placeholder{
+      font-size: 10px;
+
+    }
+
+
+
+
+   }
+
+   .page-custome{
+
+    .form-title{
+
+      margin-top: 12px;
+
+      span{
+        font-size: 0.99rem;
+        font-weight: bold;
+        color: #4084f6;
+
+
+      }
+    }
+
+    .form-group{
+      width: 90% !important;
+      display: inline-block !important;
+      padding: 0px !important;
+      margin-top: 10px;
+
+      label{
+        text-transform: uppercase;
+        font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        //font-weight: 500;
+        color: #2168e4;
+        //letter-spacing: 2px;
+        font-size: 10px;
+        font-weight: bold;
+        margin-bottom: 6px;
+      }
+
+      input,.color{
+        float: right;
+        width: 140px;
+        margin-right: 8px;
+
+      }
+      input::placeholder{
+        font-size: 10px;
+
+      }
+
+
+     }
+
+
+
+
+
+     }
+
+     .btn-delete{
+       position: relative;
+       //border: 1px solid #ec3131;
+       bottom: 0;
+      margin-top: auto;
+      margin-left: auto;
+      float: right;
+      padding: 30px;
+
+
+     }
+
+
+    }
+
+
+
+
+   }
+
+
+
+
+
+
+

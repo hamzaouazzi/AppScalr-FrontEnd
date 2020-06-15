@@ -1,9 +1,6 @@
 
-<div class="row h-25">
+<div class="row">
   <div class="col-md-12 grid-margin ">
-  <div class="col1 ">
-    <p>Projects</p>
-  </div>
   <div class="col2 ">
     <button nbButton hero status="primary" size="small" (click)=" open()"><nb-icon  icon="plus-outline"></nb-icon>New Project</button>
   </div>
@@ -18,8 +15,13 @@
  <nb-card size="tiny" class="card" (click)="navigate()" >
 
   <nb-card-body>
+    <div class="app-icon">
+      <img src="../../../../assets/images/icon1.png" >
+
+    </div>
 
     <div class="details">
+      
       <div class="h5">Prj01</div>
       <div class="description">
          <p>Last edited Apr 10,2020</p>
@@ -27,15 +29,15 @@
     </div>
   </nb-card-body>
   <nb-card-footer>
-    <a href="#" >
-      <nb-icon  icon="edit-2-outline" pack="eva"></nb-icon>
-    </a>
+    
+      <nb-icon  icon="edit-2-outline" pack="eva" (click)="openEdit()"></nb-icon>
+    
     <a href="#" >
       <nb-icon icon="share-outline" pack="eva"></nb-icon>
 
     </a>
     <a href="#" >
-      
+
       <nb-icon icon="copy-outline" pack="eva"></nb-icon>
     </a>
     <a href="#" >

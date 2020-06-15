@@ -1,36 +1,283 @@
 [
   {
     "id":1,
-    "name":"Global",
+    "name":"Forms",
     "elements":[
       {
-        "id":1,
+        "id":"AA",
+        "name":"Text",
+        "icon":"../../assets/images/components/html.svg",
+        "type":"ion-text",
+        "classes":["d-block", "ion-margin-auto","ion-text-start"],
+        "attributes": [
+          {
+          "name": "color",
+          "value": "primary",
+          "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+          }
+      ],
+        "children":["Text here"]
+      },
+      {
+        "id":"BB",
+        "name":"Header",
+        "icon":"../../assets/images/components/popover.svg",
+        "type":"h1",
+        "classes":["d-block", "ion-margin-auto"],
+        "attributes": [{
+          "name": "value",
+          "value": "default value"
+        }
+        ],
+        "children":["Header"]
+
+      },
+      {
+        "id":"CC",
         "name":"Input",
         "icon":"../../assets/images/components/input.svg",
-        "type":"input",
-        "classes":["class1", "class2"]
+        "type":"ion-input",
+        "classes":["border", "ion-text-uppercase"],
+        "attributes": [
+          {
+          "name": "placeholder",
+          "value": "default value"
+          },
+          {
+            "name": "type",
+            "value": "text"
+          },
+          {
+            "name": "readonly",
+            "value": "false"
+          }
+      ]
       },
       {
-        "id":2,
+        "id":"DD",
+        "name":"Label",
+        "icon":"../../assets/images/components/tab.svg",
+        "type":"ion-label",
+        "classes":["border", "ion-text-uppercase","ion-text-wrap"],
+        "attributes": [
+          {
+          "name": "position",
+          "value": "floating"
+          },
+          {
+          "name": "color",
+          "value": "dark",
+          "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+          }
+      ],
+        "children":["Label here"]
+      },
+      {
+        "id":"EE",
         "name":"Button",
         "icon":"../../assets/images/components/button.svg",
-        "type":"button",
-        "classes":["class1", "class2"]
+        "type":"ion-button",
+        "classes":["class1", "cdk-drag"],
+        "children": ["Change me"],
+        "attributes": [
+          {
+          "name": "color",
+          "value": "primary",
+          "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+        },
+        {
+          "name": "expand",
+          "value": ""
+        },
+        {
+          "name": "fill",
+          "value": "solid"
+        },
+        {
+          "name": "size",
+          "value": "default"
+        }
+      ]
+
       },
       {
-        "id":3,
+        "id":"FF",
         "name":"Checkbox",
         "icon":"../../assets/images/components/checkbox.svg",
-        "type":"checkbox",
-        "classes":["class1", "class2"]
+        "type":"ion-checkbox",
+        "classes":["class1", "class2"],
+        "attributes": [
+          {
+          "name": "value",
+          "value": "on"
+          },
+          {
+            "name": "color",
+            "value": "danger",
+            "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+          },
+          {
+            "name": "checked",
+            "value": "true"
+          },
+          {
+            "name": "disabled",
+            "value": "false"
+          },
+          {
+            "name": "indeterminate",
+            "value": "false"
+          }
+      ]
       },
       {
-        "id":4,
+        "id":"GG",
         "name":"Select",
         "icon":"../../assets/images/components/select.svg",
-        "type":"select",
-        "classes":["class1", "class2"]
+        "type":"ion-select",
+        "classes":["class1", "class2"],
+        "attributes": [
+          {
+          "name": "value",
+          "value": "brown"
+          },
+          {
+            "name": "placeholder",
+            "value": "Select One"
+          }
+      ],
+      "children": [
+           {
+            "type":"ion-option",
+            "attributes":[
+              {
+                "name": "value",
+                "value": "brown"
+                }
+            ]
+
+            }
+    ]
+      },
+      {
+        "id":"HH",
+        "name":"Textarea",
+        "icon":"../../assets/images/components/dialog.svg",
+        "type":"ion-textarea",
+        "classes":["border", "class2"],
+        "attributes": [
+
+        {
+          "name": "placeholder",
+          "value": "placeholder here!"
+        },
+        {
+          "name": "clearOnEdit",
+          "value": "false"
+        },
+        {
+          "name": "rows",
+          "value": "8"
+        },
+        {
+          "name": "cols",
+          "value": "8"
+        },
+
+        {
+          "name": "color",
+          "value": "primary",
+          "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+        },
+        {
+          "name": "debounce",
+          "value": "0"
+        },
+        {
+          "name": "disabled",
+          "value": "false"
+        },
+
+        {
+          "name": "inputmode",
+          "value": "none"
+        },
+        {
+          "name": "maxlength",
+          "value": "50"
+        },
+        {
+          "name": "minlength",
+          "value": "10"
+        },
+        {
+          "name": "readonly",
+          "value": "false"
+        },
+        {
+          "name": "required",
+          "value": "false"
+        },
+        {
+          "name": "wrap",
+          "value": "hard"
+        }
+      ]
+      },
+      {
+        "id":"II",
+        "name":"Toggle",
+        "icon":"../../assets/images/components/toggle.svg",
+        "type":"ion-toggle",
+        "classes":["--border-radius", "--handle-height","--handle-width","--background"],
+        "attributes": [
+          {
+            "name": "color",
+            "value": "danger",
+            "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+            },
+          {
+            "name": "value",
+            "value": "on"
+          }
+
+      ]
       }
+
+    ]
+  },
+  {
+    "id":2,
+    "name":"Global",
+    "elements":[
+
+      {
+        "id":"JJ",
+        "name":"Range",
+        "icon":"../../assets/images/components/line.svg",
+        "type":"ion-range",
+        "classes":["class1", "class2"],
+        "attributes": [
+          {
+            "name": "color",
+            "value": "warning",
+            "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+            },
+          {
+            "name": "min",
+            "value": "20"
+          },
+          {
+            "name": "max",
+            "value": "80"
+            },
+            {
+              "name": "step",
+              "value": "2"
+            }
+      ]
+      }
+
     ]
   }
 

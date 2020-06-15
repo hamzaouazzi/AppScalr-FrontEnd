@@ -12,6 +12,9 @@ import {
   NbSelectModule,
   NbIconModule,
   NbThemeModule,
+  NbTooltipModule,
+  NbPopoverModule,
+  NbInputModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -38,6 +41,9 @@ import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
+import { IonicModule } from '@ionic/angular';
+import { BugComponent } from './components/header/bug/bug.component';
+import { FeedbackComponent } from './components/header/feedback/feedback.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -51,13 +57,20 @@ const NB_MODULES = [
   NbButtonModule,
   NbSelectModule,
   NbIconModule,
+  IonicModule,
   NbEvaIconsModule,
+  NbTooltipModule,
+  NbPopoverModule,
+  NbInputModule,
+  NbButtonModule,
 ];
 const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
   SearchInputComponent,
   TinyMCEComponent,
+  BugComponent,
+  FeedbackComponent,
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
@@ -73,7 +86,7 @@ const PIPES = [
 @NgModule({
   imports: [CommonModule, ...NB_MODULES],
   exports: [CommonModule, ...PIPES, ...COMPONENTS],
-  declarations: [...COMPONENTS, ...PIPES],
+  declarations: [...COMPONENTS, ...PIPES, BugComponent, FeedbackComponent],
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders {

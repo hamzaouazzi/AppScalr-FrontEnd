@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "icon":"primary",
+    "value": "primary"
+  },
+
+  {
+    "id": 2,
+    "icon":"info",
+    "value": "secondary"
+  },
+  {
+    "id": 3,
+    "icon":"primary",
+    "value": "tertiary"
+  },
+  {
+    "id": 4,
+    "icon":"success",
+    "value": "success"
+  },
+   {
+    "id": 5,
+    "icon":"warning",
+    "value": "warning"
+  },
+  {
+    "id": 6,
+    "icon":"danger",
+    "value": "danger"
+  },
+  {
+    "id": 7,
+    "icon":"basic",
+    "value": "light"
+  },
+  {
+    "id": 8,
+    "icon":"basic",
+    "value": "medium"
+  },
+  {
+    "id": 9,
+    "icon":"",
+    "value": "dark"
+  }
+]

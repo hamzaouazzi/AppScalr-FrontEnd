@@ -7,13 +7,15 @@
 
   <div class="btn-group">
     <span id="add-page-dropdown" >
-      <div><nb-icon icon="plus-square-outline"></nb-icon>Add Page</div>
+
+     <button nbButton ghost status="info"><nb-icon icon="plus-square-outline" [nbPopover]="templatePageComponent"></nb-icon>Add Page</button>
     </span>
   </div>
 
 </div>
 
   <div class="content-list-pages">
+
 
 
   </div>
@@ -72,5 +74,3 @@
 
 
 </div>
-
-

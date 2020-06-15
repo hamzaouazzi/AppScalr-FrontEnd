@@ -49,6 +49,11 @@
       @include nb-rtl(border-right, 1px solid nb-theme(divider-color));
       white-space: nowrap;
       text-decoration: none;
+      .logo-icon{
+        font-size: 1.88rem;
+        margin: 8px;
+      }
+
     }
   }
 
@@ -67,4 +72,17 @@
       display: none;
     }
   }
+}
+
+.doc{
+  margin-right: 5px;
+  text-decoration: none;
+  span{
+      font-weight:bold ;
+      color:#ccc;
+    &:hover{
+      color: #4758f7;
+    }
+  }
+
 }

@@ -1,7 +1,16 @@
-import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, Type } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, Type, ViewEncapsulation, ElementRef } from '@angular/core';
 import { StudioService } from '../services/studio.service';
 import { PropertyPageComponent } from './property-page/property-page.component';
-import { PropertyButtonComponent } from './property-button/property-button.component';
+import { UiElement } from '../models/UiElement.model';
+import colors from './data/colors.json'
+import fill from './data/fill.json';
+import enterkeyhint from './data/enterkeyhint.json';
+import expand from './data/expand.json';
+import inputmode from './data/inputmode.json';
+import label from './data/label.json';
+import size from './data/size.json';
+import typeinput from './data/typeInput.json';
+import wrap from './data/wrap.json'
 
 @Component({
   selector: 'ng-right-sidebar',
@@ -12,40 +21,71 @@ export class RightSidebarComponent implements OnInit {
 
   @Input() showMe: boolean;
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
-
+  @ViewChild('attributes') private ElementAttribute: ElementRef;
+  element: UiElement = null;
   components = [];
   draggableComponent1 = PropertyPageComponent;
-  draggableComponent2 = PropertyButtonComponent;
+
+  colorsArray = colors;
+  expandArray =expand;
+  fillArray=fill
+  sizeArray=size;
+  labelArray=label;
+  wrapArray=wrap;
+  inputmodeArray=inputmode;
+  enterkeyhintArray=enterkeyhint;
+  typeInputArray =typeinput;
 
   constructor(private studioService:StudioService,
     private componentFactoryResolver: ComponentFactoryResolver) {
     studioService.myBool$.subscribe((newBool: boolean) => { this.showMe = newBool; });
    }
 
+
   ngOnInit() {
+    this.studioService.elementClickedNotify().subscribe(element=> {
+      console.log('element clicked', element);
+      this.element = element;
+      this.studioService.setRunning(true);
+    }, error => {
+      console.error('error getting element clicked')
+    })
   }
 
-  addComponent(componentClass: Type<any>) {
-    // Create component dynamically inside the ng-template
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
-    const component = this.container.createComponent(componentFactory);
+  changeAttr($event, name) {
+    console.log('element attr name ::::: ', name);
+    console.log('element attr ::::' , $event);
+    this.element.attributes[this.element.attributes.indexOf(this.element.attributes.find(attr=>attr.name === name))].value=$event;
 
-    // Push the component so that we can keep track of which components are created
-    this.components.push(component);
+    // this.element.attributes = this.element.attributes.map(attr => {
+    //  return {
+    //    name: attr.name,
+    //    value: attr.name === name ? $event : attr.value
+    //  }
+    // });
+
+    console.warn('ELEMENT AFTER CHANGE ::' , this.element);
+
+    // this.studioService.notifyOfElementChanged()
+    this.studioService.notifyOfElementChanged(this.element);
   }
 
-  removeComponent(componentClass: Type<any>) {
-    // Find the component
-
-    // tslint:disable-next-line: no-shadowed-variable
-    const component = this.components.find((component) => component.instance instanceof componentClass);
-    const componentIndex = this.components.indexOf(component);
-
-    if (componentIndex !== -1) {
-      // Remove component from both view and array
-      this.container.remove(this.container.indexOf(component));
-      this.components.splice(componentIndex, 1);
-    }
+  changeText($event) {
+    this.element.children[0] = $event;
+    console.log('element text ::::' , $event);
+    console.warn('ELEMENT AFTER CHANGE ::' , this.element);
+    this.studioService.notifyOfElementChanged(this.element);
   }
+  elements:UiElement[];
+
+  remove($event,el) {
+    this.element=el;
+    console.log('element  ::::: ', el);
+    console.log('element attr ::::' , $event);
+    this.studioService.notifyOfElementSelected(this.element);
+    this.studioService.setRunning(false);
+
+  }
+
 
 }

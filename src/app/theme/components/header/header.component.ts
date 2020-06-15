@@ -7,6 +7,9 @@ import { LayoutService } from '../../../core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { UserService } from '../../../core/mock/users.service';
+import { BugComponent } from './bug/bug.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-header',
@@ -18,6 +21,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   user: any;
+
+  bugs=BugComponent;
+  feedbacks=FeedbackComponent;
 
   themes = [
     {
@@ -40,9 +46,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  userMenu = [ { title: 'Profile' }, { title: 'Log out', link: '/logout' } ];
 
-  constructor(private authService: NbAuthService,
+  constructor(private router:Router,
+              private authService: NbAuthService,
               private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private themeService: NbThemeService,
@@ -88,6 +95,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+
+      this.menuService.onItemClick().subscribe(( event ) => {
+        this.onItemSelection(event.item.title);
+      })
+  }
+  onItemSelection( title ) {
+    if ( title === 'Log out' ) {
+      // Do something on Log out
+      console.log('Log out Clicked ')
+    } else if ( title === 'Profile' ) {
+      this.router.navigateByUrl('pages/profile');
+      console.log('Profile Clicked ')
+    }
   }
 
   ngOnDestroy() {
@@ -110,4 +130,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.menuService.navigateHome();
     return false;
   }
+
+  logOut() {
+    this.authService.logout('email')
+    this.router.navigate(['/auth/logout']);
+ }
+
+  onMenuClick($event) {
+    console.log('$even======>',$event);
+    }
 }

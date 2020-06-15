@@ -31,6 +31,13 @@
 
             <nb-card id="c-template">
               <nb-card-body>
+                <div>
+                  <nb-card class="page1">
+                    <p>Blank</p>
+
+                  </nb-card>
+
+                </div>
 
               </nb-card-body>
             </nb-card>
@@ -41,10 +48,23 @@
         <button nbButton nbStepperPrevious>prev</button>
         <button nbButton nbStepperNext>next</button>
       </nb-step>
-      <nb-step label="Third step">
-        <h3>Step content #3</h3>
-        <button nbButton  nbStepperPrevious>prev</button>
-        <button nbButton   nbStepperNext>next</button>
+      <nb-step [label]="labelTree">
+        <ng-template #labelTree>Choose Icon</ng-template>
+        <div id="frm-icon" class="row ">
+          <form class="form-icon">
+
+
+          <div style="margin-top: 20px;">
+              <span>
+                <label for="subject">Icon url:</label>
+              </span>
+              <input nbInput fullWidth fieldSize="medium" shape="semi-round" id="subject" type="text" placeholder="/url">
+            </div>
+
+          </form>
+        </div>
+        <button nbButton disabled nbStepperNext>prev</button>
+        <button nbButton disabled nbStepperNext>next</button>
       </nb-step>
       <!-- <nb-step [label]="labelFour">
         <ng-template #labelFour>Fourth step</ng-template>

@@ -18,6 +18,7 @@ import {
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
+  NbSelectModule,
 } from '@nebular/theme';
 
 import { NbAuthService } from './services/auth.service';
@@ -107,6 +108,7 @@ export function nbNoOpInterceptorFilter(req: HttpRequest<any>): boolean {
     ReactiveFormsModule,
     FormsModule,
     NbIconModule,
+    NbSelectModule,
     NbThemeModule.forRoot({ name: 'default' }),
   ],
 

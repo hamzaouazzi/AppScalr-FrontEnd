@@ -1,0 +1,45 @@
+@import '../../../theme/styles/themes';
+@import '~@angular/material/theming';
+
+nb-card {
+  margin: 0;
+  max-width: 20rem;
+}
+.list-pages{
+  justify-content: space-between;
+
+  div{
+    display: inline-block;
+
+    .page1,.page2,.page3{
+      width: 100px;
+      height: 100px;
+      margin-right: 30px;
+      padding: 5px;
+      background-repeat: no-repeat;
+      background-size: 100px 100px;
+      cursor: pointer;
+    &:hover {
+      @include mat-elevation(2);
+    }
+    }
+    p{
+        //font-size: 1rem;
+        font-weight: bold;
+       margin-top: 10px;
+       margin-left: 25px;
+
+    }
+
+  }
+
+
+
+  .page2{
+    background-image: url('../../../../assets/images/login-form-with-blue-background.png');
+  }
+  .page3{
+    background-image: url('../../../../assets/images/sign-up-form-with-blue-background.png');
+  }
+
+}

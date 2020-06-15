@@ -1,167 +1,169 @@
-import { Component, OnInit, Inject, ViewChild, AfterViewInit, ElementRef, Input, Output } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { ColorPickerService, Cmyk } from 'ngx-color-picker';
+import {
+  Component,
+  OnInit,
+  Inject,
+  ViewChild,
+  AfterViewInit,
+  ElementRef,
+  Input,
+  Output,
+  Renderer2
+} from "@angular/core";
+import { DOCUMENT } from "@angular/common";
+import { ColorPickerService, Cmyk } from "ngx-color-picker";
 import {
   CdkDragDrop,
   moveItemInArray,
   CdkDrag,
   CdkDropList,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
-import {Zoom} from '../center-layout/model/zoom.model';
-import { ScreensService } from '../services/screens.service';
-import { PropertyPageComponent } from '../right-sidebar/property-page/property-page.component';
-import { D3Service, D3, Selection } from 'd3-ng2-service';
-import { UiCategory } from '../models/UiCategory.model';
-import { UiElement } from '../models/UiElement.model';
-import { StudioService } from '../services/studio.service';
+  transferArrayItem
+} from "@angular/cdk/drag-drop";
+import zoom from "./data/zoom.json";
+import { ScreensService } from "../services/screens.service";
+import { PropertyPageComponent } from "../right-sidebar/property-page/property-page.component";
+import { D3Service, D3, Selection } from "d3-ng2-service";
+import { UiCategory } from "../models/UiCategory.model";
+import { UiElement } from "../models/UiElement.model";
+import { StudioService } from "../services/studio.service";
+
 
 @Component({
-  selector: 'ng-center-layout',
-  templateUrl: './center-layout.component.html',
-  styleUrls: ['./center-layout.component.scss'],
+  selector: "ng-center-layout",
+  templateUrl: "./center-layout.component.html",
+  styleUrls: ["./center-layout.component.scss"]
 })
-export class CenterLayoutComponent implements OnInit,AfterViewInit {
+export class CenterLayoutComponent implements OnInit, AfterViewInit {
+  @ViewChild("framecontainer", { static: false }) frame;
+  @ViewChild("listDrop", { static: false }) element: ElementRef;
+  @ViewChild("ColorPicker", { static: false }) ColorPicker;
+  @ViewChild("sel", { static: false }) select;
+  @ViewChild("ios", { static: false }) ioshead;
+  @ViewChild("android", { static: false }) androidhead;
+  @ViewChild("zoomin", { static: false }) zoomin;
+  @ViewChild("zoomout", { static: false }) zoomout;
+  @ViewChild(PropertyPageComponent) page: PropertyPageComponent;
+  @Input() categories: UiCategory[];
+  @Input() elements: UiElement[];
+  @Input() id: string;
 
-    @ViewChild('framecontainer', {static:false}) frame;
-    @ViewChild('listDrop', {static:false}) element;
-    @ViewChild('ColorPicker', {static:false}) ColorPicker;
-    @ViewChild('sel', {static:false}) select;
-    @ViewChild('ios', {static:false}) ioshead;
-    @ViewChild('android', {static:false}) androidhead;
-    @ViewChild('zoomin', {static:false}) zoomin;
-    @ViewChild('zoomout', {static:false}) zoomout;
-    @ViewChild(PropertyPageComponent) page:PropertyPageComponent;
-    @Input() categories: UiCategory[];
-    @Input()elements:UiElement[];
+  private d3: D3;
+  showVar: boolean = false;
 
-    private d3: D3;
-    showVar: boolean = false;
+  answers: UiElement[] = [];
 
-    answers:UiElement[] = [];
+  public selectedColor: string = "color1";
+  public color1: string = "#fff";
+  optionSelected;
+  valueSelected;
+  $scope;
+  received: string;
 
-    public selectedColor: string = 'color1';
-    public color1: string = '#fff';
-    optionSelected;
-    valueSelected;
-    $scope;
-    received:string;
+  //observe DOM changes
+  observer: MutationObserver;
 
-
-  constructor(private screenService:ScreensService,
-              private cpService: ColorPickerService,
-              private studioService:StudioService,
-              private d3Service: D3Service,
-              private center:ElementRef) {
-        this.d3 = d3Service.getD3(); // <-- obtain the d3 object from the D3 Service
-        studioService.myBool$.subscribe((newBool: boolean) => { this.showVar = newBool; });
+  constructor(
+    private screenService: ScreensService,
+    private cpService: ColorPickerService,
+    private studioService: StudioService,
+    private d3Service: D3Service,
+    private renderer: Renderer2,
+    private center: ElementRef
+  ) {
+    this.d3 = d3Service.getD3(); // <-- obtain the d3 object from the D3 Service
+    studioService.myBool$.subscribe((newBool: boolean) => {
+      this.showVar = newBool;
+    });
     /* this.screenService.myFunctionCalled$.subscribe(
       res => console.log("property elm",this.page),
       err => console.log('MyService error', err)
   );
  */
-   }
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngAfterContentChecked() {
+    console.log("SOMETHING");
+  }
   ngAfterViewInit() {
-    if (this.element) {
+    /* if (this.element) {
       console.log("Drop list", this.element);
       console.log("picker", this.ColorPicker);
       // console.log("seleect", this.selectedValue);
-     } else {
+    } else {
       console.log("Droplist Not found !!", this.element);
+    } */
 
-     }
+    // const elementsList = this.element;
+    // const renderer = this.renderer;
+    // const deletectClickFunc = this.__detectClick.bind(this);
 
+    // this.observer = new MutationObserver(mutations => {
+    //   mutations.forEach(function(mutation) {
+    //     console.log(mutation.type);
+
+    //     let listItems = Array.from(
+    //       elementsList.nativeElement.querySelectorAll('*[id^="item"]')
+    //     );
+
+    //     listItems.forEach((listItem, j) => {
+    //       renderer.listen(listItem, "click", evt => {
+    //         console.log("element clicked", listItem);
+    //         deletectClickFunc(listItem);
+    //       });
+    //     });
+    //   });
+    // });
+    // let config = { attributes: true, childList: true, characterData: true };
+    // this.observer.observe(this.element.nativeElement, config);
   }
 
+
+
+
+
   ngOnInit() {
+    this.__subscribeToElementChange();
+    this.__removeElementSelected();
   }
 
   replace1() {
     this.d3.select(this.ioshead.nativeElement).style("opacity", 1);
     this.d3.select(this.androidhead.nativeElement).style("opacity", 0);
-
   }
-
 
   replace2() {
     this.d3.select(this.androidhead.nativeElement).style("opacity", 1);
     this.d3.select(this.ioshead.nativeElement).style("opacity", 0);
   }
 
-
   getMessage(event) {
-    this.received=event.color;
-
+    this.received = event.color;
   }
 
   changeColor(event) {
-    this.element.nativeElement.style.backgroundColor=event.color;
-
+    this.element.nativeElement.style.backgroundColor = event.color;
   }
 
-  selectedValue: number;
+  selectedValue: number=1;
 
-  zoomArray: Zoom[] = [
-    {
-      id:0.5,
-      name:'50%'
-    },
-    {
-      id:0.75,
-      name:'75%'
-    },
-    {
-      id:0.9,
-      name:'90%'
-    },
-    {
-      id:1,
-      name:'100%'
-    },
-  ]
+  zoomArray = zoom;
   zoomArr = [0.5, 0.75, 0.9, 1];
 
   indexofArr = 4;
 
-  // value = this.frame.nativeElement.getBoundingClientRect().width / this.frame.nativeElement.offsetWidth;
 
-
-  handleChange () {
+  handleChange() {
     console.log("this is handle change method !");
-    console.log("element",this.frame);
-    const  val: number = this.selectedValue;
-    console.log('handle change selected value ', val);
+    console.log("element", this.frame);
+    const val: number = this.selectedValue;
+    console.log("handle change selected value ", val);
     this.indexofArr = this.zoomArr.indexOf(val);
-    console.log('Handle changes', this.indexofArr);
-    this.frame.nativeElement.style['transform'] = `scale(${val})`;
+    console.log("Handle changes", this.indexofArr);
+    this.frame.nativeElement.style["transform"] = `scale(${val})`;
   }
 
-  /* zmin = this.zoomin.nativeElement.addEventListener('click', () => {
-    console.log('value of index zoomin is', this.indexofArr);
-    if (this.indexofArr < this.zoomArr.length - 1 ) {
-      this.indexofArr += 1;
-      this.value = this.zoomArr[this.indexofArr];
-      // let res1: string|number = document.querySelector<HTMLInputElement>('#sel').value ;
-      // res1 = this.value;
-      // console.log('current value is',value)
-      // console.log('scale value is',value)
-      this.element.style['transform'] = `scale(${this.value})`;
-    }
-  });
 
-    zout = this.zoomout.nativeElement.addEventListener('click', ( ) => {
-    console.log('value of index  zoom out is', this.indexofArr);
-      if (this.indexofArr > 0) {
-        this.indexofArr -= 1;
-        this.value = this.zoomArr[this.indexofArr];
-        // let res2: string|number = document.querySelector<HTMLInputElement>('#sel').value ;
-        // res2 = this.value;
-      // console.log('scale value is',value)
-      this.element.style['transform'] = `scale(${this.value})`;
-      }
-    }); */
-
-  public cmykValue: string = '';
+  public cmykValue: string = "";
 
   public cmykColor: Cmyk = new Cmyk(0, 0, 0, 0);
   public onEventLog(event: string, data: any): void {
@@ -169,7 +171,7 @@ export class CenterLayoutComponent implements OnInit,AfterViewInit {
   }
 
   public onChangeColor(color: string): void {
-    console.log('Color changed:', color);
+    console.log("Color changed:", color);
   }
 
   public onChangeColorCmyk(color: string): Cmyk {
@@ -188,36 +190,124 @@ export class CenterLayoutComponent implements OnInit,AfterViewInit {
     const hsva = this.cpService.stringToHsva(color, true);
 
     if (hsva) {
-      return this.cpService.outputFormat(hsva, 'rgba', null);
+      return this.cpService.outputFormat(hsva, "rgba", null);
     }
 
-    return '';
+    return "";
+  }
+
+  /***********************************************************
+   * * HANDLE DROP EVENT FROM LEFT SIDEBAR INTO CENTER LAYOUT
+   ***********************************************************
+   */
+
+   DOM_ID_INCREMENTER = 0;
+
+  drop(event: CdkDragDrop<Element[]>) {
+    const currentElement: UiElement = event.item.data;
+    console.log("how u do :::: ", currentElement);
+    const el = this.renderer.createElement(currentElement.type);
+
+    if (currentElement.classes && currentElement.classes.length > 0) {
+      for (const _class of currentElement.classes) {
+        this.renderer.addClass(el, _class);
+      }
+    }
+
+    if (currentElement.attributes && currentElement.attributes.length > 0) {
+      for (const _attr of currentElement.attributes) {
+        console.log(_attr);
+        this.renderer.setAttribute(el, _attr.name, _attr.value);
+      }
+    }
+
+    if (currentElement.children && currentElement.children.length > 0) {
+      for (const _text of currentElement.children) {
+        const text = this.renderer.createText(_text);
+        this.renderer.appendChild(el, text);
+      }
+    }
+
+   // const br = this.renderer.createElement("br");
+    //this.renderer.appendChild(this.element.nativeElement, br);
+    this.renderer.setAttribute(el, "id", currentElement.id + this.DOM_ID_INCREMENTER );
+    this.renderer.setAttribute(el, "draggable" ,"true");
+    console.log("created :::", el);
+    this.renderer.appendChild(this.element.nativeElement, el);
+    this.renderer.listen(el, "click", evt => {
+      console.log("element clicked LISTEN", el);
+      this.__detectClick(el);
+    });
+    this.DOM_ID_INCREMENTER++;
+  }
+
+  __subscribeToElementChange() {
+    let _el:Element = null;
+    this.studioService.elementChangeNotify().subscribe(element => {
+      console.log('this element has changed from right sidebar', element);
+      _el = this.element.nativeElement.querySelector(`#${element.id}`);
+      console.warn('element being changed :: ', _el);
+      for (const _attr of element.attributes) {
+        _el.setAttribute(_attr.name, _attr.value);
+      }
+      if(_el.hasChildNodes) _el.firstChild.nodeValue = element.children[0];
+
+
+    }, error => {
+      console.error('element change error!', error);
+    })
+  }
+  __removeElementSelected() {
+    let _el:Element = null;
+    this.studioService.elementSelectedNotify().subscribe(element => {
+      console.log('this element has been selected from right sidebar', element);
+      _el = this.element.nativeElement.querySelector(`#${element.id}`);
+      this.element.nativeElement.removeChild(_el);
+      console.warn('element being removed :: ', _el);
+      this.DOM_ID_INCREMENTER--;
+
+
+    }, error => {
+      console.error('element delete error!', error);
+    })
+  }
+
+  __detectClick(element: Element) {
+    const _el = this.convertToUiElement(element);
+    console.log("helloooooo", _el);
+
+   this.studioService.notifyOfElementClicked(_el);
+  }
+
+  convertToUiElement(el: Element): UiElement {
+    const _uiElement: UiElement = {
+      id: el.getAttribute("id"),
+      classes: el.getAttribute("class").split(" "),
+      attributes: el
+        .getAttributeNames()
+        .filter(attr => attr !== "class")
+        .map(attr => {
+          return {
+            name: attr,
+            value: el.getAttribute(attr)
+          };
+        }),
+      children: el.hasChildNodes? [el.firstChild.nodeValue] : []
+    };
+
+    return _uiElement;
   }
 
 
-
-  drop(event: CdkDragDrop<Element[]>) {
-    console.log("Center column",event.item.data);
-    this.studioService.onTalkDrop(event);
-}
-
+  /** ENF OF PR */
 
   createCopy(origin) {
     return JSON.parse(JSON.stringify(origin));
   }
 
-   /* resetList() {
-      this.defaultAnswers = [];
-      setTimeout(() => {
-        this.defaultAnswers = this.defaultAnswersOrigin.slice();
-      }, 0);
-    }
- */
 
-    toggleChild() {
-      this.studioService.setRunning(true);
-     // this.showVar = !this.showVar;
+  toggleChild() {
+    console.log("child toggled");
+    this.studioService.setRunning(true);
   }
-
 }
-

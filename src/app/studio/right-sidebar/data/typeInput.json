@@ -1,0 +1,27 @@
+[
+  {
+    "icon":"text",
+    "value":"text"
+  },
+  {
+    "icon":"hash",
+    "value":"number"
+  },
+  {
+    "icon":"eye-off",
+    "value":"password"
+  },
+  {
+    "icon":"at",
+    "value":"email"
+  },
+  {
+    "icon":"search",
+    "value":"search"
+  },
+  {
+    "icon":"phone",
+    "value":"tel"
+  }
+
+]

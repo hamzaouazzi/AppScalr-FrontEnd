@@ -1,0 +1,26 @@
+[
+  {
+    "value":"none"
+  },
+  {
+    "value":"text"
+  },
+  {
+    "value":"tel"
+  },
+  {
+    "value":"url"
+  },
+  {
+    "value":"email"
+  },
+  {
+    "value":"numeric"
+  },
+  {
+    "value":"decimal"
+  },
+  {
+    "value":"search"
+  }
+]

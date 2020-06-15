@@ -10,4 +10,10 @@ export class StatusCardComponent {
   @Input() title: string;
   @Input() type: string;
   @Input() on = true;
+
+  flipped = false;
+
+  toggleView() {
+    this.flipped = !this.flipped;
+  }
 }

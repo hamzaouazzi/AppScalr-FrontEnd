@@ -101,6 +101,10 @@
 
   /* End here */
 
+  .redo{
+    background-color: red !important;
+    --background: red;
+  }
 
 .column-basic{
   //position: fixed;
@@ -146,30 +150,29 @@
 
 
 #Divphone{
-
+  top: 0;
   position: absolute;
   width:100%;
   height: 100%;
   display: flex;
   justify-content: center; /* horizontal center */
   //align-items: center;
-  margin-top: 64px;
-  margin-bottom: auto;
-  //margin: 0 auto;
+  //margin-top: 10px;
+
+
 
 
   .frame-container{
     position: relative;
-   margin: 0 auto;
-   // margin-bottom: auto;
-      //margin-top: 30px;
+    margin: 0 auto;
+    top:50px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 22rem;
-    height: 46rem;
+    height: 42rem;
     background-repeat: no-repeat;
-    background-position: 50% 41%;
+    background-position: 50% 50%;
     background-size: 20rem 35rem;
     background-image: url('../../../assets/images/android-device-skin.png') ;
     transform-origin:translate(-50%, -50%);
@@ -180,8 +183,9 @@
       margin-bottom: auto;
       margin-right: auto;
       margin-left: 50px;
-      margin-top: 81px;
+      margin-top: 60px;
       justify-content: stretch;
+      z-index:2;
 
         .device__ios-notch{
           position: absolute;
@@ -198,19 +202,14 @@
 
         .listDrop{
           position: absolute;
-          margin: 0 auto;
+          //margin: 0 auto;
+          margin-top: auto;
+          margin-bottom: 5rem;
           width: 18.6rem;
-          height: 32rem;
+          height: 34rem;
           display: block;
-          border-bottom-left-radius: 27px;
-          border-bottom-right-radius: 27px;
+          border-radius: 27px;
           background: #fff;
-          //transform-origin:0% 0%;
-          /* border-radius: 39px;
-          background-repeat: no-repeat;
-          background-position: 47.5% 44.2%;
-          background-size: 35.3rem 32rem;
-          background-image: url('../../assets/images/phoneContainer.png') ; */
           overflow-x: hidden;
           overflow-y: scroll;
           &::-webkit-scrollbar { width: 0 !important }
@@ -251,17 +250,8 @@
           border: 1px solid #8184ff;
         }
 
-        /* .BottomLine{
-          border: 2.8px solid rgb(190, 189, 189);
-          border-radius: 5px;
-          width: 90px;
-          margin-top: 29rem;
-
-        } */
 
   }
-
-  /* toggle button*/
 
 
 }
@@ -269,20 +259,19 @@
 
 .switch-field {
   position: absolute;
-  //margin: 0 auto;
-  margin-bottom: 15px;
-  margin-top: auto;
+  margin: 0 auto;
   width:100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 10px;
   overflow: hidden;
 
 
-  .zoom-container{
-     margin-right: 20px;
-     margin-bottom: 7px;
+  .zoom-container,.switch-device{
+    position: relative;
+    margin: 0 auto;
+
   }
 
 }
@@ -935,15 +924,14 @@
                 font-weight: 600;
                 color:#525050;
               }
-              .element-side{
-                flex-grow: 1;
-              }
-              .element-side .input-element {
+
+          .element-side  {
+            flex-grow: 1;
             display: block;
             height: 44px;
             width: 100%;
             border-radius: 4px;
-            border: 1px solid #e0dede;
+            border: 1px solid #b8b3b3;
             padding:10px;
             box-sizing:border-box;
             color:#8d97ad;
@@ -1223,5 +1211,3 @@
           }
 
           /* finish here*/
-
-

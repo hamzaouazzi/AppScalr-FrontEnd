@@ -8,6 +8,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { IonicModule } from '@ionic/angular';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ProfileModule } from './edit-profile/profile.module';
+
 
 
 @NgModule({
@@ -16,10 +19,11 @@ import { IonicModule } from '@ionic/angular';
     ThemeModule,
     NbMenuModule,
     DashboardModule,
+    ProfileModule,
     NbIconModule,
     NbEvaIconsModule,
     MiscellaneousModule,
-    IonicModule
+    IonicModule,
   ],
   declarations: [
     PagesComponent,
