@@ -42,6 +42,7 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
   @ViewChild("zoomin", { static: false }) zoomin;
   @ViewChild("zoomout", { static: false }) zoomout;
   @ViewChild(PropertyPageComponent) page: PropertyPageComponent;
+  @ViewChild("reorder", { static: false }) reorderGroup;
   @Input() categories: UiCategory[];
   @Input() elements: UiElement[];
   @Input() id: string;
@@ -204,6 +205,7 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
    DOM_ID_INCREMENTER = 0;
 
   drop(event: CdkDragDrop<Element[]>) {
+
     const currentElement: UiElement = event.item.data;
     console.log("how u do :::: ", currentElement);
     const el = this.renderer.createElement(currentElement.type);
@@ -231,7 +233,6 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
    // const br = this.renderer.createElement("br");
     //this.renderer.appendChild(this.element.nativeElement, br);
     this.renderer.setAttribute(el, "id", currentElement.id + this.DOM_ID_INCREMENTER );
-    this.renderer.setAttribute(el, "draggable" ,"true");
     console.log("created :::", el);
     this.renderer.appendChild(this.element.nativeElement, el);
     this.renderer.listen(el, "click", evt => {
@@ -241,15 +242,22 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
     this.DOM_ID_INCREMENTER++;
   }
 
+
   __subscribeToElementChange() {
     let _el:Element = null;
     this.studioService.elementChangeNotify().subscribe(element => {
       console.log('this element has changed from right sidebar', element);
       _el = this.element.nativeElement.querySelector(`#${element.id}`);
       console.warn('element being changed :: ', _el);
+      _el.setAttributeNS(null,"cdkDrag","");
+
       for (const _attr of element.attributes) {
         _el.setAttribute(_attr.name, _attr.value);
       }
+      for (const _class of element.classes) {
+        _el.className=_class;
+      }
+
       if(_el.hasChildNodes) _el.firstChild.nodeValue = element.children[0];
 
 
@@ -310,4 +318,5 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
     console.log("child toggled");
     this.studioService.setRunning(true);
   }
+
 }

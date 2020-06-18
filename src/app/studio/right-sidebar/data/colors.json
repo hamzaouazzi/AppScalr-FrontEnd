@@ -33,15 +33,10 @@
   {
     "id": 7,
     "icon":"basic",
-    "value": "light"
-  },
-  {
-    "id": 8,
-    "icon":"basic",
     "value": "medium"
   },
   {
-    "id": 9,
+    "id": 8,
     "icon":"",
     "value": "dark"
   }

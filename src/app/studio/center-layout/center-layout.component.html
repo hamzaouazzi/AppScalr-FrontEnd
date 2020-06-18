@@ -44,22 +44,18 @@
               </svg>
             </div>
 
-            <div class="listDrop ion-padding" cdkDropList #listDrop
-                id="answersList"
-                [cdkDropListData]="elements"
-                [cdkDropListConnectedTo]="['uicategoriesList']"
-                (cdkDropListDropped)="drop($event)"
-                 >
+
+                <div  class="listDrop ion-padding" cdkDropList #listDrop
+                      id="answersList"
+                      [cdkDropListData]="elements"
+                      [cdkDropListConnectedTo]="['uicategoriesList']"
+                      (cdkDropListDropped)="drop($event)"
+                      >
 
 
 
 
-
-
-
-
-              </div>
-
+                 </div>
 
           </div>
 

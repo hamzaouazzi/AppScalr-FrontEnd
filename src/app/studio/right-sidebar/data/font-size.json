@@ -1,0 +1,14 @@
+[
+  {
+    "name":"small",
+    "value":"font-size:small;"
+  },
+  {
+    "name":"medium",
+    "value":"font-size:large;"
+  },
+  {
+    "name":"large",
+    "value":"font-size:x-large;"
+  }
+]

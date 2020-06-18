@@ -7,13 +7,13 @@
    <div class="component-properties">
 
 
-    <div  class="title">
+    <div *ngIf="element && showMe" class="title">
       <span >
         <a  class="breadcrumb-left">Properties</a>
       </span>
     </div>
 
-    <p *ngIf="!element" style="margin-top:2rem;font-size: 1.2rem;font-weight: bold;color: #292824;">No element selected !</p>
+   <!--  <p *ngIf="!element" style="margin-top:2rem;font-size: 1.2rem;font-weight: bold;color: #292824;">No element selected !</p> -->
 
    <div  *ngIf="element && showMe" class="properties-form1" #attributes>
 
@@ -27,11 +27,7 @@
              <nb-option  *ngFor="let c of colorsArray" [value]="c.value"  ><span><nb-icon icon="brush"  [status]="c.icon"></nb-icon></span>{{c.value}}</nb-option>
            </nb-select>
          </div>
-         <div *ngIf="(attr.name=='class')">
-          <label >{{attr.name}}</label>
-           <input  type="text" nbInput fieldSize="small" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
 
-         </div>
          <div  *ngIf="(attr.name=='fill')">
           <label>{{attr.name}}</label>
 
@@ -117,12 +113,24 @@
             <input  type="number" nbInput fieldSize="small" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
            </div>
 
+           <!-- <div *ngIf="(attr.name=='style')">
+            <textarea nbInput rows="5"  placeholder="styles" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)"></textarea>
+           </div> -->
+
 
    </div>
 
-   <div *ngIf="element.children && element.children.length>0"  class="form-group">
+   <div *ngIf="element.children && element.children.length >0"  class="form-group">
     <label>Text</label>
     <input type="text" nbInput fieldSize="small"  status="primary" [value]="element.children[0]" [ngModel]="element.children[0]" (ngModelChange)="changeText($event)" >
+  </div>
+  <h6>Classes</h6>
+  <div  *ngFor="let class of element.classes" class="form-group">
+
+
+      <input type="text" nbInput fieldSize="small"  status="primary" [value]="class" [ngModel]="class" (ngModelChange)="changeClass($event,class)"  >
+
+
   </div>
 
   <div  class="btn-delete" >

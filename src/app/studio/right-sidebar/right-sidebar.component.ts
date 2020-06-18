@@ -11,6 +11,8 @@ import label from './data/label.json';
 import size from './data/size.json';
 import typeinput from './data/typeInput.json';
 import wrap from './data/wrap.json'
+import fontsize from './data/font-size.json';
+import align from './data/align.json';
 
 @Component({
   selector: 'ng-right-sidebar',
@@ -30,6 +32,8 @@ export class RightSidebarComponent implements OnInit {
   expandArray =expand;
   fillArray=fill
   sizeArray=size;
+  alignArray=align;
+  fontsizeArray=fontsize;
   labelArray=label;
   wrapArray=wrap;
   inputmodeArray=inputmode;
@@ -67,6 +71,15 @@ export class RightSidebarComponent implements OnInit {
     console.warn('ELEMENT AFTER CHANGE ::' , this.element);
 
     // this.studioService.notifyOfElementChanged()
+    this.studioService.notifyOfElementChanged(this.element);
+  }
+  changeClass($event,cl) {
+    this.element.classes[this.element.classes.indexOf(this.element.classes.find(c=>c=== cl))] = $event;
+    //this.element.classes[this.element.classes.indexOf(cl)]=$event;
+
+    console.log('class ::::' ,cl);
+    console.log('element class ::::' , $event);
+    console.warn('ELEMENT AFTER CHANGE ::' , this.element);
     this.studioService.notifyOfElementChanged(this.element);
   }
 

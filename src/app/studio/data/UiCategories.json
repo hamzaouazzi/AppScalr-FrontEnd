@@ -8,12 +8,15 @@
         "name":"Text",
         "icon":"../../assets/images/components/html.svg",
         "type":"ion-text",
-        "classes":["d-block", "ion-margin-auto","ion-text-start"],
+        "classes":["d-block","ion-text-start" ,"ion-margin-auto"],
         "attributes": [
           {
           "name": "color",
-          "value": "primary",
-          "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+          "value": "primary"
+          },
+          {
+            "name":"style",
+            "value":""
           }
       ],
         "children":["Text here"]
@@ -23,11 +26,12 @@
         "name":"Header",
         "icon":"../../assets/images/components/popover.svg",
         "type":"h1",
-        "classes":["d-block", "ion-margin-auto"],
-        "attributes": [{
-          "name": "value",
-          "value": "default value"
-        }
+        "classes":["ion-text-start","ion-margin-auto"],
+        "attributes": [
+          {
+            "name":"style",
+            "value":""
+          }
         ],
         "children":["Header"]
 
@@ -50,6 +54,10 @@
           {
             "name": "readonly",
             "value": "false"
+          },
+          {
+            "name":"style",
+            "value":""
           }
       ]
       },
@@ -66,8 +74,11 @@
           },
           {
           "name": "color",
-          "value": "dark",
-          "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+          "value": "dark"
+          },
+          {
+            "name":"style",
+            "value":""
           }
       ],
         "children":["Label here"]
@@ -77,13 +88,13 @@
         "name":"Button",
         "icon":"../../assets/images/components/button.svg",
         "type":"ion-button",
-        "classes":["class1", "cdk-drag"],
+        "classes":["ion-margin-auto", "ion-padding-auto"],
         "children": ["Change me"],
         "attributes": [
           {
           "name": "color",
-          "value": "primary",
-          "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+          "value": "primary"
+
         },
         {
           "name": "expand",
@@ -97,6 +108,7 @@
           "name": "size",
           "value": "default"
         }
+
       ]
 
       },
@@ -113,8 +125,8 @@
           },
           {
             "name": "color",
-            "value": "danger",
-            "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+            "value": "danger"
+
           },
           {
             "name": "checked",
@@ -127,6 +139,10 @@
           {
             "name": "indeterminate",
             "value": "false"
+          },
+          {
+            "name":"style",
+            "value":""
           }
       ]
       },
@@ -144,6 +160,10 @@
           {
             "name": "placeholder",
             "value": "Select One"
+          },
+          {
+            "name":"style",
+            "value":""
           }
       ],
       "children": [
@@ -186,8 +206,8 @@
 
         {
           "name": "color",
-          "value": "primary",
-          "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+          "value": "primary"
+
         },
         {
           "name": "debounce",
@@ -221,6 +241,10 @@
         {
           "name": "wrap",
           "value": "hard"
+        },
+        {
+          "name":"style",
+          "value":""
         }
       ]
       },
@@ -233,12 +257,16 @@
         "attributes": [
           {
             "name": "color",
-            "value": "danger",
-            "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+            "value": "danger"
+
             },
           {
             "name": "value",
             "value": "on"
+          },
+          {
+            "name":"style",
+            "value":""
           }
 
       ]
@@ -260,8 +288,8 @@
         "attributes": [
           {
             "name": "color",
-            "value": "warning",
-            "options":["primary","secondary","tertiary","success","warning","danger","light","medium","dark"]
+            "value": "warning"
+
             },
           {
             "name": "min",
@@ -274,6 +302,10 @@
             {
               "name": "step",
               "value": "2"
+            },
+            {
+              "name":"style",
+              "value":""
             }
       ]
       }

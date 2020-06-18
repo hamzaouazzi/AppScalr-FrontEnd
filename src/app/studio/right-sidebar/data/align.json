@@ -1,0 +1,14 @@
+[
+  {
+    "name":"left",
+    "value":"ion-text-start"
+  },
+  {
+    "name":"center",
+    "value":"ion-text-center"
+  },
+  {
+    "name":"right",
+    "value":"ion-text-end"
+  }
+]

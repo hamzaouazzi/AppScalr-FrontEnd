@@ -6,9 +6,8 @@ export interface UiElement {
   classes?: string[]; // ['class1', 'class2']
   children?: string[];
   attributes: {
-    name: string; // name placeholder
+    name: string;
     value: string;
-    options?:string[];
   }[];
 
 }
