@@ -140,14 +140,12 @@
     <label>Text</label>
     <input type="text" nbInput fieldSize="small"  status="primary" [value]="element.children[0]" [ngModel]="element.children[0]" (ngModelChange)="changeText($event)" >
   </div>
-  <h6>Classes</h6>
+  <!-- <h6>Classes</h6>
   <div  *ngFor="let class of element.classes" class="form-group">
-
 
       <input type="text" nbInput fieldSize="small"  status="primary" [value]="class" [ngModel]="class" (ngModelChange)="changeClass($event,class)"  >
 
-
-  </div>
+  </div> -->
 
   <div  class="btn-delete" >
     <button  nbButton hero fullWidth status="danger" (click)="remove($event,element)" >
