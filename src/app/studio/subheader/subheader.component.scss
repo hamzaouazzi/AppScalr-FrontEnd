@@ -8,7 +8,13 @@
 
 @include nb-install-component() {
 
+  ::ng-deep ng-preview {
 
+    background: #1b1b1b!important;
+     opacity: 30;
+     filter: Alpha(Opacity=30);
+
+  }
 
   display: flex;
   justify-content: space-between;
@@ -26,7 +32,7 @@
     margin: auto;
   }
 
-  
+
 
 
 

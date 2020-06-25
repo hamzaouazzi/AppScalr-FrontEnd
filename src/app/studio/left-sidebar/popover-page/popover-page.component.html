@@ -2,31 +2,52 @@
 <nb-card class="popover-card" accent="info">
 
   <nb-card-body>
-    <div class="list-pages">
+    <form>
+      <div class="form-group row">
+        <label for="inputTitle" class="label col-sm-3 col-form-label" >Title</label>
+        <div class="col-sm-9">
+          <input type="text" nbInput fullWidth id="inputTitle" placeholder="Page Title">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputRouting" class="label col-sm-3 col-form-label" >R-Url</label>
+        <div class="col-sm-9">
+          <input type="text" nbInput fullWidth id="inputRouting" placeholder="/URL">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 label" >Template</label>
+        <div class="col-sm-9">
+          <div class="list-pages">
 
+            <div>
+              <nb-card class="page1">
+              </nb-card>
+              <p>Blank</p>
+            </div>
           <div>
-            <nb-card class="page1">
+              <nb-card class="page2">
 
-            </nb-card>
-            <p>Blank</p>
-          </div>
+              </nb-card>
+              <p>Login</p>
+            </div>
+            <div>
+              <nb-card class="page3">
 
+              </nb-card>
+              <p>SignUp</p>
+            </div>
 
-        <div>
-            <nb-card class="page2">
+      </div>
+        </div>
+      </div>
+      <div class="form-group row" style="float:right;margin-right: 20px;">
+        <div class="offset-sm-3 col-sm-9" >
+          <button type="submit" nbButton status="primary">create</button>
+        </div>
+      </div>
+    </form>
 
-            </nb-card>
-            <p>Login</p>
-          </div>
-
-          <div>
-            <nb-card class="page3">
-
-            </nb-card>
-            <p>SignUp</p>
-          </div>
-
-    </div>
 
 
 

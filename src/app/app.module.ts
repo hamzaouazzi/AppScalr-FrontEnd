@@ -41,7 +41,6 @@ import { UserData } from './core/data/users';
 import { UserService } from './core/mock/users.service';
 import {AuthGuard} from './auth-guard.service';
 import {NbAuthService} from './auth/services/auth.service';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { OAuth2Module } from './oauth2/oauth2.module';
 import { StudioComponent } from './studio/studio.component';
 import { StudioModule } from './studio/studio.module';
@@ -85,7 +84,6 @@ const PIPES = [
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
   ],
   imports: [
     CommonModule,

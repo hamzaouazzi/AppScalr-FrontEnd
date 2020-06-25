@@ -2,7 +2,7 @@
 <div class="component-properties">
 
 
-<div class="title">
+<!-- <div class="title">
 
   <span >
     <a  class="breadcrumb-left">Page</a>
@@ -10,7 +10,7 @@
 
 
 </div>
-
+ -->
 <div class="properties-form1">
   <div class="form-group">
 
@@ -27,12 +27,12 @@
   </div>
 
   <div class="page-custome">
-    <div class="form-title" ><span >Background</span></div>
+    <!-- <div class="form-title" ><span >Background</span></div> -->
 
     <div class="form-group" >
 
       <label>Color</label>
-      <input  style="border-radius: 7px;height: 30px;"
+      <input  style="border-radius: 7px;height: 30px;border:1px solid #ccc;"
                [style.background]="color1" [(colorPicker)]="color1" [cpPosition]="'bottom'"
                [cpWidth]="'150px'" [cpHeight]="'auto'"
                             (colorPickerOpen)="onEventLog('colorPickerOpen', $event)"
@@ -41,13 +41,11 @@
                             (cpSliderDragStart)="onEventLog('cpSliderDragStart', $event)"
                             (cpSliderDragEnd)="onEventLog('cpSliderDragFinished',$event)"/>
 
+         <!--  <button class="image-upload" nbButton hero  fullWidth status="info">Upload Image...</button>
+          <button class="btn-submit" nbButton hero   status="success" (click)="sendProperties()">Submit</button> -->
+          <button class="page-delete" nbButton hero fullWidth  status="danger">
+            <nb-icon icon="trash-outline"></nb-icon>Remove </button>
 
-
-          <button class="image-upload" nbButton hero  fullWidth status="info">Upload Image...</button>
-          <button class="btn-submit" nbButton hero   status="success" (click)="sendProperties()">Submit</button>
-
-          <button class="page-delete" nbButton outline fullWidth  status="danger">
-            <nb-icon icon="trash-outline"></nb-icon>Delete page</button>
   </div>
 
 

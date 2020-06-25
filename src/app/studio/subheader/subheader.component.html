@@ -1,22 +1,12 @@
 
 
-<!-- <div style="justify-content: space-between;display: flex;">
-  <span style="float: left;padding-right: 1.2rem;padding-top: 0.5rem;font-weight:bold;color:#0547d4;">Device</span>
-
-  <nb-select placeholder="Iphone" status="info" >
-    <nb-option value="1">Android</nb-option>
-    <nb-option value="2">Iphone</nb-option>
-
-  </nb-select>
-</div>
- -->
 
 
 <div class="dropDown-Icons" >
   <nb-actions size="small">
 
     <nb-action class="control-item" icon="cube-outline" nbTooltip="Build" nbTooltipPlacement="bottom" ></nb-action>
-    <nb-action class="control-item" icon="eye-outline" nbTooltip="Preview" nbTooltipPlacement="bottom" ></nb-action>
+    <nb-action class="control-item" icon="eye-outline" nbTooltip="Preview" nbTooltipPlacement="bottom" (click)="openEdit()"></nb-action>
     <nb-action class="control-item" icon="brush-outline" nbTooltip="Theming & SCSS" nbTooltipPlacement="bottom" ></nb-action>
     <nb-action class="control-item" icon="cloud-download-outline" nbTooltip="Export Your App" nbTooltipPlacement="bottom" ></nb-action>
     <nb-action class="control-item" icon="share-outline" nbTooltip="Share" nbTooltipPlacement="bottom" ></nb-action>
@@ -25,11 +15,3 @@
 
 </div>
 
-<!-- <div class="zoom-container">
-  <nb-select id="sel" placeholder="Zoom" hero status="info" (change)="handleChange()">
-    <nb-option value="1">100%</nb-option>
-    <nb-option value="0.9">90%</nb-option>
-    <nb-option value="0.75">75%</nb-option>
-    <nb-option value="0.5">50%</nb-option>
-  </nb-select>
-</div> -->

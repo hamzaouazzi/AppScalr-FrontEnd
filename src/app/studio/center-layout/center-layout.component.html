@@ -1,22 +1,9 @@
 
- <!-- <div>
-              <input  name="ColorPicker" style="border-radius: 7px;border:1px solid #ccc;height: 30px;" #ColorPicker
-              [style.background]="color1" [(colorPicker)]="color1" [cpPosition]="'bottom'"
-              [cpWidth]="'150px'" [cpHeight]="'auto'"
-              (colorPickerOpen)="onEventLog('colorPickerOpen', $event)"
-              (colorPickerClose)="onEventLog('colorPickerClose', $event)"
-              (cpInputChange)="onEventLog('cpInputChange', $event)"
-              (cpSliderDragStart)="onEventLog('cpSliderDragStart', $event)"
-              (cpSliderDragEnd)="changeColor($event)"
-                          />
-            </div> -->
-
 
           <div id="Divphone" >
 
-
-
             <div class="switch-field">
+
 
             <div class="zoom-container">
               <nb-select  #sel  hero status="primary" shape="round" (ngModelChange)="handleChange()" [(ngModel)]="selectedValue">
@@ -24,6 +11,12 @@
                 <nb-option *ngFor="let a of zoomArray" [value]="a.id" >{{a.name}}</nb-option>
               </nb-select>
             </div>
+            <div>
+              <button nbButton shape="round" size="small"  ghost status="primary" nbTooltip="Preview" nbTooltipPlacement="bottom">
+                <ion-icon name="eye" (click)="open2(dialog)" style="font-size: 2rem;"></ion-icon>
+              </button>
+            </div>
+
             <div class="switch-device">
             <input type="radio" id="switch_left" name="switch_2" value="ios" checked (click)="replace1()"/>
             <label for="switch_left"><ion-icon class="icon" name="logo-apple"></ion-icon></label>
@@ -44,16 +37,17 @@
               </svg>
             </div>
 
+            <div class="header-list">
+              <span>page</span>
+
+            </div>
 
                 <div  class="listDrop ion-padding" cdkDropList #listDrop
                       id="answersList"
                       [cdkDropListData]="elements"
                       [cdkDropListConnectedTo]="['uicategoriesList']"
                       (cdkDropListDropped)="drop($event)"
-                      >
-
-
-
+                      (click)="toggleChild()">
 
                  </div>
 
@@ -62,3 +56,64 @@
 
 
       </div>
+
+      <ng-template #dialog let-data let-ref="dialogRef">
+        <nb-card class="holder">
+          <div class="animated-title">
+            <p>a</p>
+            <p>p</p>
+            <p>p</p>
+            <p>s</p>
+            <p>c</p>
+            <p>a</p>
+            <p>l</p>
+            <p>r</p>
+
+          </div>
+
+          <div class="close-preview">
+            <ion-icon name="close" (click)="ref.close()"></ion-icon>
+          </div>
+
+          <div id="inner_wrap">
+
+            <!--The Main Thing-->
+          <div id="wrapper" style="perspective: 1300px;" #wrapper>
+          <div class="phone view_2" id="phone_1" style="width: 360px; height: 640px;" #phone_1>
+          <iframe  id="frame_1"  allowtransparency="true" style="background: #FFFFFF;"   #frame_1></iframe>
+          </div>
+          </div>
+
+
+             <!--  <div class="btn btn-show" (click)="onShow()">
+                <span><ion-icon name="play-outline"></ion-icon></span>
+              </div>  -->
+
+
+          <div id="phone-controls">
+
+            <div class="switch-device">
+              <button nbButton status="info" shape="round" size="small" (click)="scalePhone($event,1)">
+                <ion-icon class="icon" name="logo-apple" style="font-size: 1.5rem;"></ion-icon>
+              </button>
+            <button nbButton status="info" shape="round" size="small" (click)="scalePhone($event,2)">
+              <ion-icon class="icon" name="logo-android" style="font-size: 1.5rem;"></ion-icon>
+            </button>
+            </div>
+          <div id="views" >
+
+
+              <button (click)="onShow()" style="font-weight: bold;">PREVIEW</button>
+          </div>
+
+          <div id="phones" >
+            <button [value]="1" (click)="updateView(1)">Table View</button>
+            <button [value]="2" (click)="updateView(2)">Front View</button>
+
+          </div>
+          </div>
+          </div>
+
+          </nb-card>
+
+      </ng-template>

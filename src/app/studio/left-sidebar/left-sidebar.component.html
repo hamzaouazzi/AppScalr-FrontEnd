@@ -8,19 +8,26 @@
   <div class="btn-group">
     <span id="add-page-dropdown" >
 
-     <button nbButton ghost status="info"><nb-icon icon="plus-square-outline" [nbPopover]="templatePageComponent"></nb-icon>Add Page</button>
+     <button nbButton ghost ><nb-icon icon="plus-square-outline" [nbPopover]="templatePageComponent"></nb-icon>Add Page</button>
     </span>
   </div>
 
 </div>
 
   <div class="content-list-pages">
+    <ul class="list-with-icons">
+      <li>
+        <a href="#">page</a>
+      </li>
 
+      <!-- <div>
+        <a href="#">header</a>
+      </div> -->
+
+    </ul>
 
 
   </div>
-
-
 
 
 
@@ -33,15 +40,9 @@
       <input type="text" nbInput fullWidth status="info"  placeholder="Search a component">
     </nb-form-field> -->
   </div>
-<nb-accordion  class="acc1" multi >
 
-  <nb-accordion-item  *ngFor="let category of categories">
 
-    <nb-accordion-item-header>
-      {{ category.name }}
-    </nb-accordion-item-header>
-
-    <nb-accordion-item-body class="app-components">
+    <div class="app-components" *ngFor="let category of categories" >
 
       <div id="uicategoriesList" class="content scroll-outer" style="height:calc(100% + 10px);"
               cdkDropList
@@ -65,12 +66,7 @@
 
       </div>
 
-    </nb-accordion-item-body>
-
-  </nb-accordion-item>
-
-
-</nb-accordion>
+    </div>
 
 
 </div>

@@ -1,24 +1,40 @@
 
+<div class="header-list-pages">
+
+  <div class="title" >
+    <span>Page properties</span>
+  </div>
 
 
-    <!-- <ng-property-page *ngIf="showMe"></ng-property-page> -->
+</div>
+
+  <div class="content-list-pages">
+
+     <ng-property-page *ngIf="showMe" ></ng-property-page>
+
+  </div>
 
 
-   <div class="component-properties">
 
 
-    <div *ngIf="element && showMe" class="title">
+<div class="list-components">
+  <div class="header-list-components">
+    <span >Component properties</span>
+
+  </div>
+
+
+  <div class="component-properties">
+
+    <!-- <div *ngIf="element && showMe" class="title">
       <span >
         <a  class="breadcrumb-left">Properties</a>
       </span>
-    </div>
-
-   <!--  <p *ngIf="!element" style="margin-top:2rem;font-size: 1.2rem;font-weight: bold;color: #292824;">No element selected !</p> -->
+    </div> -->
 
    <div  *ngIf="element && showMe" class="properties-form1" #attributes>
 
        <div *ngFor="let attr of element.attributes" class="form-group">
-
 
          <div *ngIf="(attr.name=='color')">
           <label >{{attr.name}}</label>
@@ -45,7 +61,7 @@
          <div *ngIf="(attr.name=='expand')">
           <label >{{attr.name}}</label>
 
-           <nb-select [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" placeholder="default" class="color"  status="primary">
+           <nb-select [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)"  class="color"  status="primary">
              <nb-option  *ngFor="let e of expandArray" [value]="e.value"  >{{e.value}}</nb-option>
            </nb-select>
          </div>
@@ -134,10 +150,17 @@
   </div>
 
   <div  class="btn-delete" >
-    <button  nbButton hero status="danger" (click)="remove($event,element)" >
-    <nb-icon icon="trash-outline"></nb-icon>Remove </button>
+    <button  nbButton hero fullWidth status="danger" (click)="remove($event,element)" >
+    <nb-icon icon="trash-outline"></nb-icon>Remove  </button>
   </div>
 
   </div>
 
 </div>
+
+
+
+</div>
+
+
+

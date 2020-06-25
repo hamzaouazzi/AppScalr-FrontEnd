@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { NbDialogService, NbWindowService } from '@nebular/theme';
+import { PreviewComponent } from '../../studio/subheader/preview/preview.component';
+import { StudioService } from '../services/studio.service';
 
 @Component({
   selector: 'ng-subheader',
@@ -6,55 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subheader.component.scss'],
 })
 export class SubheaderComponent implements OnInit {
+  element:ElementRef=null;
 
-  constructor() { }
+  constructor( private dialogService: NbDialogService, private windowService: NbWindowService,private studioService:StudioService) { }
 
-  ngOnInit(): void {
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngAfterContentChecked() {
+
+  }
+  ngOnInit() {
+   /*  this.studioService.domSavedNotify().subscribe(dom=> {
+      this.element = dom;
+      console.log('dommmmmmmmmmmm subheader', this.element);
+      this.studioService.notifyOfDomSaved(this.element);
+    }, error => {
+      console.error('error getting dom saved')
+    }) */
   }
 
-  /* zoomArr = [0.5, 0.75, 0.9, 1];
+  openEdit() {
+    this.open(false);
+  }
 
-     element = document.querySelector<HTMLInputElement>('.listDrop');
-
-    value = this.element.getBoundingClientRect().width / this.element.offsetWidth;
-
-
-     indexofArr = 4;
-
-    handleChange = () => {
-
-      let  val: string|number = document.querySelector<HTMLInputElement>('#sel').value;
-      val = Number(val);
-      console.log('handle change selected value ', val);
-      this.indexofArr = this.zoomArr.indexOf(val);
-      console.log('Handle changes', this.indexofArr);
-      this.element.style['transform'] = `scale(${val})`;
-    }
-
-
-
-    zmin = document.querySelector<HTMLInputElement>('.zoomin').addEventListener('click', () => {
-      console.log('value of index zoomin is', this.indexofArr);
-      if (this.indexofArr < this.zoomArr.length - 1 ) {
-        this.indexofArr += 1;
-        this.value = this.zoomArr[this.indexofArr];
-        let res1: string|number = document.querySelector<HTMLInputElement>('#sel').value ;
-        res1 = this.value;
-        // console.log('current value is',value)
-        // console.log('scale value is',value)
-        this.element.style['transform'] = `scale(${this.value})`;
-      }
-    });
-
-      zout = document.querySelector('.zoomout').addEventListener('click', ( ) => {
-      console.log('value of index  zoom out is', this.indexofArr);
-        if (this.indexofArr > 0) {
-          this.indexofArr -= 1;
-          this.value = this.zoomArr[this.indexofArr];
-          let res2: string|number = document.querySelector<HTMLInputElement>('#sel').value ;
-          res2 = this.value;
-        // console.log('scale value is',value)
-        this.element.style['transform'] = `scale(${this.value})`;
-        }
-      }); */
+  protected open(closeOnBackdropClick: boolean) {
+    this.dialogService.open(PreviewComponent, { closeOnBackdropClick });
+  }
 }

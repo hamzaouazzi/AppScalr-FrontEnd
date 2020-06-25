@@ -98,7 +98,7 @@
         },
         {
           "name": "expand",
-          "value": ""
+          "value": "inline"
         },
         {
           "name": "fill",
@@ -270,15 +270,7 @@
           }
 
       ]
-      }
-
-    ]
-  },
-  {
-    "id":2,
-    "name":"Global",
-    "elements":[
-
+      },
       {
         "id":"JJ",
         "name":"Range",

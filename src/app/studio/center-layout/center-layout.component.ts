@@ -7,7 +7,8 @@ import {
   ElementRef,
   Input,
   Output,
-  Renderer2
+  Renderer2,
+  TemplateRef,
 } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { ColorPickerService, Cmyk } from "ngx-color-picker";
@@ -25,8 +26,10 @@ import { D3Service, D3, Selection } from "d3-ng2-service";
 import { UiCategory } from "../models/UiCategory.model";
 import { UiElement } from "../models/UiElement.model";
 import { StudioService } from "../services/studio.service";
+import { NbDialogService, NbWindowService } from '@nebular/theme';
 
-
+let width=0;
+let height=0;
 @Component({
   selector: "ng-center-layout",
   templateUrl: "./center-layout.component.html",
@@ -41,8 +44,16 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
   @ViewChild("android", { static: false }) androidhead;
   @ViewChild("zoomin", { static: false }) zoomin;
   @ViewChild("zoomout", { static: false }) zoomout;
+  @ViewChild("contentpage", { static: false }) contentpage: ElementRef;
   @ViewChild(PropertyPageComponent) page: PropertyPageComponent;
-  @ViewChild("reorder", { static: false }) reorderGroup;
+  @ViewChild("phone_1", { static: false }) phone:ElementRef;
+  @ViewChild("frame_1", { static: false }) ifram:ElementRef;
+  @ViewChild("wrapper", { static: false }) wrapper:ElementRef;
+  @ViewChild("iframePerspective", { static: false }) iframePerspective:ElementRef;
+  @ViewChild("controls", { static: false }) controls:ElementRef;
+  @ViewChild("views", { static: false }) views:ElementRef;
+  @ViewChild("phones", { static: false }) phones:ElementRef;
+  @Input() title: string;
   @Input() categories: UiCategory[];
   @Input() elements: UiElement[];
   @Input() id: string;
@@ -51,6 +62,7 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
   showVar: boolean = false;
 
   answers: UiElement[] = [];
+  html;
 
   public selectedColor: string = "color1";
   public color1: string = "#fff";
@@ -62,28 +74,29 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
   //observe DOM changes
   observer: MutationObserver;
 
+   s = new XMLSerializer();
+   parser = new DOMParser();
+   str;
+   doc;
+
   constructor(
     private screenService: ScreensService,
     private cpService: ColorPickerService,
     private studioService: StudioService,
     private d3Service: D3Service,
     private renderer: Renderer2,
-    private center: ElementRef
+    private dialogService: NbDialogService,
+    private windowService: NbWindowService,
   ) {
     this.d3 = d3Service.getD3(); // <-- obtain the d3 object from the D3 Service
     studioService.myBool$.subscribe((newBool: boolean) => {
       this.showVar = newBool;
     });
-    /* this.screenService.myFunctionCalled$.subscribe(
-      res => console.log("property elm",this.page),
-      err => console.log('MyService error', err)
-  );
- */
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngAfterContentChecked() {
-    console.log("SOMETHING");
+    //console.log("SOMETHING");
   }
   ngAfterViewInit() {
     /* if (this.element) {
@@ -125,7 +138,38 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.__subscribeToElementChange();
     this.__removeElementSelected();
+
   }
+
+
+
+
+  getDom() {
+    console.log("element",this.element.nativeElement);
+    this.str = this.s.serializeToString(this.element.nativeElement);
+    console.log("SERIALISABLE",this.str);
+   // this.studioService.notifyOfDomSaved(this.element.nativeElement);
+
+  }
+
+
+  showDom() {
+
+    const t=this.renderer.createElement("div");
+    t.insertAdjacentHTML('afterbegin', this.str);
+
+      console.log("this str",this.str) ;
+     console.log("Length",t.firstChild.childNodes.length)
+
+    for(let i=0 ; i<t.firstChild.childNodes.length ; i++) {
+
+      console.log("Child"+i,t.firstChild.childNodes[i])
+      this.renderer.appendChild(this.element.nativeElement,t.firstChild.childNodes[i].cloneNode(true));
+
+    }
+    console.log("Dom elements",this.element.nativeElement);
+  }
+
 
   replace1() {
     this.d3.select(this.ioshead.nativeElement).style("opacity", 1);
@@ -254,9 +298,9 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
       for (const _attr of element.attributes) {
         _el.setAttribute(_attr.name, _attr.value);
       }
-      for (const _class of element.classes) {
+     /*  for (const _class of element.classes) {
         _el.className=_class;
-      }
+      } */
 
       if(_el.hasChildNodes) _el.firstChild.nodeValue = element.children[0];
 
@@ -318,5 +362,79 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
     console.log("child toggled");
     this.studioService.setRunning(true);
   }
+
+
+  onShow() {
+    this.html ='<html><head><script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script><script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/></head><body  class="ion-padding">'+this.element.nativeElement.innerHTML+'</body></html>';
+    const frm=this.ifram;
+    frm.nativeElement.src  ='data:text/html,' + encodeURIComponent(this.html);
+    console.log("frame",this.ifram.nativeElement)
+
+  }
+  open2(dialog: TemplateRef<any>) {
+
+    this.dialogService.open(
+      dialog,
+      { context: 'this is some additional data passed to dialog' });
+  }
+
+
+/*View*/
+ updateView(view) {
+  if (view) {
+    this.phone.nativeElement.className = "phone view_" + view;
+  }
+}
+
+/*Controls*/
+ updateIframe() {
+
+  // preload iphone width and height
+  this.phone.nativeElement.style.width = "375px";
+  this.phone.nativeElement.style.height = "667px";
+
+  this.wrapper.nativeElement.style.perspective = (
+    this.iframePerspective.nativeElement.checked ? "1300px" : "none"
+  );
+}
+
+scalePhone(evt,val) {
+  console.log("event",val)
+
+  if(val === 1) {
+    // iphone
+     width = 375;
+     height = 667;
+  }
+
+  if(val === 2) {
+    // samsung
+    width = 400;
+    height = 640;
+  }
+
+  if(val === 3) {
+    // ipad mini
+    width = 760;
+    height = 775;
+  }
+
+    this.phone.nativeElement.style.width = width + "px";
+    this.phone.nativeElement.style.height = height + "px";
+}
+
+afterLoading() {
+  setTimeout(function() {
+      this.phone.className = "phone view_1";
+      setTimeout(function() {
+          // do second thing
+          this.phone.className = "phone view_1 rotate";
+      }, 1000);
+  }, 1000);
+
+}
+
+
+
 
 }

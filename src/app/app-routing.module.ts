@@ -7,7 +7,6 @@ import {NbLogoutComponent} from './auth/components/logout/logout.component';
 import {NbRegisterComponent} from './auth/components/register/register.component';
 import {NbRequestPasswordComponent} from './auth/components/request-password/request-password.component';
 import {NbResetPasswordComponent} from './auth/components/reset-password/reset-password.component';
-import {WelcomeComponent} from './welcome/welcome.component';
 import { AuthGuard } from './auth-guard.service';
 import { OAuth2CallbackComponent } from './oauth2/oauth2-callback.component';
 import { OAuth2LoginComponent } from './oauth2/oauth2-login.component';
@@ -19,10 +18,6 @@ const routes: Routes = [
     // canActivate: [AuthGuard], // here we tell Angular to check the access with our AuthGuard
     loadChildren: () => import('../app/pages/pages.module')
       .then(m => m.PagesModule),
-  },
-  {
-    path: 'welcome',
-    component: WelcomeComponent,
   },
   {
     path: 'studio',

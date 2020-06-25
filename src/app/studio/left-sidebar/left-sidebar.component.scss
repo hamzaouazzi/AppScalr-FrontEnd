@@ -101,13 +101,10 @@
 
 
 .acc1 {
+  position: absolute;
   margin-top: 45px;
-  position: absolute;
+  height: 200px;
   left:0;
-}
-.acc2{
-  position: absolute;
-
 }
 
 .cc{
@@ -169,35 +166,6 @@
     margin-left: auto;
     float: right;
 
-    #add-page-dropdown {
-      cursor: pointer;
-      margin-right: 4px;
-      display: inline-block;
-      position: relative;
-      top: -1px;
-      padding-bottom: 5px;
-
-      div {
-        font-size: 13px;
-        color: #979797;
-        font-weight: 500; }
-
-        div:hover {
-          color: #4f8ef7;
-        }
-           div:hover .icon-new-page {
-            opacity: 1;
-          }
-         div .icon-new-page {
-          opacity: 1;
-          display: inline-block;
-          vertical-align: middle;
-          margin-top: -4px;
-          opacity: .6;
-        }
-      }
-
-
   }
 }
 
@@ -206,8 +174,8 @@
   position: absolute;
   left:0;
   width: 100%;
-  height: 256px;
-  margin-top: 44px;
+  height: 263px;
+  margin-top: 37.7px;
   //border: 1px solid #ccc;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -232,6 +200,81 @@
 	border-radius: 10px;
 
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.list-with-icons {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-with-icons li,
+div {
+  display: block;
+  width: 215px;
+  padding: 8px 8px 8px 35px;
+  margin-left: 18px;
+  margin-top: 13px;
+  margin-bottom: 10px;
+  line-height: 1;
+  font-family: 'Arial';
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #f1f1f1;
+  border-right: 1px dashed #ccc;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+  position: relative;
+  transition: all .35s ease;
+}
+
+div {
+  width: 170px;
+  padding-left: 20px;
+  margin-left: 36px
+}
+
+.list-with-icons li:hover {
+  -webkit-transform: translate(5px);
+  -moz-transform: translate(5px);
+  transform: translate(5px);
+}
+
+.list-with-icons li:before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 34px;
+  margin-top: -18px;
+  border-radius: 100%;
+  background-color: #fff;
+  border-left: 2px dotted #ccc;
+    box-shadow: -1px 0 6px rgba(0, 0, 0, 0.16);
+  position: absolute;
+  top: 50%;
+  left: -15px;
+}
+
+.list-with-icons li:after {
+  display: block;
+  margin-top: -10px;
+  font-family: "Font Awesome 5 Free";
+  content: '\f15b';
+  color:#0069bc;
+  font-style: normal;
+  font-weight:900;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left: -5.5px;
+}
+
+
 
 }
 
@@ -270,8 +313,37 @@
 }
 
 .app-components{
+  position: absolute;
+  width: 100%;
+  height: 450px;
+  margin-top: 42px;
+  padding-bottom: 20px;
+  left: 0;
   display: flex;
   flex-wrap: wrap;
+  overflow-x: hidden;
+overflow-y: scroll;
+&::-webkit-scrollbar { width: 0 !important }
+
+&::-webkit-scrollbar-track
+{
+//-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+background-color: #F5F5F5;
+border-radius: 10px;
+}
+
+&::-webkit-scrollbar
+{
+width: 10px;
+background-color: #F5F5F5;
+}
+
+&::-webkit-scrollbar-thumb
+{
+background-color: rgb(221, 220, 220);
+border-radius: 10px;
+
+}
 }
 
 
@@ -283,10 +355,10 @@
   list-style-type: none; }
   .app-components ul li {
     //max-width: 122px;
-    width: 80px;
+    width: 90px;
     height: 100px;
-    margin-left: 0;
-    margin-right: 22px;
+    margin-left: 15px;
+    margin-right: 15px;
     list-style: none;
     list-style-type: none;
     line-height: 96px;
@@ -298,8 +370,8 @@
 
 
       .app-components ul li  .component-icon {
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
         display: block;
         margin: 22px auto 0;
         position: relative; }

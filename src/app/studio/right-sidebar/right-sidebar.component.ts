@@ -25,6 +25,7 @@ export class RightSidebarComponent implements OnInit {
   @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
   @ViewChild('attributes') private ElementAttribute: ElementRef;
   element: UiElement = null;
+  page:ElementRef=null;
   components = [];
   draggableComponent1 = PropertyPageComponent;
 

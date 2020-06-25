@@ -1,4 +1,4 @@
-import { Injectable, Input } from "@angular/core";
+import { Injectable, Input, ElementRef } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Subject, Observable } from "rxjs";
 import { UiElement } from "../models/UiElement.model";
@@ -95,7 +95,12 @@ export class StudioService {
   elementChangedNotifier$ = new Subject<UiElement>();
   elementSelectedNotifier$ = new Subject<UiElement>();
 
+  domSavedNotifier$ = new Subject<ElementRef>();
 
+
+  domSavedNotify() {
+    return this.domSavedNotifier$.asObservable();
+  }
 
   elementClickedNotify() {
      return this.elementClickedNotifier$.asObservable();
@@ -106,6 +111,12 @@ export class StudioService {
    }
    elementSelectedNotify() {
     return this.elementSelectedNotifier$.asObservable();
+   }
+
+   notifyOfDomSaved(dom:ElementRef) {
+     console.log('Dom saved',dom);
+     this.domSavedNotifier$.next(dom);
+
    }
 
    notifyOfElementClicked(el: UiElement) {

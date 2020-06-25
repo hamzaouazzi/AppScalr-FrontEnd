@@ -38,11 +38,10 @@ import { PropertyPageComponent } from './right-sidebar/property-page/property-pa
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
 import { CenterLayoutComponent } from './center-layout/center-layout.component';
-import { HeaderComponent } from './header/header.component';
-import { SubheaderComponent } from './subheader/subheader.component';
 import { D3Service } from 'd3-ng2-service';
 import { IonicModule } from '@ionic/angular';
 import { NgPopoverPageComponent } from './left-sidebar/popover-page/popover-page.component';
+import { PreviewComponent } from './subheader/preview/preview.component';
 
 
 const ENTRY_COMPONENTS = [
@@ -98,9 +97,8 @@ const ENTRY_COMPONENTS = [
     LeftSidebarComponent,
     RightSidebarComponent,
     CenterLayoutComponent,
-    HeaderComponent,
-    SubheaderComponent,
     NgPopoverPageComponent,
+    PreviewComponent,
 
   ],
   providers: [D3Service],
