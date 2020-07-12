@@ -15,12 +15,12 @@ import { StudioComponent } from './studio/studio.component';
 const routes: Routes = [
   {
     path: 'pages',
-    // canActivate: [AuthGuard], // here we tell Angular to check the access with our AuthGuard
+    canActivate: [AuthGuard], // here we tell Angular to check the access with our AuthGuard
     loadChildren: () => import('../app/pages/pages.module')
       .then(m => m.PagesModule),
   },
   {
-    path: 'studio',
+    path: 'studio/:id',
     component: StudioComponent,
   },
   {

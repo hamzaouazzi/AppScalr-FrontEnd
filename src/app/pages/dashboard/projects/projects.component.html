@@ -11,59 +11,113 @@
   <div class="title"> <h4>Projects</h4></div>
   <div class="btn"><button nbButton status="success">Success<nb-icon  icon="plus-outline"></nb-icon></button></div>
 </div> -->
-<div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
- <nb-card size="tiny" class="card" (click)="navigate()" >
+<div class="container" >
 
-  <nb-card-body>
+<div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6" *ngFor="let project of projects;let i = index ">
+ <nb-card size="tiny" class="card"  >
+
+  <nb-card-body ng-app="myApp">
     <div class="app-icon">
-      <img src="../../../../assets/images/icon1.png" >
-
+      <img src="{{project?.app_icon_url}}" >
     </div>
-
     <div class="details">
-      
-      <div class="h5">Prj01</div>
+      <div class="h5">{{project?.app_name}}</div>
       <div class="description">
-         <p>Last edited Apr 10,2020</p>
+         <p>Edited:  {{project?.lastmodified}}</p>
       </div>
     </div>
   </nb-card-body>
   <nb-card-footer>
-    
-      <nb-icon  icon="edit-2-outline" pack="eva" (click)="openEdit()"></nb-icon>
-    
-    <a href="#" >
-      <nb-icon icon="share-outline" pack="eva"></nb-icon>
+    <!-- <nb-icon  icon="edit-2-outline" pack="eva" (click)="openEdit(project.app_id)"></nb-icon> -->
+      <nb-icon  icon="edit-2-outline" pack="eva" (click)="openApp(dialog,project.app_id)"></nb-icon>
 
-    </a>
-    <a href="#" >
+      <nb-icon icon="trash-2-outline" pack="eva" (click)="openDelete(dialog2,project.app_id,project.app_name)"></nb-icon>
 
-      <nb-icon icon="copy-outline" pack="eva"></nb-icon>
-    </a>
-    <a href="#" >
-      <nb-icon icon="trash-2-outline" pack="eva"></nb-icon>
-    </a>
+      <nb-icon icon="eye-outline" pack="eva" (click)="navigate(project.app_id)"></nb-icon>
 
   </nb-card-footer>
 </nb-card>
 </div>
 
-<ng-template #contentTemplate let-data>
-  <p>Here is the text provided via config: "{{ data.text }}"</p>
-</ng-template>
 
+</div>
+
+ <ng-template #dialog2 let-data let-ref="dialogRef">
+
+  <nb-card style="width:500px;height:200px;">
+
+    <p style="margin-top:50px;text-align: center;font-weight: bold;font-size:large;">Are you sure to delete : <span style="color: darkblue;">{{this.nameDelete}}</span> </p>
+    <div class="row" style="margin-top:25px;display: flex;justify-content: center; ">
+      <button  nbButton hero  status="basic" (click)="ref.close()">Cancel</button>
+      <button  nbButton  hero  status="danger" style="margin-left: 10px;" (click)="deleteApp();ref.close()">Delete</button>
+    </div>
+  </nb-card>
+
+</ng-template>
+<!--
 <ng-template #disabledEsc>
   Disabled close on escape click.
 </ng-template>
-
+ -->
 <ng-template #dialog let-data let-ref="dialogRef">
-  <nb-card>
-    <nb-card-header>Template Dialog</nb-card-header>
-    <nb-card-body>{{ data }}</nb-card-body>
-    <nb-card-footer>
-      <button nbButton (click)="ref.close()">Close Dialog</button>
-    </nb-card-footer>
+  <nb-card class="col-md-12 col-lg-12 col-xxxl-12" style="width: 660px;">
+    <nb-card-header><h6>Edit Project</h6></nb-card-header>
+    <nb-card-body class="example-items-col">
+
+          <div id="frm" class="row ">
+            <form class="form" (ngSubmit)="onSubmit()">
+
+                <span>
+                  <label for="subject">Project Name:</label>
+                </span>
+                <input nbInput fullWidth fieldSize="medium" shape="semi-round" id="appname"
+                       [(ngModel)]="project.app_name"   name="appname" type="text" >
+
+                <span id="desc">
+                  <label class="text-label" for="text">Description:</label>
+                </span>
+
+              <textarea nbInput fullWidth rows="4" shape="semi-round" id="appdesc"
+                         [(ngModel)]="project.app_desc"   name="appdesc"></textarea>
+
+
+                 <span id="page">
+                  <label for="subject">Pages:</label>
+                </span>
+                <nb-select placeholder="Page 1" shape="semi-round"  fullWidth>
+                  <nb-option *ngFor="let p of pages"  [value]="p.page_id">{{p.title}}</nb-option>
+                </nb-select>
+
+                <!-- <nb-card id="c-template">
+                  <nb-card-body>
+
+
+                  </nb-card-body>
+                </nb-card> -->
+
+              <span id="icon">
+                <label for="subject">Icon url:</label>
+              </span>
+              <input nbInput fullWidth fieldSize="medium" shape="semi-round" id="appicon"
+                     [(ngModel)]="project.app_icon_url"   name="appicon" type="text" >
+
+              <div class="btnsPr" style="float: right;margin-top: 20px;">
+              <button class="b1" nbButton hero shape="semi-round" status="basic" (click)="ref.close()">Cancel</button>
+              <button style="margin-left: 8px;" type="submit" class="b2" shape="semi-round" nbButton hero  status="primary" (click)="onSubmit();ref.close()">Edit</button>
+            </div>
+            </form>
+          </div>
+
+    </nb-card-body>
+    <!-- <nb-card-footer>
+      <div class="btnsPr">
+      <button class="b1" nbButton size="small"  status="basic" (click)="dismiss()">Cancel</button>
+      <button class="b2" nbButton size="small"  status="warning" >Edit</button>
+    </div>
+    </nb-card-footer> -->
+
   </nb-card>
+
 </ng-template>
 
 

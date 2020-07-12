@@ -5,81 +5,110 @@
       <nb-step [label]="labelOne">
         <ng-template #labelOne>Title</ng-template>
         <div id="frm" class="row ">
-          <form class="form">
+          <form class="form"  (ngSubmit)="onFirstSubmit()" #formone="ngForm">
 
               <span>
                 <label for="subject">Project Name:</label>
               </span>
-              <input nbInput fullWidth fieldSize="medium" shape="semi-round" id="subject" type="text" placeholder="project name">
+              <input nbInput fullWidth fieldSize="medium" shape="semi-round" id="appname" required status="primary"
+                     [(ngModel)]="app.appname"   name="appname" type="text" placeholder="project name">
 
               <span id="desc">
                 <label class="text-label" for="text">Description:</label>
               </span>
 
-            <textarea nbInput fullWidth rows="5" shape="semi-round" id="text" placeholder="description"></textarea>
+            <textarea nbInput fullWidth rows="5" shape="semi-round" id="appdesc" required status="primary"
+                       [(ngModel)]="app.appdesc"  name="appdesc" placeholder="description"></textarea>
 
 
           </form>
         </div>
-        <button nbButton disabled nbStepperNext>prev</button>
-        <button nbButton nbStepperNext>next</button>
+        <button  nbButton hero shape="semi-round" status="basic" (click)="dismiss()">Cancel</button>
+        <button nbButton disabled nbStepperNext shape="semi-round">prev</button>
+        <button nbButton nbStepperNext shape="semi-round">next</button>
       </nb-step>
       <nb-step [label]="labelTwo">
-        <ng-template #labelTwo>Choose template</ng-template>
+        <ng-template #labelTwo>Choose template & Icon</ng-template>
 
-        <div  class="row">
+        <div  id="frm-icon" class="row ">
 
-            <nb-card id="c-template">
-              <nb-card-body>
-                <div>
-                  <nb-card class="page1">
-                    <p>Blank</p>
+          <form class="form-icon"  (ngSubmit)="onSecondSubmit()" #formtwo="ngForm">
 
-                  </nb-card>
 
-                </div>
+            <div style="margin-top: 5px;">
+                <span>
+                  <label for="templates">Templates:</label>
+                </span>
+                <nb-select
+                    status="basic"
+                    fullWidth
+                    size="medium"
+                    id="templateid"  status="primary"  [(ngModel)]="app.templateid" shape="semi-round"
+                    required name="templateid" placeholder="select your prefered template" >
+                  <nb-option *ngFor="let t of templates"  [value]="t.id">{{t.title}}</nb-option>
+                </nb-select>
+                <span style="margin-top: 5px;">
+                  <label for="subject">Icon url:</label>
+                </span>
+                <input style="margin-left: 5px;" nbInput fullWidth fieldSize="medium" shape="semi-round" id="appicon" required status="primary"
+                      [(ngModel)]="app.appicon"  name="appicon" type="text" placeholder="/url">
+            </div>
 
-              </nb-card-body>
-            </nb-card>
+            </form>
 
 
         </div>
-
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton nbStepperNext>next</button>
+        <button  nbButton hero shape="semi-round" status="basic" (click)="dismiss()">Cancel</button>
+        <button nbButton nbStepperPrevious shape="semi-round">prev</button>
+        <button nbButton nbStepperNext shape="semi-round">next</button>
       </nb-step>
-      <nb-step [label]="labelTree">
+      <!-- <nb-step [label]="labelTree">
         <ng-template #labelTree>Choose Icon</ng-template>
         <div id="frm-icon" class="row ">
-          <form class="form-icon">
+          <form class="form-icon"   (ngSubmit)="onThirdSubmit()" #formthree="ngForm">
 
 
           <div style="margin-top: 20px;">
               <span>
                 <label for="subject">Icon url:</label>
               </span>
-              <input nbInput fullWidth fieldSize="medium" shape="semi-round" id="subject" type="text" placeholder="/url">
+              <input nbInput fullWidth fieldSize="medium" shape="semi-round" id="appicon" required
+                    [(ngModel)]="app.appicon"  name="appicon" type="text" placeholder="/url">
             </div>
 
           </form>
         </div>
-        <button nbButton disabled nbStepperNext>prev</button>
-        <button nbButton disabled nbStepperNext>next</button>
-      </nb-step>
-      <!-- <nb-step [label]="labelFour">
-        <ng-template #labelFour>Fourth step</ng-template>
-        <h3>Step content #4</h3>
-        <button nbButton nbStepperPrevious>prev</button>
-        <button nbButton disabled nbStepperNext>next</button>
+        <button  nbButton size="small" shape="semi-round" status="basic" (click)="dismiss()">Cancel</button>
+        <button nbButton disabled nbStepperNext shape="semi-round">prev</button>
+        <button nbButton  nbStepperNext shape="semi-round">next</button>
       </nb-step> -->
+      <nb-step [label]="labelFour">
+        <ng-template #labelFour>Done</ng-template>
+        <div id="frm-icon" class="row ">
+           <div class="form-icon"  >
+          <div style="margin-top: 20px;">
+              <span style="font-weight: bold;font-size: 2rem;text-align:center;color:#004781;">
+                You are now done .
+              </span>
+          </div>
+        </div>
+        </div>
+        <button  nbButton hero shape="semi-round" status="basic" (click)="dismiss()">Cancel</button>
+        <button nbButton  nbStepperNext shape="semi-round">prev</button>
+        <button nbButton disabled nbStepperNext shape="semi-round">next</button>
+        <button  class="b2" nbButton hero shape="semi-round" status="info"
+            (click)="formone.ngSubmit.emit();formtwo.ngSubmit.emit();onSubmit()" >
+            Create</button>
+      </nb-step>
     </nb-stepper>
 
   </nb-card-body>
-  <nb-card-footer>
+ <!--  <nb-card-footer>
     <div class="btnsPr">
-    <button class="b1" nbButton size="small"  status="basic" (click)="dismiss()">Cancel</button>
-    <button class="b2" nbButton size="small"  status="success" >Create</button>
+    <button class="b1" nbButton size="small" shape="semi-round"   status="basic" (click)="dismiss()">Cancel</button>
+    <button type="submit" class="b2" nbButton size="small" shape="semi-round" status="success"
+            (click)="formone.ngSubmit.emit();formtwo.ngSubmit.emit()"  >Create</button>
   </div>
-  </nb-card-footer>
+  </nb-card-footer> -->
 
 </nb-card>

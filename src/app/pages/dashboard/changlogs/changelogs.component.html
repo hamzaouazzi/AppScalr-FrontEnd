@@ -1,4 +1,50 @@
+<div class="container">
 
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-    </ng2-smart-table>
-  
+  <table>
+    <colgroup>
+      <col class="number" />
+      <col class="date" />
+      <col class="log" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">N°</th>
+        <th scope="col">Date</th>
+        <th scope="col">log</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userlog of userlogs; let i = index;">
+        <td data-label="number">{{userlogs.length-i}}</td>
+        <td data-label="createdat">{{userlog?.createdat}}</td>
+        <td data-label="log">{{userlog?.log}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+ <!--  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>created_at</th>
+          <th>log</th>
+
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr *ngFor="let userlog of userlogs ">
+          <td>{{userlog?.created_at |date:'medium'}} </td>
+          <td>{{userlog?.log}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+ -->
+</div>

@@ -1,6 +1,7 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
+import { UserService } from '../../core/mock/users.service';
 
 
 interface CardSettings {
@@ -14,9 +15,10 @@ interface CardSettings {
   styleUrls: ['./dashboard.component.scss'],
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnDestroy {
+export class DashboardComponent implements OnDestroy,OnInit {
 
   private alive = true;
+  stats:any;
 
   solarValue: number;
   lightCard: CardSettings = {
@@ -78,12 +80,21 @@ export class DashboardComponent implements OnDestroy {
     dark: this.commonStatusCardsSet,
   };
 
-  constructor(private themeService: NbThemeService) {
+  constructor(private themeService: NbThemeService,private userService:UserService) {
+
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
         this.statusCards = this.statusCardsByThemes[theme.name];
     });
+
+  }
+
+  ngOnInit() {
+   /*  this.userService.getUserStats()
+        .subscribe(data => { console.log(data)
+                            this.stats = data; },
+                            error => console.log(error)); */
 
   }
 

@@ -7,6 +7,15 @@
     flex-direction: column;
   }
 
+  .container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    //flex-wrap: wrap;
+    padding-top: 10px;
+  }
+
   .card{
     //width: 17rem;
     height: 15.5rem;
@@ -17,6 +26,85 @@
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5);
     transition: height 0.3s, box-shadow 0.3s;
 
+  }
+
+  .example-items-col{
+      width: 400px;
+  }
+
+  #frm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    span{
+     float: left;
+
+    }
+    #desc,#page,#icon{
+
+      margin-top: 1.5rem;
+    }
+
+
+  }
+  #frm-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .form-icon{
+      width: 635px;
+      height: 230px;
+
+    }
+
+    span{
+     float: left;
+
+    }
+
+
+
+  }
+
+  #c-template{
+   border: 1px solid rgb(158, 21, 89);
+   margin-top: 12px;
+   margin-left: 0;
+   margin-right: auto;
+    //width: 635px;
+    height: 140px;
+
+
+
+    div{
+      //@extend: inline-block;
+      float: left;
+
+      .page1,.page2,.page3{
+        width: 80px;
+        height: 80px;
+
+        padding: 5px;
+        background-repeat: no-repeat;
+        background-size: 100px 100px;
+        align-items: center;
+        cursor: pointer;
+      &:hover {
+        @include mat-elevation(2);
+      }
+      }
+      p{
+          //font-size: 1rem;
+          font-weight: bold;
+          color: #ccc;
+          //top: auto;
+         margin-top: 10px;
+        // margin-left: 25px;
+      }
+    }
   }
 
   .row{
@@ -51,7 +139,7 @@
     height: 50px;
     border-radius: 8px;
     margin: 0 auto;
-    
+
 
   }
   .h5{
@@ -75,7 +163,6 @@
   nb-card-footer {
     display: flex;
     justify-content: space-evenly;
-
     align-items: center;
   }
 

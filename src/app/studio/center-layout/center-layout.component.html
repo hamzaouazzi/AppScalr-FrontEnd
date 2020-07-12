@@ -1,28 +1,40 @@
 
-
           <div id="Divphone" >
 
             <div class="switch-field">
 
+              <div class="done">
 
-            <div class="zoom-container">
-              <nb-select  #sel  hero status="primary" shape="round" (ngModelChange)="handleChange()" [(ngModel)]="selectedValue">
+                <button nbButton status="primary" hero shape="round"  (click)=" getDom()">Save work</button>
 
+                <!-- <button nbButton shape="round" size="small"  ghost status="primary" nbTooltip="Preview"
+                nbTooltipPlacement="bottom">
+                <ion-icon name="eye" (click)="open2(dialog)" style="font-size: 2rem;"></ion-icon>
+                </button> -->
+
+                <button  nbButton outline status="primary" shape="round" (click)="open2(dialog)">
+                  <nb-icon icon="eye-outline"></nb-icon>Preview </button>
+              </div>
+
+
+
+              <div class="control">
+
+                <nb-select  #sel  hero status="primary" shape="round" (ngModelChange)="handleChange()"
+              [(ngModel)]="selectedValue">
                 <nb-option *ngFor="let a of zoomArray" [value]="a.id" >{{a.name}}</nb-option>
               </nb-select>
-            </div>
-            <div>
-              <button nbButton shape="round" size="small"  ghost status="primary" nbTooltip="Preview" nbTooltipPlacement="bottom">
-                <ion-icon name="eye" (click)="open2(dialog)" style="font-size: 2rem;"></ion-icon>
-              </button>
-            </div>
 
-            <div class="switch-device">
-            <input type="radio" id="switch_left" name="switch_2" value="ios" checked (click)="replace1()"/>
-            <label for="switch_left"><ion-icon class="icon" name="logo-apple"></ion-icon></label>
-            <input type="radio" id="switch_right" name="switch_2" value="Android" (click)="replace2()" />
-            <label for="switch_right"><ion-icon class="icon" name="logo-android"></ion-icon></label>
-          </div>
+              <div class="switch-device">
+                <input type="radio" id="switch_left" name="switch_2" value="ios" checked (click)="replace1()"/>
+                <label for="switch_left"><ion-icon class="icon" name="logo-apple"></ion-icon></label>
+                <input type="radio" id="switch_right" name="switch_2" value="Android" (click)="replace2()" />
+                <label for="switch_right"><ion-icon class="icon" name="logo-android"></ion-icon></label>
+              </div>
+              </div>
+
+
+
 
           </div>
 
@@ -38,7 +50,7 @@
             </div>
 
             <div class="header-list">
-              <span>page</span>
+              <span>{{selectedPage?.pagetitle}}</span>
 
             </div>
 
@@ -47,7 +59,7 @@
                       [cdkDropListData]="elements"
                       [cdkDropListConnectedTo]="['uicategoriesList']"
                       (cdkDropListDropped)="drop($event)"
-                      (click)="toggleChild()">
+                      >
 
                  </div>
 
@@ -84,10 +96,6 @@
           </div>
           </div>
 
-
-             <!--  <div class="btn btn-show" (click)="onShow()">
-                <span><ion-icon name="play-outline"></ion-icon></span>
-              </div>  -->
 
 
           <div id="phone-controls">

@@ -21,7 +21,11 @@ nb-card {
       background-size: 50px 50px;
       cursor: pointer;
     &:hover {
+      border: 2px solid blue;
       @include mat-elevation(2);
+    }
+    &:active {
+      border: 2px solid blue;
     }
     }
     p{

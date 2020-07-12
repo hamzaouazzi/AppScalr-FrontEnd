@@ -1,4 +1,3 @@
-
 <div class="header-list-pages">
 
   <div class="title" >
@@ -10,7 +9,7 @@
 
   <div class="content-list-pages">
 
-     <ng-property-page *ngIf="showMe" ></ng-property-page>
+     <ng-property-page ></ng-property-page>
 
   </div>
 
@@ -39,7 +38,7 @@
          <div *ngIf="(attr.name=='color')">
           <label >{{attr.name}}</label>
 
-           <nb-select [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" class="color"  status="primary">
+           <nb-select [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" class="color"  status="info">
              <nb-option  *ngFor="let c of colorsArray" [value]="c.value"  ><span><nb-icon icon="brush"  [status]="c.icon"></nb-icon></span>{{c.value}}</nb-option>
            </nb-select>
          </div>
@@ -47,108 +46,113 @@
          <div  *ngIf="(attr.name=='fill')">
           <label>{{attr.name}}</label>
 
-           <nb-select  [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" class="color"  status="primary">
+           <nb-select  [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" class="color"   status="info">
              <nb-option  *ngFor="let f of fillArray" [value]="f.value"  >{{f.value}}</nb-option>
            </nb-select>
          </div>
          <div *ngIf="(attr.name=='size')">
           <label >{{attr.name}}</label>
 
-           <nb-select  [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" class="color"  status="primary">
+           <nb-select  [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" class="color"   status="info">
              <nb-option  *ngFor="let s of sizeArray" [value]="s.value"  >{{s.value}}</nb-option>
            </nb-select>
          </div>
          <div *ngIf="(attr.name=='expand')">
           <label >{{attr.name}}</label>
 
-           <nb-select [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)"  class="color"  status="primary">
+           <nb-select [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)"  class="color"  status="info">
              <nb-option  *ngFor="let e of expandArray" [value]="e.value"  >{{e.value}}</nb-option>
            </nb-select>
          </div>
          <div *ngIf="(attr.name=='placeholder')">
-          <label >{{attr.name}}</label>
-           <input  type="text" nbInput fieldSize="small" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
+          <label >p.holder</label>
+           <input  type="text" nbInput fieldSize="small" status="info" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
 
          </div>
          <div *ngIf="(attr.name=='type')">
           <label >{{attr.name}}</label>
 
-           <nb-select *ngIf="(attr.name=='type')" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" placeholder="default" class="color"  status="primary">
+           <nb-select *ngIf="(attr.name=='type')" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" placeholder="default" class="color"   status="info">
              <nb-option  *ngFor="let e of typeInputArray" [value]="e.value"  ><span><nb-icon [icon]="e.icon"  ></nb-icon></span>{{e.value}}</nb-option>
            </nb-select>
          </div>
          <div  *ngIf="(attr.name=='position')">
           <label>{{attr.name}}</label>
-           <nb-select  [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" placeholder="default" class="color"  status="primary">
+           <nb-select  [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" placeholder="default" class="color"  status="info">
              <nb-option  *ngFor="let e of labelArray" [value]="e.value"  >{{e.value}}</nb-option>
            </nb-select>
          </div>
          <div>
           <label *ngIf="(attr.name=='inputmode')">{{attr.name}}</label>
-           <nb-select *ngIf="(attr.name=='inputmode')" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" placeholder="default" class="color"  status="primary">
+           <nb-select *ngIf="(attr.name=='inputmode')" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" placeholder="default" class="color"   status="info">
              <nb-option  *ngFor="let e of inputmodeArray" [value]="e.value"  >{{e.value}}</nb-option>
            </nb-select>
          </div >
          <div *ngIf="(attr.name=='rows')">
           <label >{{attr.name}}</label>
-          <input  type="number" nbInput fieldSize="small" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
+          <input  type="number" nbInput fieldSize="small" status="info" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
          </div>
          <div  *ngIf="(attr.name=='cols')">
           <label>{{attr.name}}</label>
-          <input  type="number" nbInput fieldSize="small" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
+          <input  type="number" nbInput fieldSize="small" status="info" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
          </div>
 
           <div *ngIf="(attr.name=='minlength')">
             <label >{{attr.name}}</label>
-            <input  type="number" nbInput fieldSize="small" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
+            <input  type="number" nbInput fieldSize="small" status="info" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
            </div>
            <div *ngIf="(attr.name=='maxlength')">
             <label >{{attr.name}}</label>
-            <input  type="number" nbInput fieldSize="small" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
+            <input  type="number" nbInput fieldSize="small" status="info" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
            </div>
            <div *ngIf="(attr.name=='wrap')">
             <label >{{attr.name}}</label>
-             <nb-select  [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" placeholder="default" class="color"  status="primary">
+             <nb-select   [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" placeholder="default" class="color"  status="info" >
                <nb-option  *ngFor="let w of wrapArray" [value]="w.value"  >{{w.value}}</nb-option>
              </nb-select>
            </div>
            <div *ngIf="(attr.name=='src')">
             <label >{{attr.name}}</label>
-            <input  type="text" nbInput fieldSize="small" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
+            <input  type="text" nbInput fieldSize="small" status="info" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
            </div>
            <div *ngIf="(attr.name=='min')">
             <label >{{attr.name}}</label>
-            <input  type="number" nbInput fieldSize="small" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
+            <input  type="number" nbInput fieldSize="small" status="info" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
            </div>
            <div *ngIf="(attr.name=='max')">
             <label >{{attr.name}}</label>
-            <input  type="number" nbInput fieldSize="small" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
+            <input  type="number" nbInput fieldSize="small" status="info" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
            </div>
            <div *ngIf="(attr.name=='step')">
             <label >{{attr.name}}</label>
-            <input  type="number" nbInput fieldSize="small" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
+            <input  type="number" nbInput fieldSize="small" status="info" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
            </div>
+           <div *ngIf="(attr.name=='name')">
+            <label >{{attr.name}}</label>
+            <input  type="text" nbInput fieldSize="small" status="info" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)" >
+             <span>Find out here :<a style="color:rgb(4, 115, 206);" href="https://ionicons.com/" target="_black">Ionicons</a></span>
+          </div>
 
-           <!-- <div *ngIf="(attr.name=='style')">
+          <!--  <div *ngIf="(attr.name=='style')">
+            <label >Customize your Style</label>
             <textarea nbInput rows="5"  placeholder="styles" status="primary" [value]="attr.value" [(ngModel)]="attr.value" (ngModelChange)="changeAttr($event, attr.name)"></textarea>
            </div> -->
 
 
    </div>
 
-   <div *ngIf="element.children && element.children.length >0"  class="form-group">
+   <div *ngIf="element.children && element.children.length > 0 && element.children[0] != null"  class="form-group">
     <label>Text</label>
-    <input type="text" nbInput fieldSize="small"  status="primary" [value]="element.children[0]" [ngModel]="element.children[0]" (ngModelChange)="changeText($event)" >
+    <input type="text" nbInput fieldSize="small"  status="info" [value]="element.children[0]" [ngModel]="element.children[0]" (ngModelChange)="changeText($event)" >
   </div>
   <!-- <h6>Classes</h6>
   <div  *ngFor="let class of element.classes" class="form-group">
 
       <input type="text" nbInput fieldSize="small"  status="primary" [value]="class" [ngModel]="class" (ngModelChange)="changeClass($event,class)"  >
-
   </div> -->
 
   <div  class="btn-delete" >
-    <button  nbButton hero fullWidth status="danger" (click)="remove($event,element)" >
+    <button  nbButton outline status="danger" size="small" (click)="remove($event,element)" >
     <nb-icon icon="trash-outline"></nb-icon>Remove  </button>
   </div>
 
@@ -159,6 +163,3 @@
 
 
 </div>
-
-
-

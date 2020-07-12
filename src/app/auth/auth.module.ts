@@ -1,8 +1,8 @@
 import { Injector, ModuleWithProviders, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
-import { HttpRequest } from '@angular/common/http';
+import { HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {
   NbAlertModule,
@@ -19,10 +19,11 @@ import {
   NbToastrModule,
   NbWindowModule,
   NbSelectModule,
+  NbSpinnerModule,
 } from '@nebular/theme';
 
 import { NbAuthService } from './services/auth.service';
-import { NbAuthSimpleToken, NbAuthTokenClass } from './services/token/token';
+import { NbAuthSimpleToken, NbAuthTokenClass, NbAuthJWTToken } from './services/token/token';
 import { NbTokenLocalStorage, NbTokenStorage } from './services/token/token-storage';
 import { NbTokenService } from './services/token/token.service';
 import { NbAuthTokenParceler, NB_AUTH_FALLBACK_TOKEN } from './services/token/token-parceler';
@@ -54,6 +55,9 @@ import { NbRequestPasswordComponent } from './components/request-password/reques
 import { NbResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 import { deepExtend } from './helpers';
+import { environment } from '../../environments/environment';
+import { AuthGuard } from '../auth-guard.service';
+import { NbAuthJWTInterceptor } from './services/interceptors/jwt-interceptor';
 // import { NgxAuthRoutingModule } from './auth-routing.module';
 
 
@@ -107,6 +111,7 @@ export function nbNoOpInterceptorFilter(req: HttpRequest<any>): boolean {
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    NbSpinnerModule,
     NbIconModule,
     NbSelectModule,
     NbThemeModule.forRoot({ name: 'default' }),
@@ -127,13 +132,34 @@ export class NbAuthModule {
     return {
       ngModule: NbAuthModule,
       providers: [
+        AuthGuard,
+        { provide: APP_BASE_HREF, useValue: '/' },
+        // { provide: NB_AUTH_TOKEN_WRAPPER_TOKEN, useClass: NbAuthJWTToken },
+        { provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
         { provide: NB_AUTH_USER_OPTIONS, useValue: nbAuthOptions },
         { provide: NB_AUTH_OPTIONS, useFactory: nbOptionsFactory, deps: [NB_AUTH_USER_OPTIONS] },
         { provide: NB_AUTH_STRATEGIES, useFactory: nbStrategiesFactory, deps: [NB_AUTH_OPTIONS, Injector] },
         { provide: NB_AUTH_TOKENS, useFactory: nbTokensFactory, deps: [NB_AUTH_STRATEGIES] },
         { provide: NB_AUTH_FALLBACK_TOKEN, useValue: NbAuthSimpleToken },
         { provide: NB_AUTH_INTERCEPTOR_HEADER, useValue: 'Authorization' },
-        { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: nbNoOpInterceptorFilter },
+        { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: function (req: HttpRequest<any>) {
+          if (req.url === `${environment.base_url}/auth/login`) {
+          return true
+          } else {
+           return false
+          }
+       } },
+       // { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: nbNoOpInterceptorFilter },
+        /* { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: function (req: HttpRequest<any>) {
+          if (req.url === `${environment.base_url}/auth/login`) {
+          return true
+          }
+          if (req.url === `${environment.base_url}/auth/refresh/token`) {
+            return true
+          } else {
+           return false
+          }
+       } }, */
         { provide: NbTokenStorage, useClass: NbTokenLocalStorage },
         NbAuthTokenParceler,
         NbAuthService,

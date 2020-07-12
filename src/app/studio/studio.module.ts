@@ -41,7 +41,6 @@ import { CenterLayoutComponent } from './center-layout/center-layout.component';
 import { D3Service } from 'd3-ng2-service';
 import { IonicModule } from '@ionic/angular';
 import { NgPopoverPageComponent } from './left-sidebar/popover-page/popover-page.component';
-import { PreviewComponent } from './subheader/preview/preview.component';
 
 
 const ENTRY_COMPONENTS = [
@@ -98,7 +97,6 @@ const ENTRY_COMPONENTS = [
     RightSidebarComponent,
     CenterLayoutComponent,
     NgPopoverPageComponent,
-    PreviewComponent,
 
   ],
   providers: [D3Service],

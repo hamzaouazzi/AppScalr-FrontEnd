@@ -44,6 +44,7 @@ import { DARK_THEME } from './styles/theme.dark';
 import { IonicModule } from '@ionic/angular';
 import { BugComponent } from './components/header/bug/bug.component';
 import { FeedbackComponent } from './components/header/feedback/feedback.component';
+import { FormsModule } from '@angular/forms';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -58,6 +59,7 @@ const NB_MODULES = [
   NbSelectModule,
   NbIconModule,
   IonicModule,
+  FormsModule,
   NbEvaIconsModule,
   NbTooltipModule,
   NbPopoverModule,

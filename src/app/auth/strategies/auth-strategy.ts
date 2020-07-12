@@ -48,7 +48,7 @@ export abstract class NbAuthStrategy {
 
   abstract resetPassword(data?: any): Observable<NbAuthResult>;
 
-  abstract logout(): Observable<NbAuthResult>;
+  abstract logout(data?: any): Observable<NbAuthResult>;
 
   abstract refreshToken(data?: any): Observable<NbAuthResult>;
 

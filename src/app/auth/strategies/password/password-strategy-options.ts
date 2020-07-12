@@ -53,9 +53,9 @@ export class NbPasswordAuthStrategyOptions extends NbAuthStrategyOptions {
   };
   register?: boolean | NbPasswordStrategyModule = {
     alwaysFail: false,
-    endpoint: 'register',
+    endpoint: 'signup',
     method: 'post',
-    requireValidToken: true,
+    requireValidToken: false,
     redirect: {
       success: '/',
       failure: null,
@@ -96,7 +96,7 @@ export class NbPasswordAuthStrategyOptions extends NbAuthStrategyOptions {
     defaultMessages: ['You have been successfully logged out.'],
   };
   refreshToken?: boolean | NbPasswordStrategyModule = {
-    endpoint: 'refresh-token',
+    endpoint: 'refresh/token',
     method: 'post',
     requireValidToken: true,
     redirect: {
@@ -141,12 +141,19 @@ export class NbPasswordAuthStrategyOptions extends NbAuthStrategyOptions {
       required?: boolean;
       regexp?: string | null;
     };
-    userame?: {
+    fullame?: {
       required?: boolean;
       minLength?: number | null;
       maxLength?: number | null;
       regexp?: string | null;
     };
+    specialite?: {
+      required?: boolean;
+      minLength?: number | null;
+      maxLength?: number | null;
+      regexp?: string | null;
+    };
+
   };
 }
 

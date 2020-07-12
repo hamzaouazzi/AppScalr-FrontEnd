@@ -10,6 +10,7 @@ import { UserService } from '../../../core/mock/users.service';
 import { BugComponent } from './bug/bug.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { Router } from '@angular/router';
+import { NbUser } from '../../../auth/models/user';
 
 @Component({
   selector: 'ngx-header',
@@ -20,10 +21,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
-  user: any;
+  user: NbUser ;
+  us:any = {};
+  currentUser:NbUser = new NbUser();
 
   bugs=BugComponent;
   feedbacks=FeedbackComponent;
+
+
 
   themes = [
     {
@@ -46,7 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out', link: '/logout' } ];
+  userMenu = [ { title: 'Profile' }, { title: 'Log out', } ];
 
   constructor(private router:Router,
               private authService: NbAuthService,
@@ -56,13 +61,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private userService: UserService,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService) {
+     this.userService.currentUser()
+        .subscribe(data => { console.log(data)
+                            this.currentUser = data; },
+                            error => console.log(error));
 
                 this.authService.onTokenChange()
       .subscribe((token: NbAuthJWTToken) => {
 
         if (token.isValid()) {
           this.user = token.getPayload();
-          console.log(this.user);
+          //console.log(this.user);
 
           // here we receive a payload from the token and assigns it to our `user` variable
         }
@@ -70,6 +79,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
+
     this.currentTheme = this.themeService.currentTheme;
 
     /* this.userService.getUsers()
@@ -102,11 +113,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   onItemSelection( title ) {
     if ( title === 'Log out' ) {
-      // Do something on Log out
-      console.log('Log out Clicked ')
+      this.logOut();
     } else if ( title === 'Profile' ) {
-      this.router.navigateByUrl('pages/profile');
-      console.log('Profile Clicked ')
+      this.goToUser();
     }
   }
 
@@ -127,11 +136,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   navigateHome() {
-    this.menuService.navigateHome();
-    return false;
+    this.router.navigate(['/pages/dashboard']);
   }
 
+  goToUser() {
+    this.router.navigate(['pages/profile']);
+  }
   logOut() {
+    //console.log("Subuser",this.user.sub)
     this.authService.logout('email')
     this.router.navigate(['/auth/logout']);
  }

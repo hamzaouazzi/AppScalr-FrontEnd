@@ -3,21 +3,19 @@
 
   <div class="title" >
     <span>Pages</span>
+    <nb-icon icon="plus-square-outline" [nbPopover]="templateRef" nbPopoverPlacement="bottom"></nb-icon>
   </div>
 
-  <div class="btn-group">
-    <span id="add-page-dropdown" >
+  <!-- <div class="btn-group">
 
-     <button nbButton ghost ><nb-icon icon="plus-square-outline" [nbPopover]="templatePageComponent"></nb-icon>Add Page</button>
-    </span>
-  </div>
+  </div> -->
 
 </div>
 
   <div class="content-list-pages">
-    <ul class="list-with-icons">
-      <li>
-        <a href="#">page</a>
+    <ul class="list-with-icons" *ngFor="let p of pages; let i = index" >
+      <li >
+        <a (click)="sendPage(p.page_id,p.title,p.route_url,p.page_dom)">{{p?.title}}</a>
       </li>
 
       <!-- <div>
@@ -70,3 +68,66 @@
 
 
 </div>
+
+
+<ng-template #templateRef>
+
+
+<nb-card class="popover-card" accent="info"  [hidden]="submitted">
+
+  <nb-card-body>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label for="inputTitle" class="label col-sm-3 col-form-label" >Title</label>
+        <div class="col-sm-9">
+          <input type="text" nbInput fullWidth id="pagetitle" placeholder="Page Title"
+                 name="pagetitle" [(ngModel)]="newPage.pagetitle" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputRouting" class="label col-sm-3 col-form-label" >R-Url</label>
+        <div class="col-sm-9">
+          <input type="text" nbInput fullWidth id="routeurl" placeholder="/URL"
+          name="routeurl" [(ngModel)]="newPage.routeurl" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 label" >Template</label>
+        <div class="col-sm-9">
+          <div class="list-pages">
+
+            <div>
+              <nb-card class="page1">
+              </nb-card>
+              <p>Blank</p>
+            </div>
+          <!-- <div>
+              <nb-card class="page2">
+
+              </nb-card>
+              <p>Login</p>
+            </div>
+            <div>
+              <nb-card class="page3">
+
+              </nb-card>
+              <p>SignUp</p>
+            </div> -->
+
+      </div>
+        </div>
+      </div>
+      <div class="form-group row" style="float:right;margin-right: 20px;">
+        <div class="offset-sm-3 col-sm-9" >
+          <button type="submit" nbButton status="primary">create</button>
+        </div>
+      </div>
+    </form>
+
+
+
+
+  </nb-card-body>
+</nb-card>
+
+</ng-template>

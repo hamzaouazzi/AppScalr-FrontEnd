@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild, ViewContainerRef, OnDestroy } from
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { UserService } from './../core/mock/users.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -11,13 +12,16 @@ import { UserService } from './../core/mock/users.service';
 })
 export class StudioComponent implements OnInit, OnDestroy {
 
+  id: number;
 
-  constructor() {
+  constructor(private route: ActivatedRoute,private router: Router) {
 
 
   }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    console.log("ID app studio::",this.id);
 
   }
 

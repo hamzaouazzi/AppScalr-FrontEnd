@@ -12,17 +12,19 @@
 </div>
  -->
 <div class="properties-form1">
+  <form (ngSubmit)="onSubmit()">
   <div class="form-group">
-
     <label>Title</label>
-    <input type="text" nbInput fieldSize="small"   placeholder="Page title">
+    <input type="text" nbInput fieldSize="small"   placeholder="Page title"
+           id="pagetitle" [(ngModel)]="selectedPage.pagetitle"   name="pagetitle">
 
   </div>
 
   <div class="form-group ">
 
    <label>Routing URL</label>
-   <input type="text" nbInput fieldSize="small"  placeholder="/URL">
+   <input type="text" nbInput fieldSize="small"  placeholder="/URL"
+          id="routeurl" [(ngModel)]="selectedPage.routeurl"   name="routeurl">
 
   </div>
 
@@ -30,7 +32,7 @@
     <!-- <div class="form-title" ><span >Background</span></div> -->
 
     <div class="form-group" >
-
+<!--
       <label>Color</label>
       <input  style="border-radius: 7px;height: 30px;border:1px solid #ccc;"
                [style.background]="color1" [(colorPicker)]="color1" [cpPosition]="'bottom'"
@@ -39,20 +41,25 @@
                             (colorPickerClose)="getColor($event)"
                             (cpInputChange)="onEventLog('cpInputChange', $event)"
                             (cpSliderDragStart)="onEventLog('cpSliderDragStart', $event)"
-                            (cpSliderDragEnd)="onEventLog('cpSliderDragFinished',$event)"/>
+                            (cpSliderDragEnd)="onEventLog('cpSliderDragFinished',$event)"/> -->
 
          <!--  <button class="image-upload" nbButton hero  fullWidth status="info">Upload Image...</button>
           <button class="btn-submit" nbButton hero   status="success" (click)="sendProperties()">Submit</button> -->
-          <button class="page-delete" nbButton hero fullWidth  status="danger">
-            <nb-icon icon="trash-outline"></nb-icon>Remove </button>
+          <div class="action-page">
+            <button type="button" nbButton outline size="small"  status="danger"
+                     (click)="deletePage()">
+              <nb-icon icon="trash-outline" ></nb-icon>Remove </button>
+            <button  type="submit" nbButton outline size="small"  status="success">
+              <nb-icon icon="done-all-outline"></nb-icon>Save </button>
+
+          </div>
 
   </div>
 
-
-
-
-
   </div>
+
+</form>
+
 
 
 </div>

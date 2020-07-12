@@ -77,8 +77,13 @@ export const defaultAuthOptions: any = {
       email: {
         required: true,
       },
-      fullName: {
-        required: false,
+      specialite: {
+        required: true,
+        minLength: 4,
+        maxLength: 50,
+      },
+      fullname: {
+        required: true,
         minLength: 4,
         maxLength: 50,
       },

@@ -5,6 +5,7 @@ import { getDeepFromObject } from '../../helpers';
 
 import { NbAuthService } from '../../services/auth.service';
 import { NbAuthResult } from '../../services/auth-result';
+import { NbUser } from '../../models/user';
 
 
 @Component({
@@ -22,8 +23,14 @@ export class NbRegisterComponent {
   submitted = false;
   errors: string[] = [];
   messages: string[] = [];
-  user: any = {};
+  user: NbUser = new NbUser();
   socialLinks: NbAuthSocialLink[] = [];
+  specilaty=
+  [
+    { "value":"Student" },
+    { "value":"Developer"},
+    { "value":"Tester" }
+  ];
 
   constructor(protected service: NbAuthService,
               @Inject(NB_AUTH_OPTIONS) protected options = {},

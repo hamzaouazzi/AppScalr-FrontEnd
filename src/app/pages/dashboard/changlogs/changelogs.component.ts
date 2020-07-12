@@ -1,55 +1,33 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
-import { LocalDataSource } from 'ng2-smart-table';
-import { SmartTableData } from '../../../core/data/smart-table';
+import { DashboardService } from '../../../core/mock/dashboard.service';
+import { Router } from '@angular/router';
+import { UserLog } from '../../../core/model/userlog.model';
 
 @Component({
   selector: 'ngx-changelogs',
   templateUrl: './changelogs.component.html',
   styleUrls: ['./changelogs.component.scss']
 })
-export class ChangelogsComponent  {
+export class ChangelogsComponent implements OnInit {
 
-  settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      CreatedAt: {
-        title: 'CreatedAt',
-        type: 'date',
-      },
-      Log: {
-        title: 'Log',
-        type: 'string',
-      },
-    },
-  };
+  userlogs:UserLog[];
 
-  source: LocalDataSource = new LocalDataSource();
+  constructor(private router: Router, private dashboardService: DashboardService) {
 
-  constructor(private service: SmartTableData) {
-    const data = this.service.getData();
-    this.source.load(data);
+             }
+
+  ngOnInit() {
+    this.getUserLogs();
+
   }
 
-  onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
-  }
+  getUserLogs() {
+    this.dashboardService.getUserLogs()
+         .subscribe(data => { console.log("userlogs::",data)
+                                this.userlogs = data; },
+                             error => console.log(error));
+
+   }
+
 
 }

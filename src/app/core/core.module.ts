@@ -11,12 +11,8 @@ import {
   StateService,
 } from './utils';
 import { UserData } from './data/users';
-
-
 import { UserService } from './mock/users.service';
 import { MockDataModule } from './mock/mock-data.module';
-import { SmartTableData } from './data/smart-table';
-import { SmartTableService } from './mock/smart-table.service';
 
 const socialLinks = [
   {
@@ -38,7 +34,6 @@ const socialLinks = [
 
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
-  { provide: SmartTableData, useClass: SmartTableService },
 ];
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
@@ -51,37 +46,9 @@ export class NbSimpleRoleProvider extends NbRoleProvider {
 export const NB_CORE_PROVIDERS = [
   ...MockDataModule.forRoot().providers,
   ...DATA_SERVICES,
-  ...NbAuthModule.forRoot({
+  ...NbAuthModule.forRoot().providers,
 
-    strategies: [
-      NbDummyAuthStrategy.setup({
-        name: 'email',
-        delay: 3000,
-      }),
-    ],
-    forms: {
-      login: {
-        socialLinks: socialLinks,
-      },
-      register: {
-        socialLinks: socialLinks,
-      },
-    },
-  }).providers,
-
-  NbSecurityModule.forRoot({
-    accessControl: {
-      guest: {
-        view: '*',
-      },
-      user: {
-        parent: 'guest',
-        create: '*',
-        edit: '*',
-        remove: '*',
-      },
-    },
-  }).providers,
+  NbSecurityModule.forRoot().providers,
 
   {
     provide: NbRoleProvider, useClass: NbSimpleRoleProvider,

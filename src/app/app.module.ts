@@ -52,6 +52,7 @@ import {
   NumberWithCommasPipe,
 } from './theme/pipes';
 import { IonicModule } from '@ionic/angular';
+
 const socialLinks = [
   {
     url: 'https://github.com/',
@@ -123,14 +124,14 @@ const PIPES = [
           baseEndpoint: 'http://localhost:8080/api',
           token: {
             class: NbAuthJWTToken,
-            key : 'accessToken',
+            key : 'authenticationToken',
           },
           login: {
             redirect: {
               success: 'pages/dashboard/',
               failure: null, // stay on the same page
             },
-            endpoint: '/auth/signin',
+            endpoint: '/auth/login',
             method: 'post',
           },
 
@@ -149,6 +150,18 @@ const PIPES = [
           },
           resetPass: {
             endpoint: '/auth/reset-pass',
+            method: 'post',
+          },
+          logout: {
+            redirect: {
+              success: '/',
+              failure: '/',
+            },
+            endpoint: '/user/logout',
+            method: 'delete',
+          },
+          refreshToken: {
+            endpoint: '/auth/refresh/token',
             method: 'post',
           },
         }),

@@ -13,7 +13,8 @@ import typeinput from './data/typeInput.json';
 import wrap from './data/wrap.json'
 import fontsize from './data/font-size.json';
 import align from './data/align.json';
-
+import { PageRequest } from '../../core/model/page-request.model';
+const _childExclusions= ['ion-input'];
 @Component({
   selector: 'ng-right-sidebar',
   templateUrl: './right-sidebar.component.html',
@@ -29,6 +30,7 @@ export class RightSidebarComponent implements OnInit {
   components = [];
   draggableComponent1 = PropertyPageComponent;
 
+  exclusions = [..._childExclusions];
   colorsArray = colors;
   expandArray =expand;
   fillArray=fill
@@ -49,13 +51,14 @@ export class RightSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.studioService.elementClickedNotify().subscribe(element=> {
-      console.log('element clicked', element);
+      console.log('element clicked', element.type);
       this.element = element;
       this.studioService.setRunning(true);
     }, error => {
       console.error('error getting element clicked')
     })
   }
+
 
   changeAttr($event, name) {
     console.log('element attr name ::::: ', name);
@@ -82,6 +85,12 @@ export class RightSidebarComponent implements OnInit {
     console.log('element class ::::' , $event);
     console.warn('ELEMENT AFTER CHANGE ::' , this.element);
     this.studioService.notifyOfElementChanged(this.element);
+  }
+
+
+  isExcluded(el: UiElement) {
+    console.log('checking')
+    return this.exclusions.includes(el.type);
   }
 
   changeText($event) {

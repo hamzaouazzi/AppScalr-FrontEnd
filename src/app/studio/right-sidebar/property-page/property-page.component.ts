@@ -4,6 +4,8 @@ import { ScreensService } from '../../services/screens.service';
 import { CenterLayoutComponent } from '../../center-layout/center-layout.component';
 import { StudioService } from '../../services/studio.service';
 import { RightSidebarComponent } from '../right-sidebar.component';
+import { PageRequest } from '../../../core/model/page-request.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'ng-property-page',
@@ -15,10 +17,12 @@ export class PropertyPageComponent implements OnInit {
   @Input() showMe: boolean;
   @Output() colorchanged = new EventEmitter<string>();
   @ViewChild('center') center:ElementRef;
-
+  idApp:number;
+  selectedPage:PageRequest;
+  domPage:string;
   colorpick:string;
   public toggle: boolean = false;
-
+  idPageDelete:number;
   public rgbaText: string = 'rgba(165, 26, 214, 0.2)';
 
   public arrayColors: any = {
@@ -43,16 +47,62 @@ export class PropertyPageComponent implements OnInit {
   constructor(public vcRef: ViewContainerRef,
               private cpService: ColorPickerService,
               private screenService:ScreensService,
-              private studioService:StudioService
+              private studioService:StudioService,
+              private route:ActivatedRoute
                                                   ) {
               studioService.myBool$.subscribe((newBool: boolean) => { this.showMe = newBool; });
               this.screenService.callMyFunction();
               }
 
   ngOnInit() {
+    this.idApp = this.route.snapshot.params['id'];
+    this.selectedPage = new PageRequest();
+    this. _subscribeToPageSelected();
+    this._subscribeToDomSaved();
     // console.log("List drop",this.center.nativeElement);
   }
 
+  _subscribeToPageSelected() {
+    this.studioService.subscribeToPage().subscribe(data=> {
+      this.selectedPage = data;
+     // this.studioService.setRunning(true);
+    }, error => {
+      console.error('error getting page selected')
+    })
+  }
+
+  _subscribeToDomSaved() {
+    this.studioService.domSavedNotify()
+                      .subscribe(data=> {
+                        this.domPage = data;
+                        console.log("DOM-string::",this.domPage);
+
+    })
+
+  }
+
+  updatePage() {
+    this.selectedPage.dom = this.domPage;
+    console.log("Page-content:",this.selectedPage);
+    this.studioService.updatePage(this.selectedPage,this.selectedPage.pageid,this.idApp)
+                      .subscribe(data => console.log("updatedPage:",data), error => console.log(error));
+
+  }
+
+  onSubmit() {
+    this.updatePage();
+  }
+
+  deletePage(idpage:number) {
+    this.idPageDelete=idpage;
+    this.studioService.deletePage(this.selectedPage.pageid,this.idApp)
+                      .subscribe(data => console.log(data), error => console.log(error));
+    this.selectedPage.routeurl = "";
+    this.selectedPage.pagetitle = "";
+    this.studioService.notifyOfPageDeleted(this.selectedPage);
+
+
+  }
 
         changeColor(event) {
           this.colorchanged.emit(this.colorpick);

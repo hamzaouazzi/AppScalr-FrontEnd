@@ -5,6 +5,7 @@ import { getDeepFromObject } from '../../helpers';
 
 import { NbAuthService } from '../../services/auth.service';
 import { NbAuthResult } from '../../services/auth-result';
+import { NbUser } from '../../models/user';
 
 @Component({
   selector: 'nb-login',
@@ -19,7 +20,7 @@ export class NbLoginComponent {
 
   errors: string[] = [];
   messages: string[] = [];
-  user: any = {};
+  user: NbUser = new NbUser() ;
   submitted: boolean = false;
   socialLinks: NbAuthSocialLink[] = [];
   rememberMe = false;

@@ -11,50 +11,48 @@
 </div>
 
 <div class="form-edit">
-<form>
+<form (ngSubmit)="onSubmit()">
           <div class="form-group row">
             <label for="inputFullname" class="label col-sm-3 col-form-label">Full name</label>
             <div class="col-sm-9">
-              <input type="text" nbInput fullWidth id="inputFullname" placeholder="Full name">
+              <input type="text" nbInput fullWidth id="inputFullname" name="inputFullname" required [(ngModel)]="user.fullname" >
             </div>
           </div>
-          <div class="form-group row">
+          <!-- <div class="form-group row">
             <label for="inputUsername" class="label col-sm-3 col-form-label">Username</label>
             <div class="col-sm-9">
               <input type="text" nbInput fullWidth id="inputUsername" placeholder="Username">
             </div>
-          </div>
+          </div> -->
           <div class="form-group row">
-            <label for="inputEmail1" class="label col-sm-3 col-form-label">Email address</label>
+            <label for="inputEmail" class="label col-sm-3 col-form-label" >Email address</label>
             <div class="col-sm-9">
-              <input type="email" nbInput fullWidth id="inputEmail1" placeholder="Email address">
+              <input type="email" nbInput fullWidth id="inputEmail" name="inputEmail" required [(ngModel)]="user.email" >
             </div>
           </div>
           <div class="form-group row">
             <label for="select-specialty" class="label col-sm-3 col-form-label">Specialty</label>
             <div class="col-sm-9">
               <nb-select
-               placeholder="Student"
                status="basic"
                fullWidth
                size="medium"
                id="select-specialty"
-              >
-      <nb-option value="1">Student</nb-option>
-      <nb-option value="2">Developer</nb-option>
-      <nb-option value="3">Tester</nb-option>
+               required name="select-specialty" [(ngModel)]="user.specialite" >
+                  <nb-option *ngFor="let sp of specilaty"  [value]="sp.value">{{sp.value}}</nb-option>
 
-    </nb-select>
+              </nb-select>
             </div>
           </div>
           <div class="form-group row">
             <label for="inputPassword2" class="label col-sm-3 col-form-label">Password</label>
             <div class="col-sm-9">
-              <input type="password" nbInput fullWidth id="inputPassword2" placeholder="Password">
+              <input type="password" nbInput fullWidth id="inputPassword" name="inputPassword" required [(ngModel)]="user.password" placeholder="new password" >
             </div>
           </div>
           <div class="btn form-group row">
             <div class="offset-sm-3 col-sm-9">
+              <!-- <button type="button" nbButton hero (click)="back()" >Cancel</button> -->
               <button type="submit" nbButton hero  status="info">Edit your Account Information</button>
             </div>
           </div>

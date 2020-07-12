@@ -27,6 +27,7 @@ import { UiCategory } from "../models/UiCategory.model";
 import { UiElement } from "../models/UiElement.model";
 import { StudioService } from "../services/studio.service";
 import { NbDialogService, NbWindowService } from '@nebular/theme';
+import { PageRequest } from '../../core/model/page-request.model';
 
 let width=0;
 let height=0;
@@ -60,7 +61,7 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
 
   private d3: D3;
   showVar: boolean = false;
-
+  selectedPage:PageRequest;
   answers: UiElement[] = [];
   html;
 
@@ -73,8 +74,8 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
 
   //observe DOM changes
   observer: MutationObserver;
-
-   s = new XMLSerializer();
+   length =8;
+   serialized = new XMLSerializer();
    parser = new DOMParser();
    str;
    doc;
@@ -137,39 +138,118 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.__subscribeToElementChange();
+    this._subscribeToPageSelected();
+    //this._clearRemovedPage();
     this.__removeElementSelected();
 
   }
 
 
 
+  /** use this to save the current DOM
+   * so far we save in a component variable, persist this value with JSON.stringify()
+   */
+  _currentDOM : Element[] = [];
 
+
+  domString:string;
   getDom() {
-    console.log("element",this.element.nativeElement);
-    this.str = this.s.serializeToString(this.element.nativeElement);
-    console.log("SERIALISABLE",this.str);
-   // this.studioService.notifyOfDomSaved(this.element.nativeElement);
+
+    this._currentDOM = [...this.element.nativeElement.childNodes];
+    console.log('childnodes element  :::',...this.element.nativeElement.childNodes);
+    console.log('showing save DOM  :::', this._currentDOM);
+     //this.domString =  JSON.stringify(this._currentDOM);
+    this.str = this.serialized.serializeToString(this.element.nativeElement);
+
+      this.studioService.notifyOfDomSaved(this.str);
 
   }
 
 
   showDom() {
 
-    const t=this.renderer.createElement("div");
-    t.insertAdjacentHTML('afterbegin', this.str);
+    console.log('showing save DOM  :::', this._currentDOM);
 
-      console.log("this str",this.str) ;
-     console.log("Length",t.firstChild.childNodes.length)
+  //  console.log('showing dom', this.str.childNodes);
 
-    for(let i=0 ; i<t.firstChild.childNodes.length ; i++) {
 
-      console.log("Child"+i,t.firstChild.childNodes[i])
-      this.renderer.appendChild(this.element.nativeElement,t.firstChild.childNodes[i].cloneNode(true));
-
+    for(const _el of this._currentDOM) {
+      this.renderer.appendChild(this.element.nativeElement, _el);
     }
-    console.log("Dom elements",this.element.nativeElement);
+
+    // const t=this.renderer.createElement("div");
+    // t.insertAdjacentHTML('afterbegin', this.str);
+
+    //   console.log("this str",this.str) ;
+    //  console.log("Length",t.firstChild.childNodes.length)
+
+    // for(let i=0 ; i<t.firstChild.childNodes.length ; i++) {
+
+    //   console.log("Child"+i,t.firstChild.childNodes[i])
+    //   this.renderer.appendChild(this.element.nativeElement,t.firstChild.childNodes[i].cloneNode(true));
+
+    // }
+    // console.log("Dom elements",this.element.nativeElement);
   }
 
+  /* Handling page selected */
+
+  convertStringToHtml(str)  {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(str, 'text/html');
+    return (doc.body.firstChild.childNodes)
+  }
+  toArray(obj) {
+    // tslint:disable-next-line: prefer-const
+    let array = [];
+    // iterate backwards ensuring that length is an UInt32
+    for (let i = obj.length >>> 0; i--;) {
+      array[i] = obj[i];
+    }
+    return array;
+  }
+
+  insertDomPage() {
+    this.element.nativeElement.textContent  ='';
+     const dd = this.convertStringToHtml(this.selectedPage.dom);
+     this.toArray(dd);
+     console.log(' DOM-Array  :::', ...this.toArray(dd));
+     //const arr = Array.from(this.toArray(dd));
+     this._currentDOM = [...this.toArray(dd)]
+     // this._currentDOM = [...this.convertStringToHtml(this.selectedPage.dom)]
+    //this._currentDOM =Array.from(this.convertStringToHtml(this.selectedPage.dom));
+    console.log('current DOM  :::', this._currentDOM );
+
+     for(const _el of this._currentDOM) {
+      this.renderer.appendChild(this.element.nativeElement, _el);
+      this.renderer.listen(_el, "click", evt => {
+        console.log("element clicked LISTEN", _el);
+        this.__detectClick(_el);
+      });
+    }
+/*
+    for(const _el of this._currentDOM) {
+    this.renderer.listen(_el, "click", evt => {
+      console.log("element clicked LISTEN", _el);
+      this.__detectClick(_el);
+    });
+  } */
+  }
+
+  _subscribeToPageSelected() {
+    this.studioService.subscribeToPage().subscribe(data=> {
+      console.log('page selected', data);
+      this.selectedPage = data;
+      this.insertDomPage();
+      //this.studioService.setRunning(true);
+    });
+  }
+  _clearRemovedPage() {
+    this.studioService.subscribeToPage().subscribe(data => {
+      console.log('page deleted', data);
+      this.element.nativeElement.textContent = '';
+    });
+  }
 
   replace1() {
     this.d3.select(this.ioshead.nativeElement).style("opacity", 1);
@@ -219,34 +299,22 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
     console.log("Color changed:", color);
   }
 
-  public onChangeColorCmyk(color: string): Cmyk {
-    const hsva = this.cpService.stringToHsva(color);
-
-    if (hsva) {
-      const rgba = this.cpService.hsvaToRgba(hsva);
-
-      return this.cpService.rgbaToCmyk(rgba);
-    }
-
-    return new Cmyk(0, 0, 0, 0);
-  }
-
-  public onChangeColorHex8(color: string): string {
-    const hsva = this.cpService.stringToHsva(color, true);
-
-    if (hsva) {
-      return this.cpService.outputFormat(hsva, "rgba", null);
-    }
-
-    return "";
-  }
 
   /***********************************************************
    * * HANDLE DROP EVENT FROM LEFT SIDEBAR INTO CENTER LAYOUT
    ***********************************************************
    */
 
-   DOM_ID_INCREMENTER = 0;
+   makeid(length) {
+   let result           = '';
+   const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   const charactersLength = characters.length;
+   for ( let i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
 
   drop(event: CdkDragDrop<Element[]>) {
 
@@ -274,16 +342,15 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
       }
     }
 
-   // const br = this.renderer.createElement("br");
+    //const br = this.renderer.createElement("br");
     //this.renderer.appendChild(this.element.nativeElement, br);
-    this.renderer.setAttribute(el, "id", currentElement.id + this.DOM_ID_INCREMENTER );
+    this.renderer.setAttribute(el, "id", currentElement.id + this.makeid(this.length) );
     console.log("created :::", el);
     this.renderer.appendChild(this.element.nativeElement, el);
     this.renderer.listen(el, "click", evt => {
       console.log("element clicked LISTEN", el);
       this.__detectClick(el);
     });
-    this.DOM_ID_INCREMENTER++;
   }
 
 
@@ -293,16 +360,21 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
       console.log('this element has changed from right sidebar', element);
       _el = this.element.nativeElement.querySelector(`#${element.id}`);
       console.warn('element being changed :: ', _el);
-      _el.setAttributeNS(null,"cdkDrag","");
+      //_el.setAttributeNS(null,"cdkDrag","");
 
       for (const _attr of element.attributes) {
         _el.setAttribute(_attr.name, _attr.value);
       }
+
+        for (const _class of element.classes) {
+          _el.classList.add(_class);
+        }
+
      /*  for (const _class of element.classes) {
         _el.className=_class;
       } */
 
-      if(_el.hasChildNodes) _el.firstChild.nodeValue = element.children[0];
+      if(_el.hasChildNodes && _el.firstChild !=null ) _el.firstChild.nodeValue = element.children[0];
 
 
     }, error => {
@@ -316,8 +388,6 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
       _el = this.element.nativeElement.querySelector(`#${element.id}`);
       this.element.nativeElement.removeChild(_el);
       console.warn('element being removed :: ', _el);
-      this.DOM_ID_INCREMENTER--;
-
 
     }, error => {
       console.error('element delete error!', error);
@@ -333,6 +403,7 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
 
   convertToUiElement(el: Element): UiElement {
     const _uiElement: UiElement = {
+
       id: el.getAttribute("id"),
       classes: el.getAttribute("class").split(" "),
       attributes: el
@@ -344,7 +415,7 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
             value: el.getAttribute(attr)
           };
         }),
-      children: el.hasChildNodes? [el.firstChild.nodeValue] : []
+      children: el.hasChildNodes? [el.firstChild?.nodeValue] : []
     };
 
     return _uiElement;

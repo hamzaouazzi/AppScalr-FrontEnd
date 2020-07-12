@@ -97,9 +97,11 @@ export class NbAuthService {
    * @returns {Observable<NbAuthResult>}
    */
   authenticate(strategyName: string, data?: any): Observable<NbAuthResult> {
+    console.log("Data",data);
     return this.getStrategy(strategyName).authenticate(data)
       .pipe(
         switchMap((result: NbAuthResult) => {
+          console.log("RESULT",result);
           return this.processResultToken(result);
         }),
       );
@@ -117,6 +119,7 @@ export class NbAuthService {
    * @returns {Observable<NbAuthResult>}
    */
   register(strategyName: string, data?: any): Observable<NbAuthResult> {
+    console.log("Strategy",strategyName,"Data",data);
     return this.getStrategy(strategyName).register(data)
       .pipe(
         switchMap((result: NbAuthResult) => {
@@ -139,6 +142,7 @@ export class NbAuthService {
     return this.getStrategy(strategyName).logout()
       .pipe(
         switchMap((result: NbAuthResult) => {
+          console.log("logout result",result);
           if (result.isSuccess()) {
             this.tokenService.clear()
               .pipe(map(() => result));
@@ -147,6 +151,7 @@ export class NbAuthService {
         }),
       );
   }
+
 
   /**
    * Sends forgot password request to the selected strategy
@@ -188,9 +193,11 @@ export class NbAuthService {
    * @returns {Observable<NbAuthResult>}
    */
   refreshToken(strategyName: string, data?: any): Observable<NbAuthResult> {
+    console.log("Data",data);
     return this.getStrategy(strategyName).refreshToken(data)
       .pipe(
         switchMap((result: NbAuthResult) => {
+          console.log(" resultRefresh",result);
           return this.processResultToken(result);
         }),
       );

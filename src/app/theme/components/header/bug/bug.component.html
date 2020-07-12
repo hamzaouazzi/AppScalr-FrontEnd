@@ -1,34 +1,38 @@
 
-  <div class="p-4">
+  <div class="p-4" [hidden]="submitted">
     <div class="title-help">
       <p>Help us make AppScalr bug free :</p>
     </div>
-    <form>
+    <form (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label>Title</label>
-        <input nbInput type="text" class="form-control" placeholder="title">
+        <input  type="text" class="form-control" placeholder="title" id="title"
+                name="title" [(ngModel)]="bug.title" required >
       </div>
       <div class="form-group">
         <label>Description</label>
-        <textarea nbInput class="form-control" placeholder="description"></textarea>
+        <textarea  class="form-control" placeholder="description" id="desc"
+                  name="desc" [(ngModel)]="bug.desc" required ></textarea>
       </div>
       <div class="form-group">
         <label>Type</label>
-        <input  nbInput type="text" class="form-control" placeholder="type">
+        <select class="form-control"  id="bugtype"
+                name="bugtype"  [(ngModel)]="bug.bugtype" required >
+          <option *ngFor="let t of Types"  [value]="t" selected>{{t}}</option>
+        </select>
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label>Status</label>
-        <input nbInput type="text" class="form-control" placeholder="status">
+        <input nbInput type="text" class="form-control" placeholder="status" >
       </div>
-
+ -->
       <div class="form-group">
         <label for="file" >Screenshot</label>
-        <input   type="file" style="margin-left: 10px;"
-               id="file"
-               (change)="handleFileInput($event.target.files)">
-    </div>
+        <input  type="text" class="form-control" placeholder="/url" id="screenshoturl"
+               name="screenshoturl" [(ngModel)]="bug.screenshoturl" required >
+      </div>
 
-      <button type="submit" class="btn btn-primary w-100">Send</button>
+      <button type="submit" class="btn btn-primary w-100">Notify</button>
     </form>
   </div>
 

@@ -7,3 +7,177 @@
     width: 100%;
   }
 }
+
+.container{
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+ // border: 2px solid #004781 ;
+  //display:  block;
+  //align-content: center;
+  width: 250rem;
+  //margin-left: 60px;
+ // padding: 0;
+  //height: 100%;
+}
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+.number {
+  width: 20%;
+  text-align: center;
+
+}
+.date {
+  width: 30%;
+  text-align: center;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  //background-color: #fff;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: .625em;
+  text-align: left;
+  &:nth-child(1){
+    text-align: center;
+  }
+  &:nth-child(2){
+    text-align: center;
+  }
+
+}
+table td {
+  font-size: .9em;
+  font-weight: bold;
+  //color:#ccc;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #274bdb;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 1px solid #ddd;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    //background-color: #ccc;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+/*
+table{
+  width:100%;
+  table-layout: fixed;
+}
+.tbl-header{
+  //border-bottom: 2px solid #004781 ;
+  //background-color: #bce1ff;
+ }
+.tbl-content{
+  //height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  padding: 20px 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  color: #bce1ff;
+  text-transform: uppercase;
+}
+td{
+  padding: 18px;
+  text-align: center;
+  vertical-align:middle;
+  font-weight: 500;
+  font-size: 15px;
+  color:#004781  ;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+*/
+
+/* demo styles */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
+}
+
+
+/* for custom scrollbar for webkit browser*/
+
+/* ::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ */

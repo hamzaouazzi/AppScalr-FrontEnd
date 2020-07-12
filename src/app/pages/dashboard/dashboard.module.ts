@@ -20,14 +20,12 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ThemeModule } from '../../theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
 import { StatusCardComponent } from './status-card/status-card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectsComponent } from './projects/projects.component';
 import { ShowcaseDialogComponent } from './projects/showcase-dialog/showcase-dialog.component';
 import { IonicModule } from '@ionic/angular';
 import { ChangelogsComponent } from './changlogs/changelogs.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { SmartTableService } from '../../core/mock/smart-table.service';
-import { EditProjectComponent } from './projects/edit-project/edit-project.component';
 
 
 
@@ -39,6 +37,7 @@ const ENTRY_COMPONENTS = [
 @NgModule({
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     ThemeModule,
     NbCardModule,
     NbUserModule,
@@ -65,12 +64,10 @@ const ENTRY_COMPONENTS = [
     ProjectsComponent,
     ShowcaseDialogComponent,
     ChangelogsComponent,
-    EditProjectComponent,
 
   ],
   entryComponents: [
     ...ENTRY_COMPONENTS,
   ],
-  //providers : [SmartTableService],
 })
 export class DashboardModule { }

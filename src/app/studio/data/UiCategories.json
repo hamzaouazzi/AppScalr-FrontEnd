@@ -25,12 +25,12 @@
         "id":"BB",
         "name":"Header",
         "icon":"../../assets/images/components/popover.svg",
-        "type":"h1",
-        "classes":["ion-text-start","ion-margin-auto"],
+        "type":"h2",
+        "classes":["ion-text-center","ion-margin-auto"],
         "attributes": [
           {
             "name":"style",
-            "value":""
+            "value":"font-family: Open Sans, sans-serif;color:#636357;"
           }
         ],
         "children":["Header"]
@@ -40,8 +40,8 @@
         "id":"CC",
         "name":"Input",
         "icon":"../../assets/images/components/input.svg",
-        "type":"ion-input",
-        "classes":["border", "ion-text-uppercase"],
+        "type":"input",
+        "classes":["border","class2"],
         "attributes": [
           {
           "name": "placeholder",
@@ -52,12 +52,8 @@
             "value": "text"
           },
           {
-            "name": "readonly",
-            "value": "false"
-          },
-          {
             "name":"style",
-            "value":""
+            "value":"width:100%;height:2.6rem;"
           }
       ]
       },
@@ -66,7 +62,7 @@
         "name":"Label",
         "icon":"../../assets/images/components/tab.svg",
         "type":"ion-label",
-        "classes":["border", "ion-text-uppercase","ion-text-wrap"],
+        "classes":["class1","ion-text-wrap"],
         "attributes": [
           {
           "name": "position",
@@ -150,7 +146,7 @@
         "id":"GG",
         "name":"Select",
         "icon":"../../assets/images/components/select.svg",
-        "type":"ion-select",
+        "type":"select",
         "classes":["class1", "class2"],
         "attributes": [
           {
@@ -163,27 +159,17 @@
           },
           {
             "name":"style",
-            "value":""
+            "value":"width:100%"
           }
       ],
-      "children": [
-           {
-            "type":"ion-option",
-            "attributes":[
-              {
-                "name": "value",
-                "value": "brown"
-                }
-            ]
+      "children": [""]
 
-            }
-    ]
       },
       {
         "id":"HH",
         "name":"Textarea",
         "icon":"../../assets/images/components/dialog.svg",
-        "type":"ion-textarea",
+        "type":"textarea",
         "classes":["border", "class2"],
         "attributes": [
 
@@ -231,10 +217,6 @@
           "value": "10"
         },
         {
-          "name": "readonly",
-          "value": "false"
-        },
-        {
           "name": "required",
           "value": "false"
         },
@@ -244,7 +226,7 @@
         },
         {
           "name":"style",
-          "value":""
+          "value":"width:100%;"
         }
       ]
       },
@@ -274,7 +256,7 @@
       {
         "id":"JJ",
         "name":"Range",
-        "icon":"../../assets/images/components/line.svg",
+        "icon":"../../assets/images/components/flip.svg",
         "type":"ion-range",
         "classes":["class1", "class2"],
         "attributes": [
@@ -299,6 +281,80 @@
               "name":"style",
               "value":""
             }
+      ]
+      },
+      {
+        "id":"kk",
+        "name":"spacer",
+        "icon":"../../assets/images/components/web-design.png",
+        "type":"br",
+        "classes":["class1"],
+        "attributes": [
+          {
+            "name":"style",
+            "value":"border:1px solid #fff;content: ' ';display: block !important;margin-bottom: 0.8rem !important;"
+          }
+
+      ]
+      },
+      {
+        "id":"WW",
+        "name":"video",
+        "icon":"../../assets/images/components/play-button.png",
+        "type":"iframe",
+        "classes":["class1"],
+        "attributes": [
+          {
+            "name": "src",
+            "value": "https://www.youtube.com/embed/rLsjtEClNYU"
+          },
+          {
+            "name": "style",
+            "value": "width:100%;border-radius:4px;"
+          },
+          {
+            "name": "autoplay",
+            "value": "true"
+          }
+
+      ]
+      },
+      {
+        "id":"WW",
+        "name":"image",
+        "icon":"../../assets/images/components/image.svg",
+        "type":"iframe",
+        "classes":["class1"],
+        "attributes": [
+          {
+            "name": "src",
+            "value": "../../assets/img/d/details-1.png"
+          },
+          {
+            "name": "style",
+            "value": "width:100%;border-radius:4px;"
+          }
+      ]
+      },
+      {
+        "id":"RR",
+        "name":"icon",
+        "icon":"../../assets/images/components/icon.svg",
+        "type":"ion-icon",
+        "classes":["class1"],
+        "attributes": [
+          {
+            "name":"color",
+            "value":"warning"
+          },
+          {
+            "name":"name",
+            "value":"star"
+          },
+          {
+            "name":"size",
+            "value":"small"
+          }
       ]
       }
 

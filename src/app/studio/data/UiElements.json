@@ -1,39 +1,357 @@
 [
   {
-    "id":1,
+    "id":"AA",
+    "name":"Text",
+    "icon":"../../assets/images/components/html.svg",
+    "type":"ion-text",
+    "classes":["d-block","ion-text-start" ,"ion-margin-auto"],
+    "attributes": [
+      {
+      "name": "color",
+      "value": "primary"
+      },
+      {
+        "name":"style",
+        "value":""
+      }
+  ],
+    "children":["Text here"]
+  },
+  {
+    "id":"BB",
+    "name":"Header",
+    "icon":"../../assets/images/components/popover.svg",
+    "type":"h2",
+    "classes":["ion-text-center","ion-margin-auto"],
+    "attributes": [
+      {
+        "name":"style",
+        "value":"font-family: Open Sans, sans-serif;color:#636357;"
+      }
+    ],
+    "children":["Header"]
+
+  },
+  {
+    "id":"CC",
     "name":"Input",
     "icon":"../../assets/images/components/input.svg",
     "type":"input",
-    "classes":["class1", "class2"],
-    "attrs": {
-      "key": "placeholder",
-      "value": "add placeholder here!"
-    }
+    "classes":["border","class2"],
+    "attributes": [
+      {
+      "name": "placeholder",
+      "value": "default value"
+      },
+      {
+        "name": "type",
+        "value": "text"
+      },
+      {
+        "name":"style",
+        "value":"width:100%;height:2.6rem;"
+      }
+  ]
   },
   {
-    "id":2,
+    "id":"DD",
+    "name":"Label",
+    "icon":"../../assets/images/components/tab.svg",
+    "type":"ion-label",
+    "classes":["class1","ion-text-wrap"],
+    "attributes": [
+      {
+      "name": "position",
+      "value": "floating"
+      },
+      {
+      "name": "color",
+      "value": "dark"
+      },
+      {
+        "name":"style",
+        "value":""
+      }
+  ],
+    "children":["Label here"]
+  },
+  {
+    "id":"EE",
     "name":"Button",
     "icon":"../../assets/images/components/button.svg",
-    "type":"button",
-    "classes":["class1", "class2"],
-    "attrs": {
-      "key": "label",
-      "value": "Tap me!"
+    "type":"ion-button",
+    "classes":["ion-margin-auto", "ion-padding-auto"],
+    "children": ["Change me"],
+    "attributes": [
+      {
+      "name": "color",
+      "value": "primary"
+
+    },
+    {
+      "name": "expand",
+      "value": "inline"
+    },
+    {
+      "name": "fill",
+      "value": "solid"
+    },
+    {
+      "name": "size",
+      "value": "default"
     }
+
+  ]
+
   },
   {
-    "id":3,
+    "id":"FF",
     "name":"Checkbox",
     "icon":"../../assets/images/components/checkbox.svg",
-    "type":"checkbox",
-    "classes":["class1", "class2"]
+    "type":"ion-checkbox",
+    "classes":["class1", "class2"],
+    "attributes": [
+      {
+      "name": "value",
+      "value": "on"
+      },
+      {
+        "name": "color",
+        "value": "danger"
+
+      },
+      {
+        "name": "checked",
+        "value": "true"
+      },
+      {
+        "name": "disabled",
+        "value": "false"
+      },
+      {
+        "name": "indeterminate",
+        "value": "false"
+      },
+      {
+        "name":"style",
+        "value":""
+      }
+  ]
   },
   {
-    "id":4,
+    "id":"GG",
     "name":"Select",
     "icon":"../../assets/images/components/select.svg",
     "type":"select",
-    "classes":["class1", "class2"]
+    "classes":["class1", "class2"],
+    "attributes": [
+      {
+      "name": "value",
+      "value": "brown"
+      },
+      {
+        "name": "placeholder",
+        "value": "Select One"
+      },
+      {
+        "name":"style",
+        "value":"width:100%"
+      }
+  ],
+  "children": [""]
 
+  },
+  {
+    "id":"HH",
+    "name":"Textarea",
+    "icon":"../../assets/images/components/dialog.svg",
+    "type":"textarea",
+    "classes":["border", "class2"],
+    "attributes": [
+
+    {
+      "name": "placeholder",
+      "value": "placeholder here!"
+    },
+    {
+      "name": "clearOnEdit",
+      "value": "false"
+    },
+    {
+      "name": "rows",
+      "value": "8"
+    },
+    {
+      "name": "cols",
+      "value": "8"
+    },
+
+    {
+      "name": "color",
+      "value": "primary"
+
+    },
+    {
+      "name": "debounce",
+      "value": "0"
+    },
+    {
+      "name": "disabled",
+      "value": "false"
+    },
+
+    {
+      "name": "inputmode",
+      "value": "none"
+    },
+    {
+      "name": "maxlength",
+      "value": "50"
+    },
+    {
+      "name": "minlength",
+      "value": "10"
+    },
+    {
+      "name": "required",
+      "value": "false"
+    },
+    {
+      "name": "wrap",
+      "value": "hard"
+    },
+    {
+      "name":"style",
+      "value":"width:100%;"
+    }
+  ]
+  },
+  {
+    "id":"II",
+    "name":"Toggle",
+    "icon":"../../assets/images/components/toggle.svg",
+    "type":"ion-toggle",
+    "classes":["--border-radius", "--handle-height","--handle-width","--background"],
+    "attributes": [
+      {
+        "name": "color",
+        "value": "danger"
+
+        },
+      {
+        "name": "value",
+        "value": "on"
+      },
+      {
+        "name":"style",
+        "value":""
+      }
+
+  ]
+  },
+  {
+    "id":"JJ",
+    "name":"Range",
+    "icon":"../../assets/images/components/flip.svg",
+    "type":"ion-range",
+    "classes":["class1", "class2"],
+    "attributes": [
+      {
+        "name": "color",
+        "value": "warning"
+
+        },
+      {
+        "name": "min",
+        "value": "20"
+      },
+      {
+        "name": "max",
+        "value": "80"
+        },
+        {
+          "name": "step",
+          "value": "2"
+        },
+        {
+          "name":"style",
+          "value":""
+        }
+  ]
+  },
+  {
+    "id":"kk",
+    "name":"spacer",
+    "icon":"../../assets/images/components/web-design.png",
+    "type":"br",
+    "classes":["class1"],
+    "attributes": [
+      {
+        "name":"style",
+        "value":"border:1px solid #fff;content: ' ';display: block !important;margin-bottom: 0.8rem !important;"
+      }
+
+  ]
+  },
+  {
+    "id":"WW",
+    "name":"video",
+    "icon":"../../assets/images/components/play-button.png",
+    "type":"iframe",
+    "classes":["class1"],
+    "attributes": [
+      {
+        "name": "src",
+        "value": "https://www.youtube.com/embed/rLsjtEClNYU"
+      },
+      {
+        "name": "style",
+        "value": "width:100%;border-radius:4px;"
+      },
+      {
+        "name": "autoplay",
+        "value": "true"
+      }
+
+  ]
+  },
+  {
+    "id":"WW",
+    "name":"image",
+    "icon":"../../assets/images/components/image.svg",
+    "type":"iframe",
+    "classes":["class1"],
+    "attributes": [
+      {
+        "name": "src",
+        "value": "../../assets/img/d/details-1.png"
+      },
+      {
+        "name": "style",
+        "value": "width:100%;border-radius:4px;"
+      }
+  ]
+  },
+  {
+    "id":"RR",
+    "name":"icon",
+    "icon":"../../assets/images/components/icon.svg",
+    "type":"ion-icon",
+    "classes":["class1"],
+    "attributes": [
+      {
+        "name":"color",
+        "value":"warning"
+      },
+      {
+        "name":"name",
+        "value":"star"
+      },
+      {
+        "name":"size",
+        "value":"small"
+      }
+  ]
   }
+
 ]

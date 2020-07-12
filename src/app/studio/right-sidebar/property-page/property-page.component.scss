@@ -115,10 +115,12 @@
         margin-top: 20px;
         padding: 13px;
       }
-      .page-delete{
-
-        margin-top: 38px;
-        padding: 10px;
+      .action-page{
+        display: flex;
+        justify-content: space-evenly;
+        //align-items: ;
+        margin-top: 10px;
+        //padding: 10px;
 
 
        }

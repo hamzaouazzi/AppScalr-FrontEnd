@@ -10,6 +10,9 @@ import {
   transferArrayItem
 } from "@angular/cdk/drag-drop";
 import { cloneDeep } from "lodash";
+import { environment } from '../../../environments/environment';
+import { Page } from '../../core/model/Project.model';
+import { PageRequest } from '../../core/model/page-request.model';
 
 @Injectable({ providedIn: "root" })
 export class StudioService {
@@ -20,10 +23,23 @@ export class StudioService {
   //right sidebar-show
   myBool$: Observable<boolean>;
   private boolSubject = new Subject<boolean>();
+  idSubject$ = new Subject<any>();
+
+  pageNotifier$ = new Subject<PageRequest>();
 
   constructor(private httpClient: HttpClient) {
     this.myBool$ = this.boolSubject.asObservable();
   }
+  setID(value: number) {
+    console.log("service -:id:",value)
+    this.idSubject$.next(value);
+  }
+
+  getID() : Observable<any> {
+    return this.idSubject$.asObservable();
+  }
+
+
   setRunning = (value: boolean) => {
     this.boolSubject.next(value);
   };
@@ -32,6 +48,34 @@ export class StudioService {
     this.myBool$ = newValue;
     this.boolSubject.next(newValue);
   }
+  notifyOfPageDeleted(page:PageRequest) {
+    this.pageNotifier$.next(page);
+  }
+
+  notifyOfPageClicked(page: PageRequest) {
+    console.log("Page here::",page);
+    this.pageNotifier$.next(page);
+  }
+
+  subscribeToPage() {
+    return this.pageNotifier$.asObservable();
+  }
+
+  createPage(page:Object,id:number): Observable<any> {
+    return  this.httpClient.post(`${environment.base_url}/app/${id}/page/create`,page);
+  }
+
+
+
+  updatePage(page:Object,idpage:number,idapp:number): Observable<any> {
+    return  this.httpClient.put(`${environment.base_url}/app/${idapp}/page/${idpage}/save`,page);
+  }
+
+  deletePage(idpage: number,idapp:number): Observable<any> {
+    return this.httpClient.delete(`${environment.base_url}/app/${idapp}/page/${idpage}/delete`);
+  }
+
+
 
   // observer
   notifyComponentsOfElementDrag(el: UiElement) {
@@ -95,7 +139,7 @@ export class StudioService {
   elementChangedNotifier$ = new Subject<UiElement>();
   elementSelectedNotifier$ = new Subject<UiElement>();
 
-  domSavedNotifier$ = new Subject<ElementRef>();
+  domSavedNotifier$ = new Subject<string>();
 
 
   domSavedNotify() {
@@ -113,7 +157,7 @@ export class StudioService {
     return this.elementSelectedNotifier$.asObservable();
    }
 
-   notifyOfDomSaved(dom:ElementRef) {
+   notifyOfDomSaved(dom:string) {
      console.log('Dom saved',dom);
      this.domSavedNotifier$.next(dom);
 

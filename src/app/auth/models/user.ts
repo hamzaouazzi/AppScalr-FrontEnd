@@ -1,11 +1,11 @@
 export class NbUser {
-
-  constructor(public id?: number,
-              public email?: string,
-              public password?: string,
-              public rememberMe?: boolean,
-              public terms?: boolean,
-              public confirmedpassword?: string,
-              public userame?: string) {
-  }
+  id?: number;
+  email?: string;
+  specialite?: string;
+  password?: string;
+  hasfeedback?:boolean;
+  rememberMe?: boolean;
+  terms?: boolean;
+  confirmedpassword?: string;
+  fullname?: string
 }
