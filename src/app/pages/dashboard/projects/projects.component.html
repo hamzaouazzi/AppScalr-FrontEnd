@@ -16,14 +16,14 @@
 <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6" *ngFor="let project of projects;let i = index ">
  <nb-card size="tiny" class="card"  >
 
-  <nb-card-body ng-app="myApp">
-    <div class="app-icon">
+  <nb-card-body ng-app="myApp" >
+    <div class="app-icon" >
       <img src="{{project?.app_icon_url}}" >
     </div>
     <div class="details">
       <div class="h5">{{project?.app_name}}</div>
       <div class="description">
-         <p>Edited:  {{project?.lastmodified}}</p>
+         <p>Edited: {{project?.lastmodified}}</p>
       </div>
     </div>
   </nb-card-body>
@@ -81,8 +81,8 @@
                          [(ngModel)]="project.app_desc"   name="appdesc"></textarea>
 
 
-                 <span id="page">
-                  <label for="subject">Pages:</label>
+                <span id="page">
+                  <label for="subject">Home Page:</label>
                 </span>
                 <nb-select placeholder="Page 1" shape="semi-round"  fullWidth>
                   <nb-option *ngFor="let p of pages"  [value]="p.page_id">{{p.title}}</nb-option>

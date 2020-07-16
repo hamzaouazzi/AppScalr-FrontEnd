@@ -63,22 +63,20 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
   showVar: boolean = false;
   selectedPage:PageRequest;
   answers: UiElement[] = [];
-  html;
 
   public selectedColor: string = "color1";
   public color1: string = "#fff";
-  optionSelected;
-  valueSelected;
-  $scope;
   received: string;
-
+  selectedValue=1;
+  length =8;
+  zoomArray = zoom;
+  domString;
+  html;
   //observe DOM changes
   observer: MutationObserver;
-   length =8;
-   serialized = new XMLSerializer();
-   parser = new DOMParser();
-   str;
-   doc;
+  serialized = new XMLSerializer();
+  parser = new DOMParser();
+  _currentDOM : Element[] = [];
 
   constructor(
     private screenService: ScreensService,
@@ -146,50 +144,23 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
 
 
 
-  /** use this to save the current DOM
-   * so far we save in a component variable, persist this value with JSON.stringify()
-   */
-  _currentDOM : Element[] = [];
-
-
-  domString:string;
   getDom() {
 
     this._currentDOM = [...this.element.nativeElement.childNodes];
     console.log('childnodes element  :::',...this.element.nativeElement.childNodes);
     console.log('showing save DOM  :::', this._currentDOM);
-     //this.domString =  JSON.stringify(this._currentDOM);
-    this.str = this.serialized.serializeToString(this.element.nativeElement);
-
-      this.studioService.notifyOfDomSaved(this.str);
+    this.domString = this.serialized.serializeToString(this.element.nativeElement);
+    this.studioService.notifyOfDomSaved(this.domString);
 
   }
 
 
   showDom() {
-
     console.log('showing save DOM  :::', this._currentDOM);
-
-  //  console.log('showing dom', this.str.childNodes);
-
 
     for(const _el of this._currentDOM) {
       this.renderer.appendChild(this.element.nativeElement, _el);
     }
-
-    // const t=this.renderer.createElement("div");
-    // t.insertAdjacentHTML('afterbegin', this.str);
-
-    //   console.log("this str",this.str) ;
-    //  console.log("Length",t.firstChild.childNodes.length)
-
-    // for(let i=0 ; i<t.firstChild.childNodes.length ; i++) {
-
-    //   console.log("Child"+i,t.firstChild.childNodes[i])
-    //   this.renderer.appendChild(this.element.nativeElement,t.firstChild.childNodes[i].cloneNode(true));
-
-    // }
-    // console.log("Dom elements",this.element.nativeElement);
   }
 
   /* Handling page selected */
@@ -197,13 +168,13 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
   convertStringToHtml(str)  {
     const parser = new DOMParser();
     const doc = parser.parseFromString(str, 'text/html');
-    return (doc.body.firstChild.childNodes)
+    return (doc.body?.firstChild?.childNodes)
   }
+
   toArray(obj) {
     // tslint:disable-next-line: prefer-const
     let array = [];
-    // iterate backwards ensuring that length is an UInt32
-    for (let i = obj.length >>> 0; i--;) {
+    for (let i = obj?.length >>> 0; i--;) {
       array[i] = obj[i];
     }
     return array;
@@ -214,7 +185,6 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
      const dd = this.convertStringToHtml(this.selectedPage.dom);
      this.toArray(dd);
      console.log(' DOM-Array  :::', ...this.toArray(dd));
-     //const arr = Array.from(this.toArray(dd));
      this._currentDOM = [...this.toArray(dd)]
      // this._currentDOM = [...this.convertStringToHtml(this.selectedPage.dom)]
     //this._currentDOM =Array.from(this.convertStringToHtml(this.selectedPage.dom));
@@ -227,13 +197,6 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
         this.__detectClick(_el);
       });
     }
-/*
-    for(const _el of this._currentDOM) {
-    this.renderer.listen(_el, "click", evt => {
-      console.log("element clicked LISTEN", _el);
-      this.__detectClick(_el);
-    });
-  } */
   }
 
   _subscribeToPageSelected() {
@@ -269,21 +232,11 @@ export class CenterLayoutComponent implements OnInit, AfterViewInit {
     this.element.nativeElement.style.backgroundColor = event.color;
   }
 
-  selectedValue: number=1;
-
-  zoomArray = zoom;
-  zoomArr = [0.5, 0.75, 0.9, 1];
-
-  indexofArr = 4;
 
 
-  handleChange() {
-    console.log("this is handle change method !");
-    console.log("element", this.frame);
-    const val: number = this.selectedValue;
+  handleChange(evt) {
+    const val = evt;
     console.log("handle change selected value ", val);
-    this.indexofArr = this.zoomArr.indexOf(val);
-    console.log("Handle changes", this.indexofArr);
     this.frame.nativeElement.style["transform"] = `scale(${val})`;
   }
 

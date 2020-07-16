@@ -178,10 +178,6 @@
           "value": "placeholder here!"
         },
         {
-          "name": "clearOnEdit",
-          "value": "false"
-        },
-        {
           "name": "rows",
           "value": "8"
         },
@@ -200,11 +196,6 @@
           "value": "0"
         },
         {
-          "name": "disabled",
-          "value": "false"
-        },
-
-        {
           "name": "inputmode",
           "value": "none"
         },
@@ -215,10 +206,6 @@
         {
           "name": "minlength",
           "value": "10"
-        },
-        {
-          "name": "required",
-          "value": "false"
         },
         {
           "name": "wrap",
@@ -328,11 +315,11 @@
         "attributes": [
           {
             "name": "src",
-            "value": "../../assets/img/d/details-1.png"
+            "value": "../../assets/images/userl.png"
           },
           {
             "name": "style",
-            "value": "width:100%;border-radius:4px;"
+            "value": "width:100%;border-radius:4px;background-size: 50%;"
           }
       ]
       },

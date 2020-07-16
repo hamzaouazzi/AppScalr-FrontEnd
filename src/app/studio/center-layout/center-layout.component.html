@@ -20,10 +20,11 @@
 
               <div class="control">
 
-                <nb-select  #sel  hero status="primary" shape="round" (ngModelChange)="handleChange()"
-              [(ngModel)]="selectedValue">
-                <nb-option *ngFor="let a of zoomArray" [value]="a.id" >{{a.name}}</nb-option>
-              </nb-select>
+                <nb-select  #sel  hero status="primary" shape="round" (ngModelChange)="handleChange($event)"
+                            [(ngModel)]="selectedValue">
+                  <!-- <nb-option  [value]="1" >100%</nb-option> -->
+                  <nb-option *ngFor="let a of zoomArray" [value]="a.id" >{{a.name}}</nb-option>
+                </nb-select>
 
               <div class="switch-device">
                 <input type="radio" id="switch_left" name="switch_2" value="ios" checked (click)="replace1()"/>
@@ -92,10 +93,13 @@
             <!--The Main Thing-->
           <div id="wrapper" style="perspective: 1300px;" #wrapper>
           <div class="phone view_2" id="phone_1" style="width: 360px; height: 640px;" #phone_1>
-          <iframe  id="frame_1"  allowtransparency="true" style="background: #FFFFFF;"   #frame_1></iframe>
+          <iframe  id="frame_1"  allowtransparency="true" scrolling="yes"
+          style="background: #FFF;overflow-y:scroll !important;
+                                    overflow-x:hidden !important;
+                                    height:100%;width:100%;"#frame_1>
+           </iframe>
           </div>
           </div>
-
 
 
           <div id="phone-controls">
