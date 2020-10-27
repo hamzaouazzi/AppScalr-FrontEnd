@@ -53,6 +53,14 @@ http://localhost:4200/
 ```
 ## ScreenShots
 Authentication       
+:-------------------------:|:-------------------------:
+<img src="/src/assets/screenshots/auth/login.jpg"> |  <img src="/src/assets/screenshots/studio/register.jpg">
+
+Dashboard       
+:-------------------------:|:-------------------------:
+<img src="/src/assets/screenshots/dashboard/light-dashboard.jpg"> |  <img src="/src/assets/screenshots/dashboard/dark-dashboard.jpg">
+
+Studio       
 :-------------------------:
 <img src="/src/assets/screenshots/studio/2.jpg">
 <img src="/src/assets/screenshots/studio/1.jpg">
