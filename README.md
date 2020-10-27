@@ -54,13 +54,14 @@ http://localhost:4200/
 ## ScreenShots
 Authentication 
 :-------------------------:
-<img src="/src/assets/screenshots/auth/login.jpg"  width="350" height="400">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/register.jpg" width="350" height="400">
+<img src="/src/assets/screenshots/auth/login.jpg"  width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/auth/register.jpg" width="700" height="650" >&nbsp;&nbsp;<img src="/src/assets/screenshots/auth/forgot-password.jpg" width="700" height="650" >
 
 Dashboard       
 :-------------------------:
-<img src="/src/assets/screenshots/dashboard/light-dashboard.jpg" width="350" height="400">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/dark-dashboard.jpg" width="350" height="400">
+<img src="/src/assets/screenshots/dashboard/light-dashboard.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/dark-dashboard.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/create-app.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/edit-app.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/edit-profile.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/edit-app.jpg" width="700" height="650">
+
 
 Studio       
 :-------------------------:
-<img src="/src/assets/screenshots/studio/3.1.jpg" width="350" height="400">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/3.2.jpg" width="350" height="400">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/4.1.jpg" width="350" height="400">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/4.2.jpg" width="350" height="400">
+<img src="/src/assets/screenshots/studio/3.1.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/3.2.jpg"width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/4.1.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/4.2.jpg" width="700" height="650">
 
