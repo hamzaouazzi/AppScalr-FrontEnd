@@ -54,5 +54,5 @@ http://localhost:4200/
 ## ScreenShots
 Authentication       
 :-------------------------:
-<img src="/assets/screenshots/studio/1.jpg">
-<img src="/assets/screenshots/studio/2.jpg">
+<img src="/src/assets/screenshots/studio/2.jpg">
+<img src="/src/assets/screenshots/studio/1.jpg">
