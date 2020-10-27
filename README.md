@@ -78,3 +78,9 @@ Studio
 <img src="/src/assets/screenshots/studio/4.1.jpg" >&nbsp;&nbsp;
 <img src="/src/assets/screenshots/studio/4.2.jpg" >
 
+
+
+## License
+
+This project is licensed under WEETEK DIGITAL FACTORY
+
