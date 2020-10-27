@@ -52,15 +52,15 @@ npm install && npm start
 http://localhost:4200/
 ```
 ## ScreenShots
-Authentication       
-:-------------------------:|:-------------------------:
-<img src="/src/assets/screenshots/auth/login.jpg"> |  <img src="/src/assets/screenshots/studio/register.jpg">
+Authentication 
+:-------------------------:
+<img src="/src/assets/screenshots/auth/login.jpg"  width="350" height="400">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/register.jpg" width="350" height="400">
 
 Dashboard       
-:-------------------------:|:-------------------------:
-<img src="/src/assets/screenshots/dashboard/light-dashboard.jpg"> |  <img src="/src/assets/screenshots/dashboard/dark-dashboard.jpg">
+:-------------------------:
+<img src="/src/assets/screenshots/dashboard/light-dashboard.jpg" width="350" height="400">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/dark-dashboard.jpg" width="350" height="400">
 
 Studio       
 :-------------------------:
-<img src="/src/assets/screenshots/studio/2.jpg">
-<img src="/src/assets/screenshots/studio/1.jpg">
+<img src="/src/assets/screenshots/studio/3.1.jpg" width="350" height="400">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/3.2.jpg" width="350" height="400">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/4.1.jpg" width="350" height="400">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/4.2.jpg" width="350" height="400">
+
