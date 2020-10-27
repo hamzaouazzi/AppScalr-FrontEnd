@@ -52,16 +52,28 @@ npm install && npm start
 http://localhost:4200/
 ```
 ## ScreenShots
+
 Authentication 
 :-------------------------:
-<img src="/src/assets/screenshots/auth/login.jpg"  width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/auth/register.jpg" width="700" height="650" >&nbsp;&nbsp;<img src="/src/assets/screenshots/auth/forgot-password.jpg" width="700" height="650" >
+<img src="/src/assets/screenshots/auth/login.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/auth/register.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/auth/forgot-password.jpg" >
 
 Dashboard       
 :-------------------------:
-<img src="/src/assets/screenshots/dashboard/light-dashboard.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/dark-dashboard.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/create-app.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/edit-app.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/edit-profile.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/dashboard/edit-app.jpg" width="700" height="650">
-
+<img src="/src/assets/screenshots/dashboard/light-dashboard.jpg">&nbsp;&nbsp;
+<img src="/src/assets/screenshots/dashboard/userLogs.jpg">&nbsp;&nbsp;
+<img src="/src/assets/screenshots/dashboard/dark-dashboard.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/dashboard/create-app.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/dashboard/edit-app.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/dashboard/edit-profile.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/dashboard/feedback.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/dashboard/bug.jpg" >&nbsp;&nbsp;
 
 Studio       
 :-------------------------:
-<img src="/src/assets/screenshots/studio/3.1.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/3.2.jpg"width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/4.1.jpg" width="700" height="650">&nbsp;&nbsp;<img src="/src/assets/screenshots/studio/4.2.jpg" width="700" height="650">
+<img src="/src/assets/screenshots/studio/3.1.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/studio/3.2.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/studio/4.1.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/studio/4.2.jpg" >
 
