@@ -1,4 +1,4 @@
-# AppScalr
+<h1 align="center">AppScalr</h1>
 
 AppScalr - Mobile App Drag and Drop Builder
 
@@ -6,7 +6,7 @@ AppScalr is a mobile app builder that you can use to create apps for Android or 
 
 The AppScalr app builder includes a visual editor using drag and drop components to build the UI.
 
-AppScalr auto-generates the code for any components you drop in. You can visualize your mobile app in live preview.
+AppScalr auto-generates the code for any components you drop in and you can visualize your mobile app in live preview.
 
 
 
@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software
+What things you need to install for the application
 
 ```
 NodeJs
@@ -72,8 +72,8 @@ Dashboard
 
 Studio       
 :-------------------------:
-<img src="/src/assets/screenshots/studio/3.1.jpg" >&nbsp;&nbsp;
 <img src="/src/assets/screenshots/studio/3.2.jpg" >&nbsp;&nbsp;
+<img src="/src/assets/screenshots/studio/3.1.jpg" >&nbsp;&nbsp;
 <img src="/src/assets/screenshots/studio/4.1.jpg" >&nbsp;&nbsp;
 <img src="/src/assets/screenshots/studio/4.2.jpg" >
 
