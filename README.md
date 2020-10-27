@@ -72,6 +72,7 @@ Dashboard
 
 Studio       
 :-------------------------:
+<img src="/src/assets/screenshots/studio/2.jpg" >&nbsp;&nbsp;
 <img src="/src/assets/screenshots/studio/3.2.jpg" >&nbsp;&nbsp;
 <img src="/src/assets/screenshots/studio/3.1.jpg" >&nbsp;&nbsp;
 <img src="/src/assets/screenshots/studio/4.1.jpg" >&nbsp;&nbsp;
