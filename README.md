@@ -1,27 +1,58 @@
-# Appscalr
+# AppScalr
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
+AppScalr - Mobile App Drag and Drop Builder
 
-## Development server
+AppScalr is a mobile app builder that you can use to create apps for Android or iOS, and it includes Ionic Mobile Technology with access to its built-in components.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The AppScalr app builder includes a visual editor using drag and drop components to build the UI.
 
-## Code scaffolding
+AppScalr auto-generates the code for any components you drop in. You can visualize your mobile app in live preview.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Getting Started
 
-## Running unit tests
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Prerequisites
 
-## Running end-to-end tests
+What things you need to install the software
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+NodeJs
+Angular CLI 9
+Visual Studio Code
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+* Clone project into your DocumentRoot path by running
+
+```
+git clone https://github.com/hamzaouazzi/AppScalr-FrontEnd.git
+```
+* Change into project folder 
+
+```
+cd AppScalr-FrontEnd
+```
+
+* Install dependencies and compile changes
+
+```
+npm install && npm start
+```
+
+* Open the project in the browser 
+
+```
+http://localhost:4200/
+```
+## ScreenShots
+Authentication       
+:-------------------------:
+<img src="/assets/screenshots/studio/1.jpg">
+<img src="/assets/screenshots/studio/2.jpg">
